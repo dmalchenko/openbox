@@ -91,6 +91,11 @@ $config = [
 		'freekassa' => [
 			'class' => 'app\modules\freekassa\Module',
 		],
+		'modules' => [
+			'opencase' => [
+				'class' => 'app\modules\opencase\Module',
+			],
+		],
 	],
     'params' => $params,
 ];
