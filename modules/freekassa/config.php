@@ -6,7 +6,7 @@ return [
 		'merchantSecret' => 'w26kwkfl',
 		'merchantSecret2' => '4lrnjbfo',
 		'currency' => 1,
-		'userClass' => 'User',
+		'userClass' => 'app\models\UserTokens',
 		'userMoneyField' => 'money',
 	]
 ];

@@ -2,6 +2,8 @@
 
 /* @var $this yii\web\View */
 
+use yii\helpers\VarDumper;
+
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
@@ -48,6 +50,11 @@ $this->title = 'My Yii Application';
                 <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
             </div>
         </div>
-
+<?php
+$identity = Yii::$app->getUser()->getIdentity();
+if (isset($identity->profile)) {
+	VarDumper::dump($identity->profile, 10, true);
+}
+?>
     </div>
 </div>

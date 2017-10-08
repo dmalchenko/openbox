@@ -7,12 +7,20 @@ use yii\helpers\Html;
 $this->title = 'About';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-about">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        This is the About page. You may modify the following file to customize its content:
-    </p>
 
-    <code><?= __FILE__ ?></code>
-</div>
+<?= \app\modules\freekassa\widgets\FreekassaWidget::widget(); ?>
+
+
+
+
+<!--<form method='get' action='http://www.free-kassa.ru/merchant/cash.php'>-->
+<!--    <input type='hidden' name='m' value='--><?//= $merchantId ?><!--'>-->
+<!--    <input type='hidden' name='oa' value='--><?//= $order_amount ?><!--'>-->
+<!--    <input type='hidden' name='o' value='--><?//= $order_id ?><!--'>-->
+<!--    <input type='hidden' name='s' value='--><?//= $sign ?><!--'>-->
+<!--    <input type='hidden' name='i' value='1'>-->
+<!--    <input type='hidden' name='lang' value='ru'>-->
+<!--    <input type='hidden' name='us_login' value='--><?//= $sign ?><!--'>-->
+<!--    <input type='submit' name='pay' value='Оплатить'>-->
+<!--</form>-->

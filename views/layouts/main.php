@@ -65,6 +65,7 @@ AppAsset::register($this);
     </div>
 </div>
 
+<a href="//www.free-kassa.com/"><img src="//www.free-kassa.ru/img/fk_btn/9.png"></a>
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; My Company <?= date('Y') ?></p>

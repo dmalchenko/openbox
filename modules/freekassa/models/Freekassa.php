@@ -88,20 +88,14 @@ class Freekassa extends ActiveRecord {
 		return $sign;
 	}
 
-	public function userAddMoney() {
-		$userMoneyField = \Yii::$app->controller->module->params['userMoneyField'];
-		$user = $this->getUser();
-		$user->$userMoneyField += $this->amount;
-		$user->save();
-	}
-
 	/**
-	 * @return ActiveRecord
+	 * @return bool
 	 */
-	private function getUser() {
+	public function userAddMoney() {
+		/** @var Freekassable $userClass */
 		$userClass = \Yii::$app->controller->module->params['userClass'];
-		$user = $userClass::findOne($this->user_id);
-		return $user;
+		$userClass::addMoney($this->user_id, $this->amount);
+		return true;
 	}
 
 }

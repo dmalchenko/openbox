@@ -39,15 +39,59 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+		'i18n' => [
+			'translations' => [
+				'eauth' => [
+					'class' => 'yii\i18n\PhpMessageSource',
+					'basePath' => '@eauth/messages',
+				],
+			],
+		],
+		'eauth' => [
+			'class' => 'nodge\eauth\EAuth',
+			'popup' => true, // Use the popup window instead of redirecting.
+			'cache' => false, // Cache component name or false to disable cache. Defaults to 'cache' on production environments.
+			'cacheExpire' => 0, // Cache lifetime. Defaults to 0 - means unlimited.
+			'httpClient' => [
+				// uncomment this to use streams in safe_mode
+				//'useStreamsFallback' => true,
+			],
+			'services' => [ // You can change the providers and their classes.
+				'facebook' => [
+					// register your app here: https://developers.facebook.com/apps/
+					'class' => 'nodge\eauth\services\FacebookOAuth2Service',
+					'clientId' => '119154928777377',
+					'clientSecret' => '445967cd1a21ee3bbe8a4bee71e70e58',
+				],
+				'vkontakte' => [
+					// register your app here: https://vk.com/editapp?act=create&site=1
+					'class' => 'nodge\eauth\services\VKontakteOAuth2Service',
+					'clientId' => '6212174',
+					'clientSecret' => 'BTwwa8XUUbB0GcK6hbVd',
+				],
+				'odnoklassniki' => [
+					// register your app here: http://dev.odnoklassniki.ru/wiki/pages/viewpage.action?pageId=13992188
+					// ... or here: http://www.odnoklassniki.ru/dk?st.cmd=appsInfoMyDevList&st._aid=Apps_Info_MyDev
+					'class' => 'app\models\OdnoklassnikiOAuth2Service',
+					'clientId' => '1256372992',
+					'clientSecret' => '604897FC9A639389E116520A',
+					'clientPublic' => 'CBAMLDOLEBABABABA',
+					'title' => 'Odnoklas.',
+				],
+			],
+		],
     ],
+	'modules' => [
+		'freekassa' => [
+			'class' => 'app\modules\freekassa\Module',
+		],
+	],
     'params' => $params,
 ];
 
@@ -57,14 +101,14 @@ if (YII_ENV_DEV) {
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['127.0.0.1', '::1', '*'],
     ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['127.0.0.1', '::1', '*'],
     ];
 }
 

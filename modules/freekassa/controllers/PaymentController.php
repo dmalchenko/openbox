@@ -3,7 +3,6 @@
 namespace app\modules\freekassa\controllers;
 
 use app\modules\freekassa\models\Freekassa;
-use Codeception\PHPUnit\Constraint\Page;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 
@@ -14,15 +13,6 @@ class PaymentController extends Controller {
 
 	const URL_GET_BALANCE = 'http://www.free-kassa.ru/api.php?merchant_id=%s&s=%s&action=get_balance';
 	const URL_GET_CASH = 'http://www.free-kassa.ru/merchant/cash.php?m=%s&oa=%s&o=%s&s=%s&lang=ru&i=%s&us_id=%s';
-
-	/**
-	 * Renders the index view for the module
-	 * @return string
-	 */
-	public function actionIndex() {
-//		return $this->render('index');
-		return 1;
-	}
 
 	public function actionPay() {
 		$remoteIp = isset($_SERVER['HTTP_X_REAL_IP']) ? $_SERVER['HTTP_X_REAL_IP'] : $_SERVER['REMOTE_ADDR'];
