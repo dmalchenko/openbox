@@ -65,13 +65,13 @@ $config = [
 			'services' => [ // You can change the providers and their classes.
 				'facebook' => [
 					// register your app here: https://developers.facebook.com/apps/
-					'class' => 'nodge\eauth\services\FacebookOAuth2Service',
+					'class' => 'nodge\eauth\services\extended\FacebookOAuth2Service',
 					'clientId' => '119154928777377',
 					'clientSecret' => '445967cd1a21ee3bbe8a4bee71e70e58',
 				],
 				'vkontakte' => [
 					// register your app here: https://vk.com/editapp?act=create&site=1
-					'class' => 'nodge\eauth\services\VKontakteOAuth2Service',
+					'class' => 'nodge\eauth\services\extended\VKontakteOAuth2Service',
 					'clientId' => '6212174',
 					'clientSecret' => 'BTwwa8XUUbB0GcK6hbVd',
 				],
@@ -86,18 +86,17 @@ $config = [
 				],
 			],
 		],
-    ],
+	],
 	'modules' => [
 		'freekassa' => [
 			'class' => 'app\modules\freekassa\Module',
 		],
-		'modules' => [
-			'opencase' => [
-				'class' => 'app\modules\opencase\Module',
-			],
+		'opencase' => [
+			'class' => 'app\modules\opencase\Module',
 		],
+
 	],
-    'params' => $params,
+	'params' => $params,
 ];
 
 if (YII_ENV_DEV) {

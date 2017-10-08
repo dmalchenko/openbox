@@ -18,7 +18,7 @@ class Module extends \yii\base\Module
     public function init()
     {
         parent::init();
-
+		$this->layout = '@app/modules/opencase/views/layouts/main.php';
         // custom initialization code goes here
     }
 }

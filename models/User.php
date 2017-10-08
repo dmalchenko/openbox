@@ -114,6 +114,11 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface, Freek
 			$userToken->money = 0;
 			$userToken->name = $attributes['username'];
 			$userToken->service = $attributes['profile']['service'];
+			if (isset($attributes['profile']['photo_url'])) {
+				$userToken->avatar = $attributes['profile']['photo_url'];
+			} elseif (isset($attributes['profile']['photo_big'])) {
+				$userToken->avatar = $attributes['profile']['photo_big'];
+			}
 			$userToken->save();
 		}
 
