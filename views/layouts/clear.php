@@ -51,7 +51,7 @@ $user = User::getCurrentUser();
 
     </script>
     <script type="text/javascript" src="//vk.com/js/api/openapi.js?150"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     
 </head>
