@@ -12,7 +12,7 @@ class m171008_122230_create_user_tokens_table extends Migration
      */
     public function up()
     {
-        $this->createTable('user_tokens', [
+        $this->createTable('user', [
             'id' => $this->primaryKey(),
 			'user_id' => $this->integer(),
 			'name' => $this->string(),
@@ -31,6 +31,6 @@ class m171008_122230_create_user_tokens_table extends Migration
      */
     public function down()
     {
-        $this->dropTable('user_tokens');
+        $this->dropTable('user');
     }
 }

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html class="no-js  page" lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <title>Box</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="format-detection" content="telephone=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+  <link href="css/style.min.css" rel="stylesheet" media="screen">
+
+  <script>
+    // Маркер работающего javascript
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    document.addEventListener('DOMContentLoaded', function(){
+      if (window.isMobile !== undefined) {
+        // console.log(isMobile);
+        if(isMobile.any) {
+          var rootClasses = ' is-mobile';
+          for (key in isMobile) {
+            if(typeof isMobile[key] === 'boolean' && isMobile[key] && key !== 'any') rootClasses += ' is-mobile--'+key;
+            if(typeof isMobile[key] === 'object' && key !== 'other') {
+              for (type in isMobile[key]) {
+                if(isMobile[key][type]) rootClasses += ' is-mobile--'+key+'-'+type;
+              }
+            }
+          }
+          document.documentElement.className += rootClasses;
+        }
+      }
+      else {
+        console.log('Классы для мобильных не добавлены: в сборке отсутствует isMobile.js');
+      }
+    });
+
+  </script>
+  <script type="text/javascript" src="//vk.com/js/api/openapi.js?150"></script>
+
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+
+</head>
+
+<body>
+
+  <div class="page__inner">
+
+    <div class="page__content">
+
+      <header class="page-header" role="banner">
+        <div class="container">
+          <div class="page-header__wrapper">
+            <a href="index.html" class="logo  page-header__logo">
+              <img src="img/logo.png" alt="Box">
+              Box
+            </a>
+
+            <div class="page-header__counter">
+              <div class="page-header__counter-block">
+                <div class="page-header__users">
+                  <div class="page-header__users-number">940 000</div>
+                  <div class="page-header__users-text">Пользователей</div>
+                </div>
+              </div>
+
+              <div class="page-header__counter-block  page-header__counter-block_ml">
+                <div class="page-header__users">
+                  <div class="page-header__users-number">4564135</div>
+                  <div class="page-header__users-text">Открыто коробок</div>
+                </div>
+              </div>
+            </div>
+
+            <nav id="main-nav" class="main-nav" role="navigation">
+              <div id="main-nav-toggler" class="main-nav__toggler  burger"><span></span></div>
+              <ul class="main-nav__list">
+                <li class="main-nav__item">
+                  <a href="index.html" class="main-nav__link">
+                    Коробки
+                  </a>
+                </li>
+                <li class="main-nav__item">
+                  <a href="shop.html" class="main-nav__link">
+                    Магазин
+                  </a>
+                </li>
+                <li class="main-nav__item">
+                  <a href="delivery.html" class="main-nav__link">
+                    Доставка
+                  </a>
+                </li>
+                <li class="main-nav__item">
+                  <a href="testimonials.html" class="main-nav__link">
+                    Отзывы
+                  </a>
+                </li>
+                <li class="main-nav__item">
+                  <a href="<?= Url::toRoute(['/site/help']) ?>" class="main-nav__link">
+                    Помощь
+                  </a>
+                </li>
+                <li class="main-nav__item  main-nav__item_ml">
+                  <button class="btn  main-nav__btn"  data-toggle="modal"  data-target="#modal-demo-01">Вход</button>
+                </li>
+                <li class="main-nav__item">
+                  <button class="btn  main-nav__btn"  data-toggle="modal"  data-target="#modal-demo-01">Регистрация</button>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <main role="main" class="page-profile">
+        <div class="container">
+
+          <div class="owl-carousel" id="owl-carousel-demo">
+            <div>
+              <img src="http://214010.selcdn.ru/ranbox/items-i/21_medium.png" alt="surpise" class="owl-carousel__prize">
+              <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person" class="owl-carousel__person">
+            </div>
+            <div>
+              <img src="http://214010.selcdn.ru/ranbox/items-i/usb_led_medium.png" alt="surpise" class="owl-carousel__prize">
+              <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person" class="owl-carousel__person">
+            </div>
+            <div>
+              <img src="http://214010.selcdn.ru/ranbox/items-i/45_medium.png" alt="surpise" class="owl-carousel__prize">
+              <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person" class="owl-carousel__person">
+            </div>
+            <div>
+              <img src="http://214010.selcdn.ru/ranbox/items-i/usb_led_medium.png" alt="surpise" class="owl-carousel__prize">
+              <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person" class="owl-carousel__person">
+            </div>
+            <div>
+              <img src="http://214010.selcdn.ru/ranbox/items-i/21_medium.png" alt="surpise" class="owl-carousel__prize">
+              <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person" class="owl-carousel__person">
+            </div>
+            <div>
+              <img src="http://214010.selcdn.ru/ranbox/items-i/powerbank_medium.png" alt="surpise" class="owl-carousel__prize">
+              <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person" class="owl-carousel__person">
+            </div>
+            <div>
+              <img src="http://214010.selcdn.ru/ranbox/items-i/21_medium.png" alt="surpise" class="owl-carousel__prize">
+              <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person" class="owl-carousel__person">
+            </div>
+            <div>
+              <img src="http://214010.selcdn.ru/ranbox/items-i/6_medium.png" alt="surpise" class="owl-carousel__prize">
+              <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person" class="owl-carousel__person">
+            </div>
+            <div>
+              <img src="http://214010.selcdn.ru/ranbox/items-i/21_medium.png" alt="surpise" class="owl-carousel__prize">
+              <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person" class="owl-carousel__person">
+            </div>
+            <div>
+              <img src="http://214010.selcdn.ru/ranbox/items-i/6_medium.png" alt="surpise" class="owl-carousel__prize">
+              <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person" class="owl-carousel__person">
+            </div>
+          </div>
+
+
+          <div class="page-profile__top-wrapper">
+            <div class="page-profile__wrapper-balance">
+              <div class="page-profile__balance">
+                Баланс:
+                <span class="page-profile__balance-number">0&#8381;</span>
+              </div>
+              <div class="btn  page-profile__balance-btn">Пополнить</div>
+            </div>
+            <div class="navigation  page-profile__navigation">
+              <button type="button" name="button" class="navigation__link  navigation__link--active">Профиль</button>
+              <button type="button" name="button" class="navigation__link">Мои товары</button>
+              <button type="button" name="button" class="navigation__link">Мои доставки</button>
+              <button type="button" name="button" class="navigation__link">Партнёрская программа</button>
+            </div>
+          </div>
+
+          <div class="page-profile__person-wrapper">
+            <div class="page-profile__person">
+              <img src="http://214010.selcdn.ru/ranbox/users/vk_5209081_big.jpg" alt="person" class="page-profile__person-photo">
+              <div class="page-profile__person-text">
+                <div class="page-profile__person-name">Иван Иванов</div>
+                <button class="page-profile__person-out">Выйти</button>
+              </div>
+            </div>
+
+            <div class="page-profile__box-wrapper">
+              <div class="page-profile__box">
+                <div class="page-profile__box-icon">
+                  <svg width="70" height="70"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-svg.svg#box"></use></svg>
+                </div>
+                <div class="page-profile__box-text">Открыто коробок <span>0</span></div>
+                <div class="page-profile__box-text">На сумму <span>0&#8381;</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="page-profile__dark-card-wrapper">
+            <div class="page-profile__dark-card">
+              <div class="page-profile__dark-card-header">У вас есть <span>партнерский код?</span></div>
+              <div class="page-profile__dark-card-text">Введите код и получите 50&#8381; на счёт прямо сейчас!</div>
+              <form action="a.php" class="page-profile__form" name="partner-code">
+                <label class="field-text">
+                  <span class="field-text__input-wrap">
+                    <input class="field-text__input" type="text">
+                    <input class="field-text__btn" type="button" name="send" value="OK">
+                  </span>
+                </label>
+              </form>
+            </div>
+
+            <div class="page-profile__dark-card">
+              <div class="page-profile__dark-card-header">Приглашайте друзей и <span>зарабатывайте 5% от всех пополнений</span></div>
+              <div class="page-profile__dark-card-text">Отправьте свой уникальный код друзьям, и получайте по 5% от каждого пополнения баланса другом!</div>
+              <form action="a.php" class="page-profile__form" name="partner-invite">
+                <label class="field-text">
+                  <span class="field-text__input-wrap">
+                    <input class="field-text__input  page-profile__field-invite" value="52090816vZvDs">
+                  </span>
+                </label>
+              </form>
+            </div>
+          </div>
+
+          <div class="page-profile__dark-card  page-profile__dark-card-delivery">
+            <div class="page-profile__dark-card-title">Анкета для доставки товаров</div>
+            <form action="a.php" class="page-profile__form-delivery">
+              <div class="page-profile__form-row">
+                <label class="field-text  field-text-delivery">
+                  <span class="field-text__name">Фамилия Имя Отчество</span>
+                  <span class="field-text__input-wrap">
+                    <input class="field-text__input" type="text">
+                  </span>
+                </label>
+
+                <label class="field-text  field-text-delivery">
+                  <span class="field-text__name">Улица</span>
+                  <span class="field-text__input-wrap">
+                    <input class="field-text__input" type="text">
+                  </span>
+                </label>
+              </div>
+
+              <div class="page-profile__form-row">
+                <label class="field-text  field-text-delivery">
+                  <span class="field-text__name">Страна</span>
+                  <span class="field-text__input-wrap">
+                    <input class="field-text__input" type="text" value="Россия">
+                  </span>
+                </label>
+
+                <label class="field-text  field-text-delivery">
+                  <span class="field-text__name">Дом, корпус, строение</span>
+                  <span class="field-text__input-wrap">
+                    <input class="field-text__input" type="text">
+                  </span>
+                </label>
+              </div>
+
+              <div class="page-profile__form-row">
+                <label class="field-text  field-text-delivery">
+                  <span class="field-text__name">Город</span>
+                  <span class="field-text__input-wrap">
+                    <input class="field-text__input" type="text">
+                  </span>
+                </label>
+
+                <label class="field-text  field-text-delivery">
+                  <span class="field-text__name">Квартира / офис</span>
+                  <span class="field-text__input-wrap">
+                    <input class="field-text__input" type="text">
+                  </span>
+                </label>
+              </div>
+
+              <div class="page-profile__form-row">
+                <label class="field-text  field-text-delivery">
+                  <span class="field-text__name">Индекс</span>
+                  <span class="field-text__input-wrap">
+                    <input class="field-text__input" type="text">
+                  </span>
+                </label>
+
+                <input class="btn  page-profile__btn-delivery" type="button" name="btn-delivery" value="Сохранить">
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div class="page__footer-wrapper">
+      <footer class="page-footer" role="contentinfo">
+        <div class="container">
+          <div class="page-footer__wrapper">
+            <div class="page-footer__left">
+              <div class="pay-system">
+                <h3 class="pay-system__title">Мы принимаем</h3>
+                <div class="pay-system__wrapper">
+                  <div class="pay-system__item">
+                    <img src="img/master.png" alt="MasterCard" title="MasterCard">
+                  </div>
+                  <div class="pay-system__item">
+                    <img src="img/visa.png" alt="Visa" title="Visa">
+                  </div>
+                  <div class="pay-system__item">
+                    <img src="img/yandex.png" alt="Яндекс.Деньги" title="Яндекс.Деньги">
+                  </div>
+                  <div class="pay-system__item">
+                    <img src="img/qiwi.png" alt="Qiwi" title="Qiwi">
+                  </div>
+                  <div class="pay-system__item">
+                    <img src="img/mts.png" alt="МТС" title="МТС">
+                  </div>
+                  <div class="pay-system__item">
+                    <img src="img/bee.png" alt="Beeline" title="Beeline">
+                  </div>
+                </div>
+              </div>
+              <div class="page-footer__copyright">Copyright 2017</div>
+              <div class="page-footer__confidential">Авторизируясь на сайте вы принимаете
+                <a href="#" class="page-footer__link">пользовательское соглашение</a>
+              </div>
+              <a href="#" class="page-footer__link">Политика конфиденциальности</a>
+            </div>
+            <div class="page-footer__right">
+              <div class="page-footer__vk" id="vk_groups"></div>
+            </div>
+          </div>
+        </div>
+
+
+        <div id="modal-demo-01" class="modal" tabindex="-1" role="dialog">
+          <div class="modal__dialog" role="document">
+            <div class="modal__content">
+              <div class="modal__header">
+                <span class="close  modal__close" data-dismiss="modal" aria-label="Закрыть"><span></span></span>
+                <div class="modal__title">Выберите любимую социальную сеть</div>
+              </div>
+              <div class="modal__wrapper">
+                <a href="" class="modal__link">
+                  <img src="img/vk.png" alt="Вконтакте">
+                </a>
+                <a href="" class="modal__link">
+                  <img src="img/fb.png" alt="Facebook">
+                </a>
+                <a href="" class="modal__link">
+                  <img src="img/ok.png" alt="Odnoklassniki">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </footer>
+
+    </div>
+
+  </div>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/jquery.3.1.1.min.js"><\/script>')</script>
+  <script type="text/javascript">
+    VK.Widgets.Group("vk_groups", {mode: 3}, 20003922);
+  </script>
+  <script src="js/script.min.js"></script>
+
+</body>
+</html>
