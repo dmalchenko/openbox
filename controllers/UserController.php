@@ -45,22 +45,6 @@ class UserController extends Controller
         ]);
     }
 
-	/**
-	 * Displays a single User model.
-	 * @param integer $id
-	 * @return mixed
-	 */
-	public function actionView($id)
-	{
-		$dataProvider = new ActiveDataProvider([
-			'query' => GameConfig::find()->where(['id' => $id]),
-		]);
-		return $this->render('view', [
-			'model' => $this->findModel($id),
-			'gameConfigDataProvider' => $dataProvider,
-		]);
-	}
-
     /**
      * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.

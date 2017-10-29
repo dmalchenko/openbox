@@ -60,20 +60,19 @@ $this->params['breadcrumbs'][] = $this->title;
 		'dataProvider' => $gameConfigDataProvider,
 		'columns' => [
 			['class' => 'yii\grid\SerialColumn'],
-
-			'id',
-			'user_id',
 			'token',
 			'token_index',
 			'status',
 			'case_type',
 			'item_id',
 			'chance',
-			// 'message',
-			// 'created_at',
-			// 'updated_at',
-
-			['class' => 'yii\grid\ActionColumn'],
+			'edit' => [
+			    'attribute' => 'action',
+                'format' => 'raw',
+                'value' => function(\app\modules\opencase\models\GameConfig $model) {
+                    return Html::a('Edit', ['/opencase/gameconfig/update', 'id' =>$model->id]);
+                }
+            ],
 		],
 	]); ?>
 

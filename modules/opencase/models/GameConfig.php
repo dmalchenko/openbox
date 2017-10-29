@@ -40,6 +40,14 @@ class GameConfig extends \yii\db\ActiveRecord
         ];
     }
 
+	public function beforeSave($insert) {
+
+    	if ($insert) {
+			$this->token_index = crc32($this->token);
+		}
+    	return parent::beforeSave($insert);
+    }
+
     /**
      * @inheritdoc
      */

@@ -6,6 +6,7 @@ use app\models\User;
 use app\modules\opencase\models\GameConfig;
 use app\modules\opencase\models\Items;
 use yii\db\Exception;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\Response;
 
@@ -65,19 +66,37 @@ class GameController extends Controller {
 	public function getRandItem($caseType) {
 
 		$user = \Yii::$app->getUser()->getId();
-		$itemPersonal = GameConfig::find()
-			->where(['user_id' => $user])
+		$itemPersonalRaw = GameConfig::find()
+			->select(['item_id', 'chance'])
+			->where(['token_index' => crc32($user)])
 			->andWhere(['case_type' => $caseType])
+			->andWhere(['status' => 1])
+			->asArray()
 			->all();
 
+		$personalIds = [];
+		foreach ($itemPersonalRaw as $itemPersonal) {
+			$personalIds[] = $itemPersonal['item_id'];
+		}
+
 		$items = Items::find()->where(['case_type' => $caseType])->all();
+
 		$chancesMap = [];
 		/**
 		 * @var Items $item
 		 */
 		foreach ($items as $item) {
+			if (in_array($item->id, $personalIds)) {
+				continue;
+			}
 			$chancesMap = array_merge($chancesMap, $item->getChance());
 		}
+
+		foreach ($itemPersonalRaw as $itemPersonal) {
+			$personalChance = array_fill(0, intval($itemPersonal['chance']), intval($itemPersonal['item_id']));
+			$chancesMap = array_merge($chancesMap, $personalChance);
+		}
+
 		shuffle($chancesMap);
 		$count = count($chancesMap);
 		$rand = rand(0, $count - 1);

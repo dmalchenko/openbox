@@ -16,7 +16,7 @@ class m171008_164016_create_game_config_table extends Migration
             'id' => $this->primaryKey(),
 			'user_id' => $this->integer(),
 			'token' => $this->string(),
-			'token_index' => $this->integer(),
+			'token_index' => $this->bigInteger(20),
 			'message' => $this->string(),
 			'status' =>$this->integer(),
 			'case_type' => $this->integer(),
