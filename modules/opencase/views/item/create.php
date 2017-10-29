@@ -7,8 +7,6 @@ use yii\helpers\Html;
 /* @var $model app\modules\opencase\models\Items */
 
 $this->title = 'Create Items';
-$this->params['breadcrumbs'][] = ['label' => 'Items', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="items-create">
 

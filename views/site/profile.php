@@ -2,6 +2,7 @@
 /* @var $this yii\web\View */
 
 use app\models\User;
+use yii\helpers\Html;
 use yii\helpers\Url;
 
 $user = User::getCurrentUser();
@@ -28,7 +29,7 @@ $user = User::getCurrentUser();
 		<img src="<?= $user->getAvatar()?>" alt="person" class="page-profile__person-photo">
 		<div class="page-profile__person-text">
 			<div class="page-profile__person-name"><?= $user->name?></div>
-			<a href="#" class="page-profile__person-out">Выйти</a>
+			<a href="<?= Url::toRoute(['/site/logout']) ?>" class="page-profile__person-out">Выйти</a>
 		</div>
 	</div>
 

@@ -6,9 +6,6 @@ use yii\helpers\Html;
 /* @var $model app\modules\opencase\models\Items */
 
 $this->title = 'Update Items: ' . $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Items', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="items-update">
 

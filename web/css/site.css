@@ -117,3 +117,7 @@ a.desc:after {
 .ava {
     height: 65px;
 }
+
+.modal__link {
+    margin-left: 20px;
+}

@@ -57,7 +57,7 @@
 	foreach ($box as $item) {
 		$s = '<div class="page-box__wrapper-box"><div class="page-box__wrapper-box-name">%s</div><div class="page-box__box">
 			<img src="%s" alt="%s"></div></div>';
-		echo sprintf($s, $item->description, $item->image, $item->description);
+		echo sprintf($s, $item->title, $item->image, $item->title);
 	}
 	?>
 

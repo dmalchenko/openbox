@@ -53,7 +53,7 @@ $user = User::getCurrentUser();
     <script type="text/javascript" src="//vk.com/js/api/openapi.js?150"></script>
 
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-
+    
 </head>
 
 <body>
@@ -94,13 +94,13 @@ $user = User::getCurrentUser();
                                    class="main-nav__link <?= $this->context->route == 'site/index' ? 'main-nav__link--active' : ''; ?>">
                                     Коробки
                                 </a>
-<!--                            </li>-->
-<!--                            <li class="main-nav__item">-->
-<!--                                <a href="--><?//= Url::toRoute(['/site/shop']) ?><!--"-->
-<!--                                   class="main-nav__link --><?//= $this->context->route == 'site/shop' ? 'main-nav__link--active' : ''; ?><!--">-->
-<!--                                    Магазин-->
-<!--                                </a>-->
-<!--                            </li>-->
+                            </li>
+                            <li class="main-nav__item">
+                                <a href="<?= Url::toRoute(['/site/shop']) ?>"
+                                   class="main-nav__link <?= $this->context->route == 'site/shop' ? 'main-nav__link--active' : ''; ?>">
+                                    Магазин
+                                </a>
+                            </li>
                             <li class="main-nav__item">
                                 <a href="<?= Url::toRoute(['/site/delivery']) ?>"
                                    class="main-nav__link <?= $this->context->route == 'site/delivery' ? 'main-nav__link--active' : ''; ?>">
@@ -138,12 +138,12 @@ $user = User::getCurrentUser();
 							} else {
 								?>
                                 <li class="main-nav__item  main-nav__item_ml  main-nav__item-user">
-                                    <a href="<?= Url::toRoute(['/profile/index']) ?>"
+                                    <a href="<?= Url::toRoute(['/site/profile']) ?>"
                                        class="main-nav__link  main-nav__link--mt0">
                                         <img src="<?= $user->getAvatar() ?>" class="ava" alt="ava">
                                     </a>
                                     <div class="main-nav__link-user-wrapper">
-                                        <a href="<?= Url::toRoute(['/profile/index']) ?>"
+                                        <a href="<?= Url::toRoute(['/site/profile']) ?>"
                                            class="main-nav__link-user-name">Мой профиль</a>
                                         <div class="main-nav__link-balance-wrapper">
                                             <div class="main-nav__link-user-balance"><?= $user->money ?> &#8381;</div>

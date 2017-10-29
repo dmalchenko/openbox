@@ -29,9 +29,21 @@ $this->params['breadcrumbs'][] = $this->title;
 			'cost_real',
 			'cost_sell',
 			'count',
-//             'image',
-			'created_at',
-			'updated_at',
+            'image' => [
+                'value' => function(\app\modules\opencase\models\Items $model) {
+					return Html::img($model->image);
+                },
+                'label' => 'image',
+                'format' => 'raw'
+            ],
+			[
+				'attribute'=>'created_at',
+				'format' => 'datetime'
+			],
+			[
+				'attribute'=>'updated_at',
+				'format' => 'datetime'
+			],
 
 			['class' => 'yii\grid\ActionColumn'],
 		],
