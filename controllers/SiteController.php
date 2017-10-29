@@ -14,6 +14,7 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 
 class SiteController extends Controller {
+
 	/**
 	 * @inheritdoc
 	 */
@@ -65,7 +66,9 @@ class SiteController extends Controller {
 	 * @return string
 	 */
 	public function actionIndex() {
-		return $this->render('index');
+		$this->layout = 'clear';
+
+		return $this->render('index') ;
 	}
 
 	/**
@@ -109,15 +112,13 @@ class SiteController extends Controller {
 
 					// special redirect with closing popup window
 					$eauth->redirect();
-				}
-				else {
+				} else {
 					// close popup window and redirect to cancelUrl
 					$eauth->cancel();
 				}
-			}
-			catch (\nodge\eauth\ErrorException $e) {
+			} catch (\nodge\eauth\ErrorException $e) {
 				// save error to show it later
-				Yii::$app->getSession()->setFlash('error', 'EAuthException: '.$e->getMessage());
+				Yii::$app->getSession()->setFlash('error', 'EAuthException: ' . $e->getMessage());
 
 				// close popup window and redirect to cancelUrl
 //				$eauth->cancel();
@@ -158,5 +159,19 @@ class SiteController extends Controller {
 	 */
 	public function actionAbout() {
 		return $this->render('about');
+	}
+
+
+	/**
+	 * @return string
+	 */
+	public function actionHelp() {
+
+		$this->layout = 'clear';
+
+
+		return $this->render('help', [
+			'user' => $user,
+		]);
 	}
 }
