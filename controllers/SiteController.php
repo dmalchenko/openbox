@@ -4,6 +4,8 @@ namespace app\controllers;
 
 use app\models\User;
 use app\modules\freekassa\models\Freekassa;
+use app\modules\opencase\models\CaseType;
+use app\modules\opencase\models\Items;
 use Yii;
 use yii\filters\AccessControl;
 use yii\helpers\VarDumper;
@@ -68,11 +70,27 @@ class SiteController extends Controller {
 	public function actionIndex() {
 		$this->layout = 'clear';
 
-		return $this->render('index') ;
+		/**
+		 * @var $items100 Items[]
+		 * @var $items250 Items[]
+		 * @var $items500 Items[]
+		 * @var $items1000 Items[]
+		 */
+		$items100 = Items::find()->where(['case_type' => CaseType::CASE_TYPE100])->all();
+		$items250 = Items::find()->where(['case_type' => CaseType::CASE_TYPE250])->all();
+		$items500 = Items::find()->where(['case_type' => CaseType::CASE_TYPE500])->all();
+		$items1000 = Items::find()->where(['case_type' => CaseType::CASE_TYPE1000])->all();
+
+		return $this->render('index', [
+			'case100' => $items100,
+			'case250' => $items250,
+			'case500' => $items500,
+			'case1000' => $items1000,
+		]) ;
 	}
 
 	/**
-	 * Login action.
+	 * Login action
 	 *
 	 * @return Response|string
 	 */
@@ -191,5 +209,51 @@ class SiteController extends Controller {
 	public function actionShop() {
 		$this->layout = 'clear';
 		return $this->render('shop');
+	}
+
+	/**
+	 * @return string
+	 */
+	public function actionProfile() {
+		$this->layout = 'clear';
+		return $this->render('profile');
+	}
+
+	/**
+	 * @return string
+	 */
+	public function actionProfileProducts() {
+		$this->layout = 'clear';
+		return $this->render('profile-products');
+	}
+
+	/**
+	 * @return string
+	 */
+	public function actionProfileTable() {
+		$this->layout = 'clear';
+		return $this->render('profile-table');
+	}
+
+	/**
+	 * @param $id
+	 * @return string
+	 */
+	public function actionBox($id) {
+		$this->layout = 'clear';
+		$boxes = [
+			1 => CaseType::CASE_TYPE100,
+			2 => CaseType::CASE_TYPE250,
+			3 => CaseType::CASE_TYPE500,
+			4 => CaseType::CASE_TYPE1000,
+		];
+
+		$case = Items::find()->where(['case_type' => $boxes[$id]])->all();
+
+		return $this->render('box', [
+			'box' => $case,
+			'id' => $id,
+			'type' => $boxes[$id],
+		]);
 	}
 }

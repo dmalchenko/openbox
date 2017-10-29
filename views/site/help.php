@@ -3,7 +3,7 @@
 /* @var $this yii\web\View */
 ?>
 
-<a href="index.html" class="link-return  navigation__link  navigation__link--active">
+<a href="<?= Yii::$app->homeUrl?>" class="link-return  navigation__link  navigation__link--active">
     < Вернуться к списку коробок
 </a>
 <h2 class="title-h2  title-h2--big  page-delivery__title">Вопросы и ответы</h2>

@@ -54,7 +54,6 @@ $user = User::getCurrentUser();
 
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 
-
 </head>
 
 <body>
@@ -66,7 +65,7 @@ $user = User::getCurrentUser();
         <header class="page-header" role="banner">
             <div class="container">
                 <div class="page-header__wrapper">
-                    <a href="index.html" class="logo  page-header__logo">
+                    <a href="<?= Yii::$app->homeUrl?>" class="logo  page-header__logo">
                         <img src="img/logo.png" alt="Box">
                         Box
                     </a>
@@ -95,13 +94,13 @@ $user = User::getCurrentUser();
                                    class="main-nav__link <?= $this->context->route == 'site/index' ? 'main-nav__link--active' : ''; ?>">
                                     Коробки
                                 </a>
-                            </li>
-                            <li class="main-nav__item">
-                                <a href="<?= Url::toRoute(['/site/shop']) ?>"
-                                   class="main-nav__link <?= $this->context->route == 'site/shop' ? 'main-nav__link--active' : ''; ?>">
-                                    Магазин
-                                </a>
-                            </li>
+<!--                            </li>-->
+<!--                            <li class="main-nav__item">-->
+<!--                                <a href="--><?//= Url::toRoute(['/site/shop']) ?><!--"-->
+<!--                                   class="main-nav__link --><?//= $this->context->route == 'site/shop' ? 'main-nav__link--active' : ''; ?><!--">-->
+<!--                                    Магазин-->
+<!--                                </a>-->
+<!--                            </li>-->
                             <li class="main-nav__item">
                                 <a href="<?= Url::toRoute(['/site/delivery']) ?>"
                                    class="main-nav__link <?= $this->context->route == 'site/delivery' ? 'main-nav__link--active' : ''; ?>">

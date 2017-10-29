@@ -38,7 +38,6 @@ AppAsset::register($this);
 	echo Nav::widget([
 		'options' => ['class' => 'navbar-nav navbar-right'],
 		'items' => [
-			['label' => 'Items', 'url' => ['/opencase/item/index']],
 			['label' => 'Case 100', 'url' => ['/opencase/item/index', 'type' => 100]],
 			['label' => 'Case 250', 'url' => ['/opencase/item/index', 'type' => 250]],
 			['label' => 'Case 500', 'url' => ['/opencase/item/index', 'type' => 500]],

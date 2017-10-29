@@ -2,7 +2,7 @@
 
 ?>
 
-<a href="index.html" class="link-return navigation__link  navigation__link--active">< Вернуться к списку коробок</a>
+<a href="<?= Yii::$app->homeUrl?>" class="link-return navigation__link  navigation__link--active">< Вернуться к списку коробок</a>
 <h2 class="title-h2">Магазин</h2>
 
 <div class="navigation  page-shop__navigation">
