@@ -20,6 +20,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cost_sell')->textInput() ?>
 
+	<?= $form->field($model, 'case_type')->hiddenInput()->label(false) ?>
+
     <?= $form->field($model, 'count')->textInput() ?>
 
     <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>

@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Handles the creation of table `user_tokens`.
+ * Handles the creation of table `user`.
  */
-class m171008_122230_create_user_tokens_table extends Migration
+class m171008_122230_create_user_table extends Migration
 {
     /**
      * @inheritdoc

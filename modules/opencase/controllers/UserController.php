@@ -9,6 +9,6 @@
 namespace app\modules\opencase\controllers;
 
 
-class UserController {
+class UserController extends \app\controllers\UserController {
 
 }

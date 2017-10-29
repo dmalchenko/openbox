@@ -9,7 +9,7 @@
 namespace app\modules\opencase\models;
 
 
-class CaseCost {
+class CaseType {
 	const CASE_TYPE100 = 100;
 	const CASE_TYPE250 = 250;
 	const CASE_TYPE500 = 500;

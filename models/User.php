@@ -2,21 +2,82 @@
 
 namespace app\models;
 
+use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\web\IdentityInterface;
 use app\modules\freekassa\models\Freekassable;
 use ErrorException;
-use Yii;
 
-class User extends \yii\base\Object implements \yii\web\IdentityInterface, Freekassable {
-	public $id;
+
+/**
+ * This is the model class for table "user_tokens".
+ *
+ * @property integer $id
+ * @property integer $user_id
+ * @property string $name
+ * @property string $service
+ * @property string $avatar
+ * @property string $token
+ * @property integer $token_index
+ * @property integer $money
+ * @property integer $created_at
+ * @property integer $updated_at
+ */
+class User extends ActiveRecord implements IdentityInterface, Freekassable {
 	public $username;
 	public $password;
 	public $authKey;
 	public $accessToken;
-	public $money;
 	/**
 	 * @var array EAuth attributes
 	 */
 	public $profile;
+
+
+	public function behaviors() {
+		return [
+			TimestampBehavior::className(),
+		];
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public static function tableName()
+	{
+		return 'user';
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function rules()
+	{
+		return [
+			[['user_id', 'token_index', 'money', 'created_at', 'updated_at'], 'integer'],
+			[['name', 'token', 'service', 'avatar'], 'string', 'max' => 255],
+		];
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function attributeLabels()
+	{
+		return [
+			'id' => 'ID',
+			'user_id' => 'User ID',
+			'name' => 'Name',
+			'service' => 'Service',
+			'avatar' => 'Avatar',
+			'token' => 'Token',
+			'token_index' => 'Token Index',
+			'money' => 'Money',
+			'created_at' => 'Created At',
+			'updated_at' => 'Updated At',
+		];
+	}
 
 	private static $users = [
 		'100' => [
@@ -103,12 +164,12 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface, Freek
 
 	/**
 	 * @param $attributes
-	 * @return UserTokens
+	 * @return User
 	 */
 	public function getUserToken($attributes) {
-		$userToken = UserTokens::findOne(['token' => $attributes['id']]);
+		$userToken = self::findOne(['token' => $attributes['id']]);
 		if (!$userToken) {
-			$userToken = new UserTokens();
+			$userToken = new self();
 			$userToken->token = $attributes['id'];
 			$userToken->token_index = crc32($attributes['id']);
 			$userToken->money = 0;
@@ -159,10 +220,10 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface, Freek
 	/**
 	 * @param $user_id
 	 * @param $money
-	 * @return UserTokens
+	 * @return User
 	 */
 	public static function setMoney($user_id, $money) {
-		$user = UserTokens::findOne(['token_index' => crc32($user_id)]);
+		$user = User::findOne(['token_index' => crc32($user_id)]);
 		if ($user) {
 			$user->money = $money;
 			$user->save();
@@ -173,13 +234,33 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface, Freek
 	/**
 	 * @param $user_id
 	 * @param $money
-	 * @return UserTokens
+	 * @return User
 	 */
 	public static function addMoney($user_id, $money) {
-		$user = UserTokens::findOne(['token_index' => crc32($user_id)]);
+		$user = User::findOne(['token_index' => crc32($user_id)]);
 		if ($user) {
 			$user->money += $money;
 			$user->save();
+		}
+		return $user;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getAvatar() {
+		return $this->avatar;
+	}
+
+	/**
+	 * @return null|static
+	 */
+	public static function getCurrentUser() {
+		if ($identity = Yii::$app->getUser()->getIdentity()) {
+			$id = $identity->getId();
+			$user = self::findOne(['token' => $id]);
+		} else {
+			$user = null;
 		}
 		return $user;
 	}

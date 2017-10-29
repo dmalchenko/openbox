@@ -1,60 +1,223 @@
 <?php
-
 /* @var $this yii\web\View */
 
-use yii\helpers\VarDumper;
+use app\models\User;
+use yii\helpers\Html;
+use yii\helpers\Url;
 
-$this->title = 'My Yii Application';
+
 ?>
-<div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+<div class="box-wrapper">
+    <div class="box-wrapper__left">
+        <div class="box">
+            <div class="box__header">
+                <div class="box__name">
+                    Коробка
+                    <div class="box__number">№1</div>
+                </div>
+                <div class="box__price">100&#8381;</div>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+            <div class="box__surprice">
+                <img src="img/surprice.png" alt="surprice">
             </div>
         </div>
-<?php
-$identity = Yii::$app->getUser()->getIdentity();
-if (isset($identity->profile)) {
-	VarDumper::dump($identity->profile, 10, true);
-}
-?>
+        <a href="#" class="btn  btn--accent  box__btn">Открыть коробку</a>
+        <div class="box-wrapper__text">
+            Уже выдано
+            <span class="box-wrapper__number">184 569 товаров</span>
+        </div>
+    </div>
+    <div class="box-wrapper__right">
+        <div class="box-wrapper__right-text">Коробка содержит 10 товаров</div>
+        <div class="box-wrapper__items">
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="box-wrapper">
+    <div class="box-wrapper__left">
+        <div class="box">
+            <div class="box__header">
+                <div class="box__name">
+                    Коробка
+                    <div class="box__number">№1</div>
+                </div>
+                <div class="box__price">100&#8381;</div>
+            </div>
+            <div class="box__surprice">
+                <img src="img/surprice.png" alt="surprice">
+            </div>
+        </div>
+        <a href="#" class="btn  btn--accent  box__btn">Открыть коробку</a>
+        <div class="box-wrapper__text">
+            Уже выдано
+            <span class="box-wrapper__number">184 569 товаров</span>
+        </div>
+    </div>
+    <div class="box-wrapper__right">
+        <div class="box-wrapper__right-text">Коробка содержит 10 товаров</div>
+        <div class="box-wrapper__items">
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="box-wrapper">
+    <div class="box-wrapper__left">
+        <div class="box">
+            <div class="box__header">
+                <div class="box__name">
+                    Коробка
+                    <div class="box__number">№1</div>
+                </div>
+                <div class="box__price">100&#8381;</div>
+            </div>
+            <div class="box__surprice">
+                <img src="img/surprice.png" alt="surprice">
+            </div>
+        </div>
+        <a href="#" class="btn  btn--accent  box__btn">Открыть коробку</a>
+        <div class="box-wrapper__text">
+            Уже выдано
+            <span class="box-wrapper__number">184 569 товаров</span>
+        </div>
+    </div>
+    <div class="box-wrapper__right">
+        <div class="box-wrapper__right-text">Коробка содержит 10 товаров</div>
+        <div class="box-wrapper__items">
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+            <div class="box-wrapper__item">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_small.png" alt="surpise">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="guarantees">
+    <div class="container">
+        <h2 class="guarantees__title">Наши гарантии</h2>
+        <div class="guarantees__wrapper">
+
+            <div class="guarantees__item">
+                <div class="guarantees__icon">
+                    <img src="img/glasses.png" alt="glasses">
+                </div>
+                <h3 class="guarantees__subtitle">Полная прозрачность</h3>
+                <p class="guarantees__text">
+                    У нас вы можете посмотреть все. Кто получил, что получил и когда. Каждый профиль снабжен
+                    ссылкой на контакт человека в одной из трех социальных сетей.
+                </p>
+            </div>
+
+            <div class="guarantees__item">
+                <div class="guarantees__icon">
+                    <img src="img/money.png" alt="money">
+                </div>
+                <h3 class="guarantees__subtitle">Гарантия низких цен</h3>
+                <p class="guarantees__text">
+                    Благодаря крупным оптовым закупкам цены в нашем магазине на все товары одни из самых
+                    низких на рынке.
+                </p>
+            </div>
+
+            <div class="guarantees__item">
+                <div class="guarantees__icon">
+                    <img src="img/magnifier.png" alt="magnifier">
+                </div>
+                <h3 class="guarantees__subtitle">Проверенные товары</h3>
+                <p class="guarantees__text">
+                    Мы выкладываем только проверенные товары от надежных поставщиков. Каждый товар
+                    тестируется перед отправкой и снабжается всей сопровождающей документацией.
+                </p>
+            </div>
+
+        </div>
     </div>
 </div>

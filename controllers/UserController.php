@@ -1,19 +1,19 @@
 <?php
 
-namespace app\modules\opencase\controllers;
+namespace app\controllers;
 
-use app\modules\opencase\models\CaseType;
+use app\modules\opencase\models\GameConfig;
 use Yii;
-use app\modules\opencase\models\Items;
+use app\models\User;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ItemController implements the CRUD actions for Items model.
+ * UserController implements the CRUD actions for User model.
  */
-class ItemController extends Controller
+class UserController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,59 +30,57 @@ class ItemController extends Controller
         ];
     }
 
-	/**
-	 * Lists all Items models.
-	 * @param null $type
-	 * @return mixed
-	 */
-    public function actionIndex($type)
+    /**
+     * Lists all User models.
+     * @return mixed
+     */
+    public function actionIndex()
     {
-    	$query = is_null($type) ? Items::find() : Items::find()->where(['case_type' => $type]);
-
         $dataProvider = new ActiveDataProvider([
-            'query' => $query,
+            'query' => User::find(),
         ]);
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
-			'type' => $type,
-        ]);
-    }
-
-    /**
-     * Displays a single Items model.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
         ]);
     }
 
 	/**
-	 * Creates a new Items model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 * @param null $caseType
+	 * Displays a single User model.
+	 * @param integer $id
 	 * @return mixed
 	 */
-    public function actionCreate($caseType = null)
-    {
-        $model = new Items();
+	public function actionView($id)
+	{
+		$dataProvider = new ActiveDataProvider([
+			'query' => GameConfig::find()->where(['id' => $id]),
+		]);
+		return $this->render('view', [
+			'model' => $this->findModel($id),
+			'gameConfigDataProvider' => $dataProvider,
+		]);
+	}
 
-		if ($model->load(Yii::$app->request->post()) && $model->save()) {
-			return $this->redirect(['view', 'id' => $model->id]);
-		} else {
-			$model->case_type = $caseType;
-			return $this->render('create', [
+    /**
+     * Creates a new User model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionCreate()
+    {
+        $model = new User();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('create', [
                 'model' => $model,
             ]);
         }
     }
 
     /**
-     * Updates an existing Items model.
+     * Updates an existing User model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -101,7 +99,7 @@ class ItemController extends Controller
     }
 
     /**
-     * Deletes an existing Items model.
+     * Deletes an existing User model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -114,15 +112,15 @@ class ItemController extends Controller
     }
 
     /**
-     * Finds the Items model based on its primary key value.
+     * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Items the loaded model
+     * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Items::findOne($id)) !== null) {
+        if (($model = User::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

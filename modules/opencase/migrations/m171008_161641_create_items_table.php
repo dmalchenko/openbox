@@ -19,6 +19,7 @@ class m171008_161641_create_items_table extends Migration
 			'cost_real' => $this->integer(),
 			'cost_sell' => $this->integer(),
 			'count' => $this->integer(),
+			'case_type' => $this->integer(),
 			'image' => $this->string(),
 			'created_at' => $this->integer(),
 			'updated_at' => $this->integer(),

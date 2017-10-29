@@ -16,11 +16,11 @@ AppAsset::register($this);
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
-	<meta charset="<?= Yii::$app->charset ?>">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="<?= Yii::$app->charset ?>">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<?= Html::csrfMetaTags() ?>
-	<title><?= Html::encode($this->title) ?></title>
+    <title><?= Html::encode($this->title) ?></title>
 	<?php $this->head() ?>
 </head>
 <body>
@@ -39,7 +39,12 @@ AppAsset::register($this);
 		'options' => ['class' => 'navbar-nav navbar-right'],
 		'items' => [
 			['label' => 'Items', 'url' => ['/opencase/item/index']],
+			['label' => 'Case 100', 'url' => ['/opencase/item/index', 'type' => 100]],
+			['label' => 'Case 250', 'url' => ['/opencase/item/index', 'type' => 250]],
+			['label' => 'Case 500', 'url' => ['/opencase/item/index', 'type' => 500]],
+			['label' => 'Case 1000', 'url' => ['/opencase/item/index', 'type' => 1000]],
 			['label' => 'Config Game', 'url' => ['/opencase/gameconfig/index']],
+			['label' => 'Users', 'url' => ['/opencase/user/index']],
 			['label' => 'About', 'url' => ['/site/about']],
 			['label' => 'Contact', 'url' => ['/site/contact']],
 			Yii::$app->user->isGuest ? (
@@ -59,21 +64,21 @@ AppAsset::register($this);
 	NavBar::end();
 	?>
 
-	<div class="container">
+    <div class="container">
 		<?= Breadcrumbs::widget([
 			'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
 		]) ?>
 		<?= $content ?>
-	</div>
+    </div>
 </div>
 
 <a href="//www.free-kassa.com/"><img src="//www.free-kassa.ru/img/fk_btn/9.png"></a>
 <footer class="footer">
-	<div class="container">
-		<p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+    <div class="container">
+        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
 
-		<p class="pull-right"><?= Yii::powered() ?></p>
-	</div>
+        <p class="pull-right"><?= Yii::powered() ?></p>
+    </div>
 </footer>
 
 <?php $this->endBody() ?>

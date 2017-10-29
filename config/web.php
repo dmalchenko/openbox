@@ -43,6 +43,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+            	'<action>' => 'site/<action>'
             ],
         ],
 		'i18n' => [

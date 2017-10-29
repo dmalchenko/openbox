@@ -14,6 +14,7 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $cost_real
  * @property integer $cost_sell
  * @property integer $count
+ * @property integer $case_type
  * @property string $image
  * @property integer $created_at
  * @property integer $updated_at
@@ -41,7 +42,7 @@ class Items extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cost_real', 'cost_sell', 'count', 'created_at', 'updated_at'], 'integer'],
+            [['cost_real', 'cost_sell', 'count', 'case_type', 'created_at', 'updated_at'], 'integer'],
             [['title', 'description', 'image'], 'string', 'max' => 255],
         ];
     }
@@ -57,10 +58,15 @@ class Items extends \yii\db\ActiveRecord
             'description' => 'Description',
             'cost_real' => 'Cost Real',
             'cost_sell' => 'Cost Sell',
-            'count' => 'Count',
+            'count' => 'Chance',
+            'case_type' => 'Case_type',
             'image' => 'Image',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+
+	public function getChance() {
+		return array_fill(0, $this->count, $this->id);
     }
 }
