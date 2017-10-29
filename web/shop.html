@@ -5,8 +5,7 @@
   <meta charset="utf-8">
   <title>Box</title>
   <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="format-detection" content="telephone=no">
 
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
@@ -39,8 +38,7 @@
   </script>
   <script type="text/javascript" src="//vk.com/js/api/openapi.js?150"></script>
 
-  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 
 </head>
 
@@ -98,7 +96,7 @@
                   </a>
                 </li>
                 <li class="main-nav__item">
-                  <a href="<?= Url::toRoute(['/site/help']) ?>" class="main-nav__link">
+                  <a href="help.html" class="main-nav__link">
                     Помощь
                   </a>
                 </li>
@@ -110,7 +108,7 @@
                     <a href="profile.html" class="main-nav__link-user-name">Мой профиль</a>
                     <div class="main-nav__link-balance-wrapper">
                       <div class="main-nav__link-user-balance">0 &#8381;</div>
-                      <button class="btn  main-nav__btn  main-nav__btn-balance"  data-toggle="modal"  data-target="#modal-demo-01">+</button>
+                      <button class="btn  main-nav__btn  main-nav__btn-balance"  data-toggle="modal"  data-target="#modal-demo-02">+</button>
                     </div>
                   </div>
                 </li>
@@ -326,8 +324,7 @@
               <div class="page-footer__vk" id="vk_groups"></div>
             </div>
           </div>
-        </div>
-
+        </div>
 
         <div id="modal-demo-01" class="modal" tabindex="-1" role="dialog">
           <div class="modal__dialog" role="document">
@@ -346,6 +343,49 @@
                 <a href="" class="modal__link">
                   <img src="img/ok.png" alt="Odnoklassniki">
                 </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="modal-demo-02" class="modal" tabindex="-1" role="dialog">
+          <div class="modal__dialog" role="document">
+            <div class="modal__content">
+              <div class="modal__header">
+                <span class="close  modal__close" data-dismiss="modal" aria-label="Закрыть"><span></span></span>
+                <div class="modal__title">Выберите любимую социальную сеть</div>
+              </div>
+              <div class="modal__wrapper">
+                <label class="field-text  modal__field-number">
+                  <span class="field-text__name  modal__field-number-name">Введите сумму:</span>
+                  <span class="field-text__input-wrap">
+                    <input class="field-text__input" type="number">
+                  </span>
+                </label>
+              </div>
+              <div class="modal__text">Выберите платежную систему:</div>
+              <div class="modal__wrapper-bottom">
+                <div class="modal__pay">
+                  <img src="img/visa.png" alt="visa">
+                </div>
+                <div class="modal__pay">
+                  <img src="img/yandex.png" alt="yandex">
+                </div>
+                <div class="modal__pay">
+                  <img src="img/qiwi.png" alt="qiwi">
+                </div>
+                <div class="modal__pay">
+                  <img src="img/mts.png" alt="mts">
+                </div>
+                <div class="modal__pay">
+                  <img src="img/megafon.png" alt="megafon">
+                </div>
+                <div class="modal__pay">
+                  <img src="img/tele2.png" alt="megafon">
+                </div>
+                <div class="modal__pay">
+                  <img src="img/beeline.png" alt="megafon">
+                </div>
               </div>
             </div>
           </div>

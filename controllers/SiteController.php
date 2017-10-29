@@ -161,17 +161,35 @@ class SiteController extends Controller {
 		return $this->render('about');
 	}
 
-
 	/**
 	 * @return string
 	 */
 	public function actionHelp() {
-
 		$this->layout = 'clear';
+		return $this->render('help');
+	}
 
+	/**
+	 * @return string
+	 */
+	public function actionDelivery() {
+		$this->layout = 'clear';
+		return $this->render('delivery');
+	}
 
-		return $this->render('help', [
-			'user' => $user,
-		]);
+	/**
+	 * @return string
+	 */
+	public function actionTestimonials() {
+		$this->layout = 'clear';
+		return $this->render('testimonials');
+	}
+
+	/**
+	 * @return string
+	 */
+	public function actionShop() {
+		$this->layout = 'clear';
+		return $this->render('shop');
 	}
 }

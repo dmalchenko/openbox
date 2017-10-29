@@ -100,11 +100,17 @@
                     Помощь
                   </a>
                 </li>
-                <li class="main-nav__item  main-nav__item_ml">
-                  <button class="btn  main-nav__btn"  data-toggle="modal"  data-target="#modal-demo-01">Вход</button>
-                </li>
-                <li class="main-nav__item">
-                  <button class="btn  main-nav__btn"  data-toggle="modal"  data-target="#modal-demo-01">Регистрация</button>
+                <li class="main-nav__item  main-nav__item_ml  main-nav__item-user">
+                  <a href="profile.html" class="main-nav__link  main-nav__link--mt0">
+                    <img src="http://214010.selcdn.ru/ranbox/users/vk_5209081_min.jpg" alt="ava">
+                  </a>
+                  <div class="main-nav__link-user-wrapper">
+                    <a href="profile.html" class="main-nav__link-user-name">Мой профиль</a>
+                    <div class="main-nav__link-balance-wrapper">
+                      <div class="main-nav__link-user-balance">0 &#8381;</div>
+                      <button class="btn  main-nav__btn  main-nav__btn-balance"  data-toggle="modal"  data-target="#modal-demo-01">+</button>
+                    </div>
+                  </div>
                 </li>
               </ul>
             </nav>
@@ -167,123 +173,37 @@
               </div>
               <div class="btn  page-profile__balance-btn">Пополнить</div>
             </div>
+
             <div class="navigation  page-profile__navigation">
-              <a href="profile.html" class="navigation__link  navigation__link--active">Профиль</a>
-              <a href="profile-products.html" class="navigation__link">Мои товары</a>
+              <a href="profile.html" class="navigation__link">Профиль</a>
+              <a href="profile-products.html" class="navigation__link  navigation__link--active">Мои товары</a>
               <a href="profile-table.html" class="navigation__link">Мои доставки</a>
               <a href="profile-partner.html" class="navigation__link">Партнёрская программа</a>
             </div>
           </div>
 
-          <div class="page-profile__person-wrapper">
-            <div class="page-profile__person">
-              <img src="http://214010.selcdn.ru/ranbox/users/vk_5209081_big.jpg" alt="person" class="page-profile__person-photo">
-              <div class="page-profile__person-text">
-                <div class="page-profile__person-name">Иван Иванов</div>
-                <button class="page-profile__person-out">Выйти</button>
-              </div>
-            </div>
+          <h2 class="page-profile-products__title">Корзина доставки</h2>
 
-            <div class="page-profile__box-wrapper">
-              <div class="page-profile__box">
-                <div class="page-profile__box-icon">
-                  <svg width="70" height="70"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-svg.svg#box"></use></svg>
-                </div>
-                <div class="page-profile__box-text">Открыто коробок <span>0</span></div>
-                <div class="page-profile__box-text">На сумму <span>0 &#8381;</span></div>
-              </div>
+          <div class="page-profile-products__box-wrapper">
+            <div class="page-profile-products__box">
+              <img src="img/surprice.png" alt="product">
             </div>
-          </div>
-
-          <div class="page-profile__dark-card-wrapper">
-            <div class="page-profile__dark-card">
-              <div class="page-profile__dark-card-header">У вас есть <span>партнерский код?</span></div>
-              <div class="page-profile__dark-card-text">Введите код и получите 50&#8381; на счёт прямо сейчас!</div>
-              <form action="a.php" class="page-profile__form" name="partner-code">
-                <label class="field-text">
-                  <span class="field-text__input-wrap">
-                    <input class="field-text__input" type="text">
-                    <input class="field-text__btn" type="button" name="send" value="OK">
-                  </span>
-                </label>
-              </form>
+            <div class="page-profile-products__box">
+              <img src="img/surprice.png" alt="product">
             </div>
-
-            <div class="page-profile__dark-card">
-              <div class="page-profile__dark-card-header">Приглашайте друзей и <span>зарабатывайте 5% от всех пополнений</span></div>
-              <div class="page-profile__dark-card-text">Отправьте свой уникальный код друзьям, и получайте по 5% от каждого пополнения баланса другом!</div>
-              <form action="a.php" class="page-profile__form" name="partner-invite">
-                <label class="field-text">
-                  <span class="field-text__input-wrap">
-                    <input class="field-text__input  page-profile__field-invite" value="52090816vZvDs">
-                  </span>
-                </label>
-              </form>
+            <div class="page-profile-products__box">
+              <img src="img/surprice.png" alt="product">
+            </div>
+            <div class="page-profile-products__box">
+              <img src="img/surprice.png" alt="product">
+            </div>
+            <div class="page-profile-products__box">
+              <img src="img/surprice.png" alt="product">
             </div>
           </div>
 
-          <div class="page-profile__dark-card  page-profile__dark-card-delivery">
-            <div class="page-profile__dark-card-title">Анкета для доставки товаров</div>
-            <form action="a.php" class="page-profile__form-delivery">
-              <div class="page-profile__form-row">
-                <label class="field-text  field-text-delivery">
-                  <span class="field-text__name">Фамилия Имя Отчество</span>
-                  <span class="field-text__input-wrap">
-                    <input class="field-text__input" type="text">
-                  </span>
-                </label>
-
-                <label class="field-text  field-text-delivery">
-                  <span class="field-text__name">Улица</span>
-                  <span class="field-text__input-wrap">
-                    <input class="field-text__input" type="text">
-                  </span>
-                </label>
-              </div>
-
-              <div class="page-profile__form-row">
-                <label class="field-text  field-text-delivery">
-                  <span class="field-text__name">Страна</span>
-                  <span class="field-text__input-wrap">
-                    <input class="field-text__input" type="text" value="Россия">
-                  </span>
-                </label>
-
-                <label class="field-text  field-text-delivery">
-                  <span class="field-text__name">Дом, корпус, строение</span>
-                  <span class="field-text__input-wrap">
-                    <input class="field-text__input" type="text">
-                  </span>
-                </label>
-              </div>
-
-              <div class="page-profile__form-row">
-                <label class="field-text  field-text-delivery">
-                  <span class="field-text__name">Город</span>
-                  <span class="field-text__input-wrap">
-                    <input class="field-text__input" type="text">
-                  </span>
-                </label>
-
-                <label class="field-text  field-text-delivery">
-                  <span class="field-text__name">Квартира / офис</span>
-                  <span class="field-text__input-wrap">
-                    <input class="field-text__input" type="text">
-                  </span>
-                </label>
-              </div>
-
-              <div class="page-profile__form-row">
-                <label class="field-text  field-text-delivery">
-                  <span class="field-text__name">Индекс</span>
-                  <span class="field-text__input-wrap">
-                    <input class="field-text__input" type="text">
-                  </span>
-                </label>
-
-                <input class="btn  page-profile__btn-delivery" type="button" name="btn-delivery" value="Сохранить">
-              </div>
-            </form>
+          <div class="page-profile-products__wrapper-btn">
+            <a href="#" class="btn  btn--accent  page-profile-products__btn">Заказать доставку за 300 &#8381;</a>
           </div>
         </div>
       </main>

@@ -100,11 +100,17 @@
                     Помощь
                   </a>
                 </li>
-                <li class="main-nav__item  main-nav__item_ml">
-                  <button class="btn  main-nav__btn"  data-toggle="modal"  data-target="#modal-demo-01">Вход</button>
-                </li>
-                <li class="main-nav__item">
-                  <button class="btn  main-nav__btn"  data-toggle="modal"  data-target="#modal-demo-01">Регистрация</button>
+                <li class="main-nav__item  main-nav__item_ml  main-nav__item-user">
+                  <a href="profile.html" class="main-nav__link  main-nav__link--mt0">
+                    <img src="http://214010.selcdn.ru/ranbox/users/vk_5209081_min.jpg" alt="ava">
+                  </a>
+                  <div class="main-nav__link-user-wrapper">
+                    <a href="profile.html" class="main-nav__link-user-name">Мой профиль</a>
+                    <div class="main-nav__link-balance-wrapper">
+                      <div class="main-nav__link-user-balance">0 &#8381;</div>
+                      <button class="btn  main-nav__btn  main-nav__btn-balance"  data-toggle="modal"  data-target="#modal-demo-01">+</button>
+                    </div>
+                  </div>
                 </li>
               </ul>
             </nav>
@@ -112,7 +118,7 @@
         </div>
       </header>
 
-      <main role="main" class="page-profile">
+      <main role="main" class="page-box">
         <div class="container">
 
           <div class="owl-carousel" id="owl-carousel-demo">
@@ -159,131 +165,105 @@
           </div>
 
 
-          <div class="page-profile__top-wrapper">
-            <div class="page-profile__wrapper-balance">
-              <div class="page-profile__balance">
-                Баланс:
-                <span class="page-profile__balance-number">0 &#8381;</span>
-              </div>
-              <div class="btn  page-profile__balance-btn">Пополнить</div>
-            </div>
-            <div class="navigation  page-profile__navigation">
-              <a href="profile.html" class="navigation__link  navigation__link--active">Профиль</a>
-              <a href="profile-products.html" class="navigation__link">Мои товары</a>
-              <a href="profile-table.html" class="navigation__link">Мои доставки</a>
-              <a href="profile-partner.html" class="navigation__link">Партнёрская программа</a>
-            </div>
-          </div>
+          <a href="index.html" class="link-return  navigation__link  navigation__link--active"><Вернуться к списку коробок</a>
+          <h2 class="title-h2  title-h2--big  page-box__title">Коробка №1</h2>
 
-          <div class="page-profile__person-wrapper">
-            <div class="page-profile__person">
-              <img src="http://214010.selcdn.ru/ranbox/users/vk_5209081_big.jpg" alt="person" class="page-profile__person-photo">
-              <div class="page-profile__person-text">
-                <div class="page-profile__person-name">Иван Иванов</div>
-                <button class="page-profile__person-out">Выйти</button>
+          <div class="roulette-line">
+            <div class="roulette-wrapper__mid">
+              <div class="roulette-wrapper__mid-layer">
+                <div class="roulette-wrapper__mid-line roulette-wrapper__mid-line_top"></div>
+                <div class="roulette-wrapper__mid-line roulette-wrapper__mid-line_bottom"></div>
               </div>
             </div>
-
-            <div class="page-profile__box-wrapper">
-              <div class="page-profile__box">
-                <div class="page-profile__box-icon">
-                  <svg width="70" height="70"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-svg.svg#box"></use></svg>
-                </div>
-                <div class="page-profile__box-text">Открыто коробок <span>0</span></div>
-                <div class="page-profile__box-text">На сумму <span>0 &#8381;</span></div>
+            <div class="roulette-wrapper">
+              <div class="roulette-wrapper__shadow roulette-wrapper__shadow_left"></div>
+              <div class="roulette-wrapper__shadow roulette-wrapper__shadow_right"></div>
+              <div class="roulette">
+                <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/10_medium.png" alt="Экшн Камера" title="Экшн Камера" /></div>
+                <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/11_medium.png" alt="Смарт Часы (Android)" title="Смарт Часы (Android)" /></div>
+                <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/5_medium.png" alt="Беспроводная мышь" title="Беспроводная мышь" /></div>
+                <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/usb_smartbuy_4gb_medium.png" alt="Флешка SmartBuy 4GB" title="Флешка SmartBuy 4GB" /></div>
+                <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/monokl-medium.png" alt="Подзорная труба" title="Подзорная труба" /></div>
+                <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/kruzhka-meshalka-medium.png" alt="Кружка мешалка" title="Кружка мешалка" /></div>
+                <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/cigarette_medium.png" alt="Электронная сигарета" title="Электронная сигарета" /></div>
+                <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/spinner_medium.png" alt="Спиннер" title="Спиннер" /></div>
+                <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/powerbank_medium.png" alt="Брелок PowerBank 2600 mAh" title="Брелок PowerBank 2600 mAh" /></div>
+                <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/21_medium.png" alt="Селфи палка (Монопод)" title="Селфи палка (Монопод)" /></div>
+                <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/7_medium.png" alt="Fish Eye" title="Fish Eye" /></div>
+                <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/lazer-medium.png" alt="Лазерная указка" title="Лазерная указка" /></div>
+                <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/6_medium.png" alt="Наушники молния" title="Наушники молния" /></div>
+                <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/18_medium.png" alt="MP3 плеер" title="MP3 плеер" /></div>
+                <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/android_cable_medium.png" alt="USB-кабель Android" title="USB-кабель Android" /></div>
+                <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/jbl_headphone_medium.png" alt="Наушники" title="Наушники" /></div>
+                <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/usb_led_medium.png" alt="USB гибкая лампа" title="USB гибкая лампа" /></div>
+                <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/9_medium.png" alt="Нож кредитка" title="Нож кредитка" /></div>
+                <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/iphone-kabel-medium.png" alt="USB-кабель iPhone 5,6,7" title="USB-кабель iPhone 5,6,7" /></div>
               </div>
-            </div>
-          </div>
-
-          <div class="page-profile__dark-card-wrapper">
-            <div class="page-profile__dark-card">
-              <div class="page-profile__dark-card-header">У вас есть <span>партнерский код?</span></div>
-              <div class="page-profile__dark-card-text">Введите код и получите 50&#8381; на счёт прямо сейчас!</div>
-              <form action="a.php" class="page-profile__form" name="partner-code">
-                <label class="field-text">
-                  <span class="field-text__input-wrap">
-                    <input class="field-text__input" type="text">
-                    <input class="field-text__btn" type="button" name="send" value="OK">
-                  </span>
-                </label>
-              </form>
-            </div>
-
-            <div class="page-profile__dark-card">
-              <div class="page-profile__dark-card-header">Приглашайте друзей и <span>зарабатывайте 5% от всех пополнений</span></div>
-              <div class="page-profile__dark-card-text">Отправьте свой уникальный код друзьям, и получайте по 5% от каждого пополнения баланса другом!</div>
-              <form action="a.php" class="page-profile__form" name="partner-invite">
-                <label class="field-text">
-                  <span class="field-text__input-wrap">
-                    <input class="field-text__input  page-profile__field-invite" value="52090816vZvDs">
-                  </span>
-                </label>
-              </form>
             </div>
           </div>
 
-          <div class="page-profile__dark-card  page-profile__dark-card-delivery">
-            <div class="page-profile__dark-card-title">Анкета для доставки товаров</div>
-            <form action="a.php" class="page-profile__form-delivery">
-              <div class="page-profile__form-row">
-                <label class="field-text  field-text-delivery">
-                  <span class="field-text__name">Фамилия Имя Отчество</span>
-                  <span class="field-text__input-wrap">
-                    <input class="field-text__input" type="text">
-                  </span>
-                </label>
+          <div class="page-box__wrapper-btn">
+            <button class="btn  btn--accent">Открыть коробку за 100 &#8381;</button>
+          </div>
 
-                <label class="field-text  field-text-delivery">
-                  <span class="field-text__name">Улица</span>
-                  <span class="field-text__input-wrap">
-                    <input class="field-text__input" type="text">
-                  </span>
-                </label>
+          <div class="page-box__boxes-header">Коробка содержит:</div>
+
+          <div class="page-box__wrapper-boxes">
+            <div class="page-box__wrapper-box">
+              <div class="page-box__wrapper-box-name">Экшн камера</div>
+              <div class="page-box__box">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_medium.png" alt="Экшн камера">
               </div>
+            </div>
 
-              <div class="page-profile__form-row">
-                <label class="field-text  field-text-delivery">
-                  <span class="field-text__name">Страна</span>
-                  <span class="field-text__input-wrap">
-                    <input class="field-text__input" type="text" value="Россия">
-                  </span>
-                </label>
-
-                <label class="field-text  field-text-delivery">
-                  <span class="field-text__name">Дом, корпус, строение</span>
-                  <span class="field-text__input-wrap">
-                    <input class="field-text__input" type="text">
-                  </span>
-                </label>
+            <div class="page-box__wrapper-box">
+              <div class="page-box__wrapper-box-name">Экшн камера</div>
+              <div class="page-box__box">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_medium.png" alt="Экшн камера">
               </div>
+            </div>
 
-              <div class="page-profile__form-row">
-                <label class="field-text  field-text-delivery">
-                  <span class="field-text__name">Город</span>
-                  <span class="field-text__input-wrap">
-                    <input class="field-text__input" type="text">
-                  </span>
-                </label>
-
-                <label class="field-text  field-text-delivery">
-                  <span class="field-text__name">Квартира / офис</span>
-                  <span class="field-text__input-wrap">
-                    <input class="field-text__input" type="text">
-                  </span>
-                </label>
+            <div class="page-box__wrapper-box">
+              <div class="page-box__wrapper-box-name">Экшн камера</div>
+              <div class="page-box__box">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_medium.png" alt="Экшн камера">
               </div>
+            </div>
 
-              <div class="page-profile__form-row">
-                <label class="field-text  field-text-delivery">
-                  <span class="field-text__name">Индекс</span>
-                  <span class="field-text__input-wrap">
-                    <input class="field-text__input" type="text">
-                  </span>
-                </label>
-
-                <input class="btn  page-profile__btn-delivery" type="button" name="btn-delivery" value="Сохранить">
+            <div class="page-box__wrapper-box">
+              <div class="page-box__wrapper-box-name">Экшн камера</div>
+              <div class="page-box__box">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_medium.png" alt="Экшн камера">
               </div>
-            </form>
+            </div>
+
+            <div class="page-box__wrapper-box">
+              <div class="page-box__wrapper-box-name">Экшн камера</div>
+              <div class="page-box__box">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_medium.png" alt="Экшн камера">
+              </div>
+            </div>
+
+            <div class="page-box__wrapper-box">
+              <div class="page-box__wrapper-box-name">Экшн камера</div>
+              <div class="page-box__box">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_medium.png" alt="Экшн камера">
+              </div>
+            </div>
+
+            <div class="page-box__wrapper-box">
+              <div class="page-box__wrapper-box-name">Экшн камера</div>
+              <div class="page-box__box">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_medium.png" alt="Экшн камера">
+              </div>
+            </div>
+
+            <div class="page-box__wrapper-box">
+              <div class="page-box__wrapper-box-name">Экшн камера</div>
+              <div class="page-box__box">
+                <img src="http://214010.selcdn.ru/ranbox/items-i/10_medium.png" alt="Экшн камера">
+              </div>
+            </div>
           </div>
         </div>
       </main>

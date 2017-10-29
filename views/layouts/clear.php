@@ -23,6 +23,7 @@ $user = User::getCurrentUser();
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link href="css/style.min.css" rel="stylesheet" media="screen">
+    <link href="css/site.css" rel="stylesheet" media="screen">
 
     <script>
         // Маркер работающего javascript
@@ -90,27 +91,32 @@ $user = User::getCurrentUser();
                         <div id="main-nav-toggler" class="main-nav__toggler  burger"><span></span></div>
                         <ul class="main-nav__list">
                             <li class="main-nav__item">
-                                <a href="index.html" class="main-nav__link  main-nav__link--active">
+                                <a href="<?= Url::toRoute(['/site/index']) ?>"
+                                   class="main-nav__link <?= $this->context->route == 'site/index' ? 'main-nav__link--active' : ''; ?>">
                                     Коробки
                                 </a>
                             </li>
                             <li class="main-nav__item">
-                                <a href="shop.html" class="main-nav__link">
+                                <a href="<?= Url::toRoute(['/site/shop']) ?>"
+                                   class="main-nav__link <?= $this->context->route == 'site/shop' ? 'main-nav__link--active' : ''; ?>">
                                     Магазин
                                 </a>
                             </li>
                             <li class="main-nav__item">
-                                <a href="delivery.html" class="main-nav__link">
+                                <a href="<?= Url::toRoute(['/site/delivery']) ?>"
+                                   class="main-nav__link <?= $this->context->route == 'site/delivery' ? 'main-nav__link--active' : ''; ?>">
                                     Доставка
                                 </a>
                             </li>
                             <li class="main-nav__item">
-                                <a href="testimonials.html" class="main-nav__link">
+                                <a href="<?= Url::toRoute(['/site/testimonials']) ?>"
+                                   class="main-nav__link <?= $this->context->route == 'site/testimonials' ? 'main-nav__link--active' : ''; ?>">
                                     Отзывы
                                 </a>
                             </li>
                             <li class="main-nav__item">
-                                <a href="<?= Url::toRoute(['/site/help']) ?>" class="main-nav__link">
+                                <a href="<?= Url::toRoute(['/site/help']) ?>"
+                                   class="main-nav__link <?= $this->context->route == 'site/help' ? 'main-nav__link--active' : ''; ?>">
                                     Помощь
                                 </a>
                             </li>
@@ -135,7 +141,7 @@ $user = User::getCurrentUser();
                                 <li class="main-nav__item  main-nav__item_ml  main-nav__item-user">
                                     <a href="<?= Url::toRoute(['/profile/index']) ?>"
                                        class="main-nav__link  main-nav__link--mt0">
-                                        <img src="<?= $user->getAvatar() ?>" alt="ava">
+                                        <img src="<?= $user->getAvatar() ?>" class="ava" alt="ava">
                                     </a>
                                     <div class="main-nav__link-user-wrapper">
                                         <a href="<?= Url::toRoute(['/profile/index']) ?>"
@@ -157,72 +163,72 @@ $user = User::getCurrentUser();
                 </div>
             </div>
         </header>
-        <main role="main">
-
-            <div class="owl-carousel" id="owl-carousel-demo">
-                <div>
-                    <img src="http://214010.selcdn.ru/ranbox/items-i/21_medium.png" alt="surpise"
-                         class="owl-carousel__prize">
-                    <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person"
-                         class="owl-carousel__person">
+        <main role="main" class="page-delivery">
+            <div class="container">
+                <div class="owl-carousel" id="owl-carousel-demo">
+                    <div>
+                        <img src="http://214010.selcdn.ru/ranbox/items-i/21_medium.png" alt="surpise"
+                             class="owl-carousel__prize">
+                        <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person"
+                             class="owl-carousel__person">
+                    </div>
+                    <div>
+                        <img src="http://214010.selcdn.ru/ranbox/items-i/usb_led_medium.png" alt="surpise"
+                             class="owl-carousel__prize">
+                        <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person"
+                             class="owl-carousel__person">
+                    </div>
+                    <div>
+                        <img src="http://214010.selcdn.ru/ranbox/items-i/45_medium.png" alt="surpise"
+                             class="owl-carousel__prize">
+                        <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person"
+                             class="owl-carousel__person">
+                    </div>
+                    <div>
+                        <img src="http://214010.selcdn.ru/ranbox/items-i/usb_led_medium.png" alt="surpise"
+                             class="owl-carousel__prize">
+                        <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person"
+                             class="owl-carousel__person">
+                    </div>
+                    <div>
+                        <img src="http://214010.selcdn.ru/ranbox/items-i/21_medium.png" alt="surpise"
+                             class="owl-carousel__prize">
+                        <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person"
+                             class="owl-carousel__person">
+                    </div>
+                    <div>
+                        <img src="http://214010.selcdn.ru/ranbox/items-i/powerbank_medium.png" alt="surpise"
+                             class="owl-carousel__prize">
+                        <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person"
+                             class="owl-carousel__person">
+                    </div>
+                    <div>
+                        <img src="http://214010.selcdn.ru/ranbox/items-i/21_medium.png" alt="surpise"
+                             class="owl-carousel__prize">
+                        <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person"
+                             class="owl-carousel__person">
+                    </div>
+                    <div>
+                        <img src="http://214010.selcdn.ru/ranbox/items-i/6_medium.png" alt="surpise"
+                             class="owl-carousel__prize">
+                        <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person"
+                             class="owl-carousel__person">
+                    </div>
+                    <div>
+                        <img src="http://214010.selcdn.ru/ranbox/items-i/21_medium.png" alt="surpise"
+                             class="owl-carousel__prize">
+                        <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person"
+                             class="owl-carousel__person">
+                    </div>
+                    <div>
+                        <img src="http://214010.selcdn.ru/ranbox/items-i/6_medium.png" alt="surpise"
+                             class="owl-carousel__prize">
+                        <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person"
+                             class="owl-carousel__person">
+                    </div>
                 </div>
-                <div>
-                    <img src="http://214010.selcdn.ru/ranbox/items-i/usb_led_medium.png" alt="surpise"
-                         class="owl-carousel__prize">
-                    <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person"
-                         class="owl-carousel__person">
-                </div>
-                <div>
-                    <img src="http://214010.selcdn.ru/ranbox/items-i/45_medium.png" alt="surpise"
-                         class="owl-carousel__prize">
-                    <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person"
-                         class="owl-carousel__person">
-                </div>
-                <div>
-                    <img src="http://214010.selcdn.ru/ranbox/items-i/usb_led_medium.png" alt="surpise"
-                         class="owl-carousel__prize">
-                    <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person"
-                         class="owl-carousel__person">
-                </div>
-                <div>
-                    <img src="http://214010.selcdn.ru/ranbox/items-i/21_medium.png" alt="surpise"
-                         class="owl-carousel__prize">
-                    <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person"
-                         class="owl-carousel__person">
-                </div>
-                <div>
-                    <img src="http://214010.selcdn.ru/ranbox/items-i/powerbank_medium.png" alt="surpise"
-                         class="owl-carousel__prize">
-                    <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person"
-                         class="owl-carousel__person">
-                </div>
-                <div>
-                    <img src="http://214010.selcdn.ru/ranbox/items-i/21_medium.png" alt="surpise"
-                         class="owl-carousel__prize">
-                    <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person"
-                         class="owl-carousel__person">
-                </div>
-                <div>
-                    <img src="http://214010.selcdn.ru/ranbox/items-i/6_medium.png" alt="surpise"
-                         class="owl-carousel__prize">
-                    <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person"
-                         class="owl-carousel__person">
-                </div>
-                <div>
-                    <img src="http://214010.selcdn.ru/ranbox/items-i/21_medium.png" alt="surpise"
-                         class="owl-carousel__prize">
-                    <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person"
-                         class="owl-carousel__person">
-                </div>
-                <div>
-                    <img src="http://214010.selcdn.ru/ranbox/items-i/6_medium.png" alt="surpise"
-                         class="owl-carousel__prize">
-                    <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person"
-                         class="owl-carousel__person">
-                </div>
+				<?= $content ?>
             </div>
-
-			<?= $content ?>
 
         </main>
     </div>

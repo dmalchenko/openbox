@@ -1,16 +1,10 @@
 <?php
 
 /* @var $this yii\web\View */
-use yii\helpers\Url;
-
-/* @var $user \app\models\User */
-
-
 ?>
 
-
 <a href="index.html" class="link-return  navigation__link  navigation__link--active">
-    <Вернуться к списку коробок
+    < Вернуться к списку коробок
 </a>
 <h2 class="title-h2  title-h2--big  page-delivery__title">Вопросы и ответы</h2>
 <div class="page-delivery__wrapper">
