@@ -3,6 +3,7 @@
 namespace app\modules\opencase\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "game_config".
@@ -18,6 +19,8 @@ use Yii;
  * @property integer $chance
  * @property integer $created_at
  * @property integer $updated_at
+ *
+ * @property Items $item
  */
 class GameConfig extends \yii\db\ActiveRecord
 {
@@ -67,4 +70,14 @@ class GameConfig extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
         ];
     }
+
+	public function getItem() {
+		return $this->hasOne(Items::className(), ['id' => 'item_id']);
+    }
+
+	public function findItems() {
+		$array = Items::find()->select(["id, concat(title, '(', case_type, ')') as title"])->asArray()->all();
+		$result = ArrayHelper::map($array, 'id', 'title');
+    	return $result;
+	}
 }
