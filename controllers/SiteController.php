@@ -5,6 +5,8 @@ namespace app\controllers;
 use app\models\User;
 use app\modules\freekassa\models\Freekassa;
 use app\modules\opencase\models\CaseType;
+use app\modules\opencase\models\DeliveryAddress;
+use app\modules\opencase\models\GameLog;
 use app\modules\opencase\models\Items;
 use Yii;
 use yii\filters\AccessControl;
@@ -86,7 +88,7 @@ class SiteController extends Controller {
 			'case250' => $items250,
 			'case500' => $items500,
 			'case1000' => $items1000,
-		]) ;
+		]);
 	}
 
 	/**
@@ -216,7 +218,43 @@ class SiteController extends Controller {
 	 */
 	public function actionProfile() {
 		$this->layout = 'clear';
-		return $this->render('profile');
+
+		$user = User::getCurrentUser();
+		if (!$user) {
+			$this->redirect(['index']);
+		}
+
+		$address = DeliveryAddress::findOne(['token_index' => $user->token_index]);
+		if ($address) {
+			if ($address->load(Yii::$app->request->post())) {
+				$address->update();
+				return $this->goHome();
+			}
+		} else {
+			$address = new DeliveryAddress();
+			if ($address->load(Yii::$app->request->post())) {
+				$address->token_index = $user->token_index;
+				$address->save();
+				return $this->goHome();
+			}
+		}
+
+		$r = GameLog::find()
+			->select(['SUM(cost_real) as sum', 'COUNT(id) as cnt'])
+			->where(['token_index' => $user->token_index])
+			->groupBy('token_index')
+			->asArray()
+			->all();
+
+		$cntBox = $r[0]['cnt'];
+		$cntSum = $r[0]['sum'];
+
+		return $this->render('profile', [
+			'user' => $user,
+			'cntBox' => $cntBox,
+			'cntSum' => $cntSum,
+			'address' => $address,
+		]);
 	}
 
 	/**

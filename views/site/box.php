@@ -101,6 +101,7 @@ use yii\helpers\Url;
                 if (data.code == 200 & data.caseType == caseType & data.id > 0) {
                     $('.main-nav__link-user-balance').html(data.balance + ' &#8381;');
                     $('#modal-img-prize').attr('src', data.img);
+                    $('.modal__title-prize').html(data.title);
                 } else if (data.code == 402) {
                     $('.modal__title').html(data.msg);
                 } else if (data.code != 200) {
