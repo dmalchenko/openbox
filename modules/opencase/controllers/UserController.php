@@ -11,6 +11,7 @@ namespace app\modules\opencase\controllers;
 
 use app\models\User;
 use app\modules\opencase\models\GameConfig;
+use app\modules\opencase\models\GameLog;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 
@@ -30,9 +31,14 @@ class UserController extends \app\controllers\UserController {
 			'query' => GameConfig::find()->where(['token_index' => $user->token_index]),
 		]);
 
+		$gameLogDataProvider = new ActiveDataProvider([
+			'query' => GameLog::find()->where(['token_index' => $user->token_index]),
+		]);
+
 		return $this->render('view', [
 			'model' => $user,
 			'gameConfigDataProvider' => $dataProvider,
+			'gameLogDataProvider' => $gameLogDataProvider,
 		]);
 	}
 

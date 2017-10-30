@@ -3,6 +3,7 @@
 namespace app\modules\opencase\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -42,6 +43,12 @@ class GameConfig extends \yii\db\ActiveRecord
             [['token', 'message'], 'string', 'max' => 255],
         ];
     }
+
+	public function behaviors() {
+		return [
+			TimestampBehavior::className(),
+		];
+	}
 
 	public function beforeSave($insert) {
 

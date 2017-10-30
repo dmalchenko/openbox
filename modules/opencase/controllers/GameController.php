@@ -4,6 +4,7 @@ namespace app\modules\opencase\controllers;
 
 use app\models\User;
 use app\modules\opencase\models\GameConfig;
+use app\modules\opencase\models\GameLog;
 use app\modules\opencase\models\Items;
 use yii\db\Exception;
 use yii\helpers\ArrayHelper;
@@ -41,6 +42,15 @@ class GameController extends Controller {
 			$user->money -= $caseType;
 			$idWinItem = $this->getRandItem($caseType);
 			$item = Items::findOne($idWinItem);
+
+			$log = new GameLog();
+			$log->token = $user->token;
+			$log->token_index = crc32($user->token);
+			$log->case_type = $caseType;
+			$log->item_id = $idWinItem;
+			$log->cost_real = $item->cost_real;
+			$log->cost_sell = $item->cost_sell;
+			$log->save();
 
 			$r = [
 				'id' => $idWinItem,
