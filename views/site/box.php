@@ -66,7 +66,11 @@ use yii\helpers\Url;
 </div>
 
 <div class="page-box__wrapper-btn">
-    <button id="#openb" class="btn  btn--accent">Открыть коробку за <?= $type ?> &#8381;</button>
+    <button id="#openb" class="btn  btn--accent" data-toggle="modal"
+            data-target="#modal-demo-0<?= Yii::$app->user->isGuest ? '1' : '3' ?>">Открыть коробку
+        за <?= $type ?>
+        &#8381;
+    </button>
 </div>
 
 <div class="page-box__boxes-header">Коробка содержит:</div>
@@ -92,18 +96,19 @@ use yii\helpers\Url;
         $.ajax({
             dataType: 'json',
             url: '<?= Url::toRoute(['/opencase/game/run', 'caseType' => $type]) ?>',
-            data: { _csrf: csrfToken},
+            data: {_csrf: csrfToken},
             success: function (data) {
                 if (data.code == 200 & data.caseType == caseType & data.id > 0) {
-                    $('.main-nav__link-user-balance').html(data.balance + ' &#8381;')
-                } else if (data.code != 200){
-                    alert(data.msg);
+                    $('.main-nav__link-user-balance').html(data.balance + ' &#8381;');
+                    $('#modal-img-prize').attr('src', data.img);
+                } else if (data.code == 402) {
+                    $('.modal__title').html(data.msg);
+                } else if (data.code != 200) {
+                    console.log(data.msg);
                 } else {
                     alert('Произошла внутренняя ошибка, попробуйте позже');
                 }
                 console.log(data);
-                return;
-                $('.results').html('Name = ' + jsondata.name + ', Nickname = ' + jsondata.nickname);
             }
         });
     };

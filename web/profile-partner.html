@@ -258,32 +258,64 @@
                 <label class="field-text  modal__field-number">
                   <span class="field-text__name  modal__field-number-name">Введите сумму:</span>
                   <span class="field-text__input-wrap">
-                    <input class="field-text__input" type="number">
+                    <input class="field-text__input  field-text__input-number" type="number">
                   </span>
                 </label>
               </div>
               <div class="modal__text">Выберите платежную систему:</div>
               <div class="modal__wrapper-bottom">
-                <div class="modal__pay">
-                  <img src="img/visa.png" alt="visa">
-                </div>
-                <div class="modal__pay">
-                  <img src="img/yandex.png" alt="yandex">
-                </div>
-                <div class="modal__pay">
-                  <img src="img/qiwi.png" alt="qiwi">
-                </div>
-                <div class="modal__pay">
-                  <img src="img/mts.png" alt="mts">
-                </div>
-                <div class="modal__pay">
-                  <img src="img/megafon.png" alt="megafon">
-                </div>
-                <div class="modal__pay">
-                  <img src="img/tele2.png" alt="megafon">
-                </div>
-                <div class="modal__pay">
-                  <img src="img/beeline.png" alt="megafon">
+                <form action="a.php" class="modal__form">
+                  <div class="modal__pay">
+                    <img src="img/visa.png" alt="visa">
+                    <input id="modal__pay1" class="field-radio__input" type="radio" name="modal__pay" value="modal__pay1">
+                    <label for="modal__pay1" class="field-radio__name"></label>
+                  </div>
+                  <div class="modal__pay">
+                    <img src="img/yandex.png" alt="yandex">
+                    <input id="modal__pay2" class="field-radio__input" type="radio" name="modal__pay" value="modal__pay2">
+                    <label for="modal__pay2" class="field-radio__name"></label>
+                  </div>
+                  <div class="modal__pay">
+                    <img src="img/qiwi.png" alt="qiwi">
+                    <input id="modal__pay3" class="field-radio__input" type="radio" name="modal__pay" value="modal__pay3">
+                    <label for="modal__pay3" class="field-radio__name"></label>
+                  </div>
+                  <div class="modal__pay">
+                    <img src="img/mts.png" alt="mts">
+                    <input id="modal__pay4" class="field-radio__input" type="radio" name="modal__pay" value="modal__pay4">
+                    <label for="modal__pay4" class="field-radio__name"></label>
+                  </div>
+                  <div class="modal__pay">
+                    <img src="img/megafon.png" alt="megafon">
+                    <input id="modal__pay5" class="field-radio__input" type="radio" name="modal__pay" value="modal__pay5">
+                    <label for="modal__pay5" class="field-radio__name"></label>
+                  </div>
+                  <div class="modal__pay">
+                    <img src="img/tele2.png" alt="tele2">
+                    <input id="modal__pay6" class="field-radio__input" type="radio" name="modal__pay" value="modal__pay6">
+                    <label for="modal__pay6" class="field-radio__name"></label>
+                  </div>
+                  <div class="modal__pay">
+                    <img src="img/beeline.png" alt="beeline">
+                    <input id="modal__pay7" class="field-radio__input" type="radio" name="modal__pay" value="modal__pay7">
+                    <label for="modal__pay7" class="field-radio__name"></label>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="modal-demo-03" class="modal" tabindex="-1" role="dialog">
+          <div class="modal__dialog" role="document">
+            <div class="modal__content">
+              <div class="modal__header">
+                <span class="close  modal__close" data-dismiss="modal" aria-label="Закрыть"><span></span></span>
+                <div class="modal__title">Вы выйграли <span class="modal__title-prize">часы</span>!</div>
+              </div>
+              <div class="modal__wrapper">
+                <div class="modal__img">
+                  <img src="http://214010.selcdn.ru/ranbox/items-i/11_medium.png" alt="Смарт Часы (Android)">
                 </div>
               </div>
             </div>

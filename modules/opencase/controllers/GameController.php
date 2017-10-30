@@ -32,7 +32,7 @@ class GameController extends Controller {
 
 		if ($user->money - $caseType <= 0) {
 			return [
-				'code' => 400,
+				'code' => 402,
 				'msg' => 'Недостаточно средств, пожалуйста пополните счет',
 			];
 		}
@@ -40,11 +40,15 @@ class GameController extends Controller {
 		try {
 			$user->money -= $caseType;
 			$idWinItem = $this->getRandItem($caseType);
+			$item = Items::findOne($idWinItem);
+
 			$r = [
 				'id' => $idWinItem,
 				'caseType' => $caseType,
 				'code' => 200,
 				'balance' => $user->money,
+				'img' => $item->image,
+				'title' => $item->title,
 			];
 
 		} catch (\Exception $e) {

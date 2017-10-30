@@ -53,7 +53,7 @@ $user = User::getCurrentUser();
     <script type="text/javascript" src="//vk.com/js/api/openapi.js?150"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-    
+
 </head>
 
 <body>
@@ -65,7 +65,7 @@ $user = User::getCurrentUser();
         <header class="page-header" role="banner">
             <div class="container">
                 <div class="page-header__wrapper">
-                    <a href="<?= Yii::$app->homeUrl?>" class="logo  page-header__logo">
+                    <a href="<?= Yii::$app->homeUrl ?>" class="logo  page-header__logo">
                         <img src="img/logo.png" alt="Box">
                         Box
                     </a>
@@ -149,7 +149,7 @@ $user = User::getCurrentUser();
                                             <div class="main-nav__link-user-balance"><?= $user->money ?> &#8381;</div>
                                             <button class="btn  main-nav__btn  main-nav__btn-balance"
                                                     data-toggle="modal"
-                                                    data-target="#modal-demo-01">
+                                                    data-target="#modal-demo-02">
                                                 +
                                             </button>
                                         </div>
@@ -273,7 +273,6 @@ $user = User::getCurrentUser();
                 </div>
             </div>
 
-
             <div id="modal-demo-01" class="modal" tabindex="-1" role="dialog">
                 <div class="modal__dialog" role="document">
                     <div class="modal__content">
@@ -300,6 +299,89 @@ $user = User::getCurrentUser();
                 </div>
             </div>
 
+            <div id="modal-demo-02" class="modal" tabindex="-1" role="dialog">
+                <div class="modal__dialog" role="document">
+                    <div class="modal__content">
+                        <div class="modal__header">
+                            <span class="close  modal__close" data-dismiss="modal"
+                                  aria-label="Закрыть"><span></span></span>
+                            <div class="modal__title">Выберите любимый способ оплаты</div>
+                        </div>
+                        <div class="modal__wrapper">
+                            <label class="field-text  modal__field-number">
+                                <span class="field-text__name  modal__field-number-name">Введите сумму:</span>
+                                <span class="field-text__input-wrap">
+                                    <input class="field-text__input  field-text__input-number" type="number">
+                                </span>
+                            </label>
+                        </div>
+                        <div class="modal__text">Выберите платежную систему:</div>
+                        <div class="modal__wrapper-bottom">
+                            <form action="a.php" class="modal__form">
+                                <div class="modal__pay">
+                                    <img src="img/visa.png" alt="visa">
+                                    <input id="modal__pay1" class="field-radio__input" type="radio" name="modal__pay"
+                                           value="modal__pay1">
+                                    <label for="modal__pay1" class="field-radio__name"></label>
+                                </div>
+                                <div class="modal__pay">
+                                    <img src="img/yandex.png" alt="yandex">
+                                    <input id="modal__pay2" class="field-radio__input" type="radio" name="modal__pay"
+                                           value="modal__pay2">
+                                    <label for="modal__pay2" class="field-radio__name"></label>
+                                </div>
+                                <div class="modal__pay">
+                                    <img src="img/qiwi.png" alt="qiwi">
+                                    <input id="modal__pay3" class="field-radio__input" type="radio" name="modal__pay"
+                                           value="modal__pay3">
+                                    <label for="modal__pay3" class="field-radio__name"></label>
+                                </div>
+                                <div class="modal__pay">
+                                    <img src="img/mts.png" alt="mts">
+                                    <input id="modal__pay4" class="field-radio__input" type="radio" name="modal__pay"
+                                           value="modal__pay4">
+                                    <label for="modal__pay4" class="field-radio__name"></label>
+                                </div>
+                                <div class="modal__pay">
+                                    <img src="img/megafon.png" alt="megafon">
+                                    <input id="modal__pay5" class="field-radio__input" type="radio" name="modal__pay"
+                                           value="modal__pay5">
+                                    <label for="modal__pay5" class="field-radio__name"></label>
+                                </div>
+                                <div class="modal__pay">
+                                    <img src="img/tele2.png" alt="tele2">
+                                    <input id="modal__pay6" class="field-radio__input" type="radio" name="modal__pay"
+                                           value="modal__pay6">
+                                    <label for="modal__pay6" class="field-radio__name"></label>
+                                </div>
+                                <div class="modal__pay">
+                                    <img src="img/beeline.png" alt="beeline">
+                                    <input id="modal__pay7" class="field-radio__input" type="radio" name="modal__pay"
+                                           value="modal__pay7">
+                                    <label for="modal__pay7" class="field-radio__name"></label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="modal-demo-03" class="modal" tabindex="-1" role="dialog">
+                <div class="modal__dialog" role="document">
+                    <div class="modal__content">
+                        <div class="modal__header">
+                            <span class="close  modal__close" data-dismiss="modal"
+                                  aria-label="Закрыть"><span></span></span>
+                            <div class="modal__title">Вы выйграли <span class="modal__title-prize"></span>!</div>
+                        </div>
+                        <div class="modal__wrapper">
+                            <div class="modal__img">
+                                <img id="modal-img-prize" src="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </footer>
 
     </div>

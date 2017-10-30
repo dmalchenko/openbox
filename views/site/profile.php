@@ -15,7 +15,8 @@ $user = User::getCurrentUser();
 			Баланс:
 			<span class="page-profile__balance-number"><?= $user->money?> &#8381;</span>
 		</div>
-		<div class="btn  page-profile__balance-btn">Пополнить</div>
+		<div class="btn  page-profile__balance-btn" data-toggle="modal"
+             data-target="#modal-demo-02">Пополнить</div>
 	</div>
 	<div class="navigation  page-profile__navigation">
 		<a href="<?= Url::toRoute(['/site/profile']) ?>" class="navigation__link  navigation__link--active">Профиль</a>
