@@ -1,6 +1,10 @@
 <?php
 
 /* @var $this yii\web\View */
+/* @var \yii\data\ActiveDataProvider $basketDataProvider */
+
+use yii\grid\GridView;
+use yii\helpers\Html;
 use yii\helpers\Url;
 
 $user = \app\models\User::getCurrentUser();
@@ -45,4 +49,33 @@ $user = \app\models\User::getCurrentUser();
 <div class="page-profile-products__wrapper-btn">
 	<a href="#" class="btn  btn--accent  page-profile-products__btn">Заказать доставку за 300 &#8381;</a>
 </div>
-</div>
+
+<?= GridView::widget([
+	'dataProvider' => $basketDataProvider,
+	'options' => [
+	        'style' => [
+	                'color' => '#fff'
+            ]
+    ],
+	'columns' => [
+		['class' => 'yii\grid\SerialColumn'],
+		'token',
+		'items.title',
+		'items.image' => [
+			'value' => function(\app\modules\opencase\models\Basket $model) {
+				return Html::img($model->items->image);
+			},
+			'format' => 'raw',
+			'label' =>  'image'
+		],
+		'items.cost_real',
+		'created_dt' => [
+			'value' => function (\app\modules\opencase\models\Basket $model) {
+				return $model->created_at;
+			},
+			'format' => 'datetime',
+			'label' =>  'date'
+		]
+	],
+]); ?>
+

@@ -4,11 +4,13 @@ namespace app\controllers;
 
 use app\models\User;
 use app\modules\freekassa\models\Freekassa;
+use app\modules\opencase\models\Basket;
 use app\modules\opencase\models\CaseType;
 use app\modules\opencase\models\DeliveryAddress;
 use app\modules\opencase\models\GameLog;
 use app\modules\opencase\models\Items;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
@@ -262,7 +264,19 @@ class SiteController extends Controller {
 	 */
 	public function actionProfileProducts() {
 		$this->layout = 'clear';
-		return $this->render('profile-products');
+		$user = User::getCurrentUser();
+		if (!$user) {
+			$this->redirect(['index']);
+		}
+
+		$basketDataProvider = new ActiveDataProvider([
+			'query' => Basket::find()
+			->where(['token_index' => $user->token_index]),
+		]);
+
+		return $this->render('profile-products', [
+			'basketDataProvider' => $basketDataProvider,
+		]);
 	}
 
 	/**

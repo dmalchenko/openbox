@@ -2,31 +2,29 @@
 
 namespace app\modules\opencase\models;
 
+use Yii;
 use yii\behaviors\TimestampBehavior;
 
 /**
- * This is the model class for table "delivery_address".
+ * This is the model class for table "basket".
  *
  * @property integer $id
+ * @property string $token
  * @property integer $token_index
- * @property string $name
- * @property string $country
- * @property string $city
- * @property string $street
- * @property string $home
- * @property string $room
- * @property string $index
+ * @property integer $item_id
  * @property integer $created_at
  * @property integer $updated_at
+ *
+ * @property Items $items
  */
-class DeliveryAddress extends \yii\db\ActiveRecord
+class Basket extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'delivery_address';
+        return 'basket';
     }
 
     /**
@@ -35,8 +33,8 @@ class DeliveryAddress extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['token_index', 'created_at', 'updated_at'], 'integer'],
-            [['name', 'country', 'city', 'street', 'home', 'room', 'index'], 'string', 'max' => 255],
+            [['token_index'], 'integer'],
+            [['token'], 'string', 'max' => 255],
         ];
     }
 
@@ -47,22 +45,27 @@ class DeliveryAddress extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'token' => 'Token',
             'token_index' => 'Token Index',
-            'name' => 'Name',
-            'country' => 'Country',
-            'city' => 'City',
-            'street' => 'Street',
-            'home' => 'Home',
-            'room' => 'Room',
-            'index' => 'Index',
+            'item_id' => 'Item ID',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
     }
 
+	/**
+	 * @return array
+	 */
 	public function behaviors() {
 		return [
 			TimestampBehavior::className(),
 		];
     }
+
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getItems() {
+		return $this->hasOne(Items::className(), ['id' => 'item_id']);
+	}
 }

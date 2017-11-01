@@ -10,6 +10,7 @@ namespace app\modules\opencase\controllers;
 
 
 use app\models\User;
+use app\modules\opencase\models\Basket;
 use app\modules\opencase\models\GameConfig;
 use app\modules\opencase\models\GameLog;
 use yii\data\ActiveDataProvider;
@@ -35,10 +36,16 @@ class UserController extends \app\controllers\UserController {
 			'query' => GameLog::find()->where(['token_index' => $user->token_index]),
 		]);
 
+		$basketDataProvider = new ActiveDataProvider([
+			'query' => Basket::find()
+				->where(['token_index' => $user->token_index]),
+		]);
+
 		return $this->render('view', [
 			'model' => $user,
 			'gameConfigDataProvider' => $dataProvider,
 			'gameLogDataProvider' => $gameLogDataProvider,
+			'basketDataProvider' => $basketDataProvider,
 		]);
 	}
 

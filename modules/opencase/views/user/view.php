@@ -79,7 +79,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode('Game logs') ?></h1>
 
-    <?= GridView::widget([
+	<?= GridView::widget([
 		'dataProvider' => $gameLogDataProvider,
 		'columns' => [
 			['class' => 'yii\grid\SerialColumn'],
@@ -88,6 +88,32 @@ $this->params['breadcrumbs'][] = $this->title;
 			'item_id',
 			'cost_real',
 			'cost_sell',
+		],
+	]); ?>
+
+    <h1><?= Html::encode('Basket') ?></h1>
+
+	<?= GridView::widget([
+		'dataProvider' => $basketDataProvider,
+		'columns' => [
+			['class' => 'yii\grid\SerialColumn'],
+			'token',
+			'items.title',
+			'items.image' => [
+                'value' => function(\app\modules\opencase\models\Basket $model) {
+	                return Html::img($model->items->image);
+                },
+				'format' => 'raw',
+				'label' =>  'image'
+            ],
+			'items.cost_real',
+			'created_dt' => [
+				'value' => function (\app\modules\opencase\models\Basket $model) {
+					return $model->created_at;
+				},
+				'format' => 'datetime',
+                'label' =>  'date'
+			]
 		],
 	]); ?>
 

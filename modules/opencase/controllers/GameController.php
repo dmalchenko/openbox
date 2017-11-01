@@ -3,6 +3,7 @@
 namespace app\modules\opencase\controllers;
 
 use app\models\User;
+use app\modules\opencase\models\Basket;
 use app\modules\opencase\models\GameConfig;
 use app\modules\opencase\models\GameLog;
 use app\modules\opencase\models\Items;
@@ -42,6 +43,12 @@ class GameController extends Controller {
 			$user->money -= $caseType;
 			$idWinItem = $this->getRandItem($caseType);
 			$item = Items::findOne($idWinItem);
+
+			$basket = new Basket();
+			$basket->token = $user->token;
+			$basket->token_index = crc32($user->token);
+			$basket->item_id = $idWinItem;
+			$basket->save();
 
 			$log = new GameLog();
 			$log->token = $user->token;
