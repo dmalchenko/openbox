@@ -9,6 +9,7 @@ use app\modules\opencase\models\CaseType;
 use app\modules\opencase\models\DeliveryAddress;
 use app\modules\opencase\models\GameLog;
 use app\modules\opencase\models\Items;
+use app\modules\opencase\models\Promo;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
@@ -271,7 +272,7 @@ class SiteController extends Controller {
 
 		$basketDataProvider = new ActiveDataProvider([
 			'query' => Basket::find()
-			->where(['token_index' => $user->token_index]),
+				->where(['token_index' => $user->token_index]),
 		]);
 
 		return $this->render('profile-products', [
@@ -284,7 +285,62 @@ class SiteController extends Controller {
 	 */
 	public function actionProfileTable() {
 		$this->layout = 'clear';
+		$user = User::getCurrentUser();
+		if (!$user) {
+			$this->redirect(['index']);
+		}
 		return $this->render('profile-table');
+	}
+
+	/**
+	 * @return string
+	 */
+	public function actionProfilePartner() {
+		$this->layout = 'clear';
+		$user = User::getCurrentUser();
+		if (!$user) {
+			$this->redirect(['index']);
+		}
+		$partnerSet = Promo::find()
+			->where(['token_index' => $user->token_index])
+			->exists();
+
+		return $this->render('profile-partner', [
+			'code' => $user->token_index,
+			'partnerSet' => $partnerSet,
+		]);
+	}
+
+	public function actionPromo($code) {
+		\Yii::$app->response->format = Response::FORMAT_JSON;
+		$user = User::getCurrentUser();
+		if (!$user) {
+			return ['code' => 500, 'msg' => 'Вы не авторизованы'];
+		}
+		$promo = Promo::findOne(['token_index' => $user->token_index]);
+		if ($promo) {
+			return ['code' => 500, 'msg' => 'Вы уже ввели промо-код, обновите страницу'];
+		}
+
+		$parentUser = User::findOne(['token_index' => $code]);
+		if (!$parentUser) {
+			return ['code' => 500, 'msg' => 'Такого промо кода не существует'];
+		}
+
+		if ($parentUser->token_index == $user->token_index) {
+			return ['code' => 500, 'msg' => 'Нельзя вводить свой промо-код'];
+		}
+
+		$promo = new Promo();
+		$promo->token_index = $user->token_index;
+		$promo->token = $user->token;
+		$promo->parent_index = $parentUser->token_index;
+		$promo->save();
+
+		$user->money += Promo::BONUS_MONEY;
+		$user->save();
+		return ['code' => 200, 'msg' => ''];
+
 	}
 
 	/**

@@ -26,6 +26,7 @@ use yii\widgets\ActiveForm;
         <a href="<?= Url::toRoute(['/site/profile']) ?>" class="navigation__link  navigation__link--active">Профиль</a>
         <a href="<?= Url::toRoute(['/site/profile-products']) ?>" class="navigation__link">Мои товары</a>
         <a href="<?= Url::toRoute(['/site/profile-table']) ?>" class="navigation__link">Мои доставки</a>
+        <a href="<?= Url::toRoute(['/site/profile-partner']) ?>" class="navigation__link">Партнёрская программа</a>
     </div>
 </div>
 

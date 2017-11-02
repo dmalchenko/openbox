@@ -23,7 +23,8 @@ $user = \app\models\User::getCurrentUser();
 		<a href="<?= Url::toRoute(['/site/profile']) ?>" class="navigation__link">Профиль</a>
 		<a href="<?= Url::toRoute(['/site/profile-products']) ?>" class="navigation__link  navigation__link--active">Мои товары</a>
 		<a href="<?= Url::toRoute(['/site/profile-table']) ?>" class="navigation__link">Мои доставки</a>
-	</div>
+        <a href="<?= Url::toRoute(['/site/profile-partner']) ?>" class="navigation__link">Партнёрская программа</a>
+    </div>
 </div>
 
 <h2 class="page-profile-products__title">Корзина доставки</h2>
