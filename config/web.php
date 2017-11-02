@@ -74,7 +74,7 @@ $config = [
 				],
 				'vkontakte' => [
 					// register your app here: https://vk.com/editapp?act=create&site=1
-					'class' => 'nodge\eauth\services\extended\VKontakteOAuth2Service',
+					'class' => 'app\models\VKontakteOAuth2Service',
 					'clientId' => '6212174',
 					'clientSecret' => 'BTwwa8XUUbB0GcK6hbVd',
 				],

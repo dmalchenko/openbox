@@ -11,6 +11,8 @@ namespace app\modules\opencase\controllers;
 
 use app\models\User;
 use app\modules\opencase\models\Basket;
+use app\modules\opencase\models\Delivery;
+use app\modules\opencase\models\DeliveryAddress;
 use app\modules\opencase\models\GameConfig;
 use app\modules\opencase\models\GameLog;
 use yii\data\ActiveDataProvider;
@@ -24,8 +26,7 @@ class UserController extends \app\controllers\UserController {
 	 * @param integer $id
 	 * @return mixed
 	 */
-	public function actionView($id)
-	{
+	public function actionView($id) {
 		$user = $this->findModel($id);
 
 		$dataProvider = new ActiveDataProvider([
@@ -49,6 +50,51 @@ class UserController extends \app\controllers\UserController {
 		]);
 	}
 
+	public function actionDelivery() {
+		$user = User::getCurrentUser();
+		if (!$user) {
+			return ['code' => 500, 'msg' => 'Пожалуйста авторизируйтесь'];
+		}
+		if (!($user->money - Delivery::COST < 0)) {
+			return ['code' => 500, 'msg' => 'Недостаточно средств на счете'];
+		}
+
+		$deliveryAddress = DeliveryAddress::findOne(['token_index' => $user->token_index]);
+		if (!$deliveryAddress) {
+			return ['code' => 500, 'msg' => 'Не указан способ доставки'];
+		}
+
+		$post = \Yii::$app->request->post();
+		$items = $post['items'];
+		if (!$items || !is_array($items) || count($items) > 5) {
+			return ['code' => 500, 'msg' => 'Внутренняя ошибка, попробуйте позже'];
+		}
+
+		/**
+		 * @var Basket[] $basketItems
+		 */
+		$basketItems = Basket::find()
+			->where(['token_index' => $user->token_index])
+			->andWhere(['item_id' => $items]);
+		$confirmItems = count($items) && count($basketItems);
+		if (!$confirmItems) {
+			return ['code' => 500, 'msg' => 'Внутренняя ошибка, попробуйте позже'];
+		}
+		foreach ($basketItems as $basketItem) {
+			$basketItem->delete();
+		}
+
+		$user->money = $user->money - Delivery::COST;
+		$user->update();
+
+		$delivery = new Delivery();
+		$delivery->token = $user->token;
+		$delivery->token_index = $user->token_index;
+		$delivery->delivery_address_id = $deliveryAddress->id;
+		$delivery->status = Delivery::STATUS_INIT;
+		$delivery->items = json_encode($items);
+		$delivery->save();
+	}
 
 	/**
 	 * Finds the User model based on its primary key value.
@@ -57,8 +103,7 @@ class UserController extends \app\controllers\UserController {
 	 * @return User the loaded model
 	 * @throws NotFoundHttpException if the model cannot be found
 	 */
-	protected function findModel($id)
-	{
+	protected function findModel($id) {
 		if (($model = User::findOne($id)) !== null) {
 			return $model;
 		} else {

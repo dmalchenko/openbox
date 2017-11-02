@@ -122,6 +122,7 @@ class User extends ActiveRecord implements IdentityInterface, Freekassable {
 			'authKey' => md5($id),
 			'profile' => $service->getAttributes(),
 		];
+
 		$attributes['profile']['service'] = $service->getServiceName();
 		$attributes['money'] = self::getUserMoney($attributes);
 
@@ -177,8 +178,8 @@ class User extends ActiveRecord implements IdentityInterface, Freekassable {
 			$userToken->service = $attributes['profile']['service'];
 			if (isset($attributes['profile']['photo_url'])) {
 				$userToken->avatar = $attributes['profile']['photo_url'];
-			} elseif (isset($attributes['profile']['photo_big'])) {
-				$userToken->avatar = $attributes['profile']['photo_big'];
+			} elseif (isset($attributes['profile']['photo_200'])) {
+				$userToken->avatar = $attributes['profile']['photo_200'];
 			}
 			$userToken->save();
 		}

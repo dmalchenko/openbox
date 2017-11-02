@@ -96,12 +96,6 @@ $user = User::getCurrentUser();
                                 </a>
                             </li>
                             <li class="main-nav__item">
-                                <a href="<?= Url::toRoute(['/site/shop']) ?>"
-                                   class="main-nav__link <?= $this->context->route == 'site/shop' ? 'main-nav__link--active' : ''; ?>">
-                                    Магазин
-                                </a>
-                            </li>
-                            <li class="main-nav__item">
                                 <a href="<?= Url::toRoute(['/site/delivery']) ?>"
                                    class="main-nav__link <?= $this->context->route == 'site/delivery' ? 'main-nav__link--active' : ''; ?>">
                                     Доставка
