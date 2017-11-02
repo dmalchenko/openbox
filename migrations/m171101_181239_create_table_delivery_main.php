@@ -13,7 +13,7 @@ class m171101_181239_create_table_delivery_main extends Migration
 			'delivery_address_id' => $this->integer(),
 			'status' => $this->string(),
 			'message' => $this->string(),
-			'items' => $this->string(),
+			'items' => $this->integer(),
 			'created_at' => $this->integer(),
 			'updated_at' => $this->integer(),
 		]);

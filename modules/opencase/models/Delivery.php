@@ -14,7 +14,7 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $delivery_address_id
  * @property string $status
  * @property string $message
- * @property string $items
+ * @property integer $items
  * @property integer $created_at
  * @property integer $updated_at
  */
@@ -40,8 +40,8 @@ class Delivery extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['token_index', 'delivery_address_id', 'created_at', 'updated_at'], 'integer'],
-            [['token', 'status', 'message', 'items'], 'string', 'max' => 255],
+            [['token_index', 'delivery_address_id'], 'integer'],
+            [['token', 'status', 'message'], 'string', 'max' => 255],
         ];
     }
 

@@ -87,13 +87,15 @@ class UserController extends \app\controllers\UserController {
 		$user->money = $user->money - Delivery::COST;
 		$user->update();
 
-		$delivery = new Delivery();
-		$delivery->token = $user->token;
-		$delivery->token_index = $user->token_index;
-		$delivery->delivery_address_id = $deliveryAddress->id;
-		$delivery->status = Delivery::STATUS_INIT;
-		$delivery->items = json_encode($items);
-		$delivery->save();
+		foreach ($items as $item) {
+			$delivery = new Delivery();
+			$delivery->token = $user->token;
+			$delivery->token_index = $user->token_index;
+			$delivery->delivery_address_id = $deliveryAddress->id;
+			$delivery->status = Delivery::STATUS_INIT;
+			$delivery->items = $item;
+			$delivery->save();
+		}
 	}
 
 	/**
