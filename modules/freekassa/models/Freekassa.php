@@ -16,7 +16,7 @@ use yii\db\ActiveRecord;
  * @property integer $currency
  * @property integer $amount
  * @property integer $status
- * @property integer $user_id
+ * @property string $user_id
  * @property integer $created_at
  * @property integer $updated_at
  */

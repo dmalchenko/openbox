@@ -2,6 +2,7 @@
 
 namespace app\modules\freekassa\controllers;
 
+use app\models\User;
 use app\modules\freekassa\models\Freekassa;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
@@ -58,17 +59,20 @@ class PaymentController extends Controller {
 
 	public function actionCreate() {
 
+		$user = User::getCurrentUser();
+
 		$model = new Freekassa();
 
 		if ($model->load(\Yii::$app->request->post())) {
+			$userId = $user->token_index;
+
 			$model->currency = Freekassa::getCurrency();
 			$model->status = Freekassa::STATUS_CREATED;
-			$model->user_id = \Yii::$app->getUser()->id;
+			$model->user_id = $userId;
 			$model->save();
 
 			$module = \Yii::$app->controller->module;
 			$merchantId = $module->params['merchantId'];
-			$userId = \Yii::$app->getUser()->id;
 
 			$url = sprintf(self::URL_GET_CASH, $merchantId, $model->amount, $model->id, $model->getSign(), Freekassa::getCurrency(), $userId);
 			return $this->redirect($url);

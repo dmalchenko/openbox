@@ -238,7 +238,7 @@ class User extends ActiveRecord implements IdentityInterface, Freekassable {
 	 * @return User
 	 */
 	public static function addMoney($user_id, $money) {
-		$user = User::findOne(['token_index' => crc32($user_id)]);
+		$user = User::findOne(['token_index' => $user_id]);
 		if ($user) {
 			$user->money += $money;
 			$user->save();
