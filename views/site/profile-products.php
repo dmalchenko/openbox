@@ -1,7 +1,7 @@
 <?php
 
 /* @var $this yii\web\View */
-/* @var \yii\data\ActiveDataProvider $basketDataProvider */
+/* @var \app\modules\opencase\models\Basket[] $basketDataProvider */
 
 use yii\grid\GridView;
 use yii\helpers\Html;
@@ -30,53 +30,75 @@ $user = \app\models\User::getCurrentUser();
 <h2 class="page-profile-products__title">Корзина доставки</h2>
 
 <div class="page-profile-products__box-wrapper">
-	<div class="page-profile-products__box">
-		<img src="img/surprice.png" alt="product">
-	</div>
-	<div class="page-profile-products__box">
-		<img src="img/surprice.png" alt="product">
-	</div>
-	<div class="page-profile-products__box">
-		<img src="img/surprice.png" alt="product">
-	</div>
-	<div class="page-profile-products__box">
-		<img src="img/surprice.png" alt="product">
-	</div>
-	<div class="page-profile-products__box">
-		<img src="img/surprice.png" alt="product">
-	</div>
+    <div class="page-profile-products__box">
+        <span class="close  page-profile-products__box-close" aria-label="Закрыть"><span></span></span>
+        <img src="img/surprice.png" alt="product">
+    </div>
+    <div class="page-profile-products__box">
+        <span class="close  page-profile-products__box-close" aria-label="Закрыть"><span></span></span>
+        <img src="img/surprice.png" alt="product">
+    </div>
+    <div class="page-profile-products__box">
+        <span class="close  page-profile-products__box-close" aria-label="Закрыть"><span></span></span>
+        <img src="img/surprice.png" alt="product">
+    </div>
+    <div class="page-profile-products__box">
+        <span class="close  page-profile-products__box-close" aria-label="Закрыть"><span></span></span>
+        <img src="img/surprice.png" alt="product">
+    </div>
+    <div class="page-profile-products__box">
+        <span class="close  page-profile-products__box-close" aria-label="Закрыть"><span></span></span>
+        <img src="img/surprice.png" alt="product">
+    </div>
 </div>
 
 <div class="page-profile-products__wrapper-btn">
-	<a href="#" class="btn  btn--accent  page-profile-products__btn">Заказать доставку за 300 &#8381;</a>
+    <a href="#" class="btn  btn--accent  page-profile-products__btn" onclick="delivery()">Заказать доставку за 300 &#8381;</a>
 </div>
 
-<?= GridView::widget([
-	'dataProvider' => $basketDataProvider,
-	'options' => [
-	        'style' => [
-	                'color' => '#fff'
-            ]
-    ],
-	'columns' => [
-		['class' => 'yii\grid\SerialColumn'],
-		'token',
-		'items.title',
-		'items.image' => [
-			'value' => function(\app\modules\opencase\models\Basket $model) {
-				return Html::img($model->items->image);
-			},
-			'format' => 'raw',
-			'label' =>  'image'
-		],
-		'items.cost_real',
-		'created_dt' => [
-			'value' => function (\app\modules\opencase\models\Basket $model) {
-				return $model->created_at;
-			},
-			'format' => 'datetime',
-			'label' =>  'date'
-		]
-	],
-]); ?>
+<h2 class="page-profile-products__title">Мои товары</h2>
+<div class="page-profile-products__box-wrapper">
+    <?php
+    $boxTemplate = <<< HTML
+    <div class="page-profile-products__box">
+        <button class="page-profile-products__box-buy">
+            <svg width="20" height="20">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-svg.svg#cart"></use>
+            </svg>
+        </button>
+        <button class="page-profile-products__box-sell">&#8381;</button>
+        <img src="%s" alt="product">
+    </div>
+HTML;
 
+    foreach ($basketDataProvider as $box) {
+        echo sprintf($boxTemplate, $box->items->image);
+    }
+    ?>
+
+</div>
+<script>
+    var csrfToken = $('meta[name="csrf-token"]').attr("content");
+    function delivery() {
+        // var items = $('#code-val').val();
+        var items = [1,2,3];
+        $.ajax({
+            dataType: 'json',
+            type: 'post',
+            url: "<?= Url::toRoute(['/opencase/user/delivery']) ?>",
+            data: {_csrf: csrfToken, items: items},
+            success: function (data) {
+                if (data.code == 200) {
+                    alert('Заявка на доставку создана');
+                    window.location.href = "<?= Url::toRoute(['/site/profile-table'])?>";
+                } else if (data.code != 200) {
+                    console.log(data.msg);
+                    alert(data.msg);
+                } else {
+                    alert('Произошла внутренняя ошибка, попробуйте позже');
+                }
+                console.log(data);
+            }
+        });
+    }
+</script>

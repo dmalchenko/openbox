@@ -17,6 +17,8 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $items
  * @property integer $created_at
  * @property integer $updated_at
+ * @property Items $item
+ * @property DeliveryAddress $delivery
  */
 class Delivery extends \yii\db\ActiveRecord
 {
@@ -25,6 +27,13 @@ class Delivery extends \yii\db\ActiveRecord
 	const STATUS_APPROVED = 'approved';
 	const STATUS_SEND = 'send';
 	const STATUS_FINISH = 'finish';
+
+	public static $statuses = [
+		self::STATUS_INIT => 'заявка на рассмотрении',
+		self::STATUS_APPROVED => 'ожидается отправка',
+		self::STATUS_SEND => 'отправлено',
+		self::STATUS_FINISH => 'доставлено',
+	];
 
 	/**
      * @inheritdoc
@@ -70,5 +79,19 @@ class Delivery extends \yii\db\ActiveRecord
 		return [
 			TimestampBehavior::className(),
 		];
+	}
+
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getItem() {
+		return $this->hasOne(Items::className(), ['id' => 'items']);
+	}
+
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getDelivery() {
+		return $this->hasOne(DeliveryAddress::className(), ['id' => 'delivery_address_id']);
 	}
 }

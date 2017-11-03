@@ -2,7 +2,6 @@
 
 /* @var $this yii\web\View */
 /* @var boolean $partnerSet */
-/* @var boolean $partnerSet */
 /* @var integer $code */
 
 use yii\helpers\Url;

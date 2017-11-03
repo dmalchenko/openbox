@@ -6,6 +6,7 @@ use app\models\User;
 use app\modules\freekassa\models\Freekassa;
 use app\modules\opencase\models\Basket;
 use app\modules\opencase\models\CaseType;
+use app\modules\opencase\models\Delivery;
 use app\modules\opencase\models\DeliveryAddress;
 use app\modules\opencase\models\GameLog;
 use app\modules\opencase\models\Items;
@@ -252,11 +253,17 @@ class SiteController extends Controller {
 		$cntBox = $r[0]['cnt'];
 		$cntSum = $r[0]['sum'];
 
+		$partnerSet = Promo::find()
+			->where(['token_index' => $user->token_index])
+			->exists();
+
 		return $this->render('profile', [
 			'user' => $user,
 			'cntBox' => $cntBox,
 			'cntSum' => $cntSum,
 			'address' => $address,
+			'partnerSet' => $partnerSet,
+			'code' => $user->token_index
 		]);
 	}
 
@@ -270,10 +277,9 @@ class SiteController extends Controller {
 			$this->redirect(['index']);
 		}
 
-		$basketDataProvider = new ActiveDataProvider([
-			'query' => Basket::find()
-				->where(['token_index' => $user->token_index]),
-		]);
+		$basketDataProvider = Basket::find()
+			->where(['token_index' => $user->token_index])
+			->all();
 
 		return $this->render('profile-products', [
 			'basketDataProvider' => $basketDataProvider,
@@ -289,7 +295,15 @@ class SiteController extends Controller {
 		if (!$user) {
 			$this->redirect(['index']);
 		}
-		return $this->render('profile-table');
+
+		$items = Delivery::find()
+			->where(['token_index' => $user->token_index])
+			->orderBy('updated_at')
+			->all();
+
+		return $this->render('profile-table', [
+			'items' => $items
+		]);
 	}
 
 	/**

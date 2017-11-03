@@ -44,6 +44,7 @@ AppAsset::register($this);
 			['label' => 'Case 1000', 'url' => ['/opencase/item/index', 'type' => 1000]],
 			['label' => 'Config Game', 'url' => ['/opencase/gameconfig/index']],
 			['label' => 'Users', 'url' => ['/opencase/user/index']],
+			['label' => 'Delivery', 'url' => ['/opencase/delivery/index']],
 			['label' => 'About', 'url' => ['/site/about']],
 			['label' => 'Contact', 'url' => ['/site/contact']],
 			Yii::$app->user->isGuest ? (

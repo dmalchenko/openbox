@@ -17,9 +17,11 @@ use app\modules\opencase\models\GameConfig;
 use app\modules\opencase\models\GameLog;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
 
 class UserController extends \app\controllers\UserController {
 
+	public $enableCsrfValidation = false;
 
 	/**
 	 * Displays a single User model.
@@ -51,17 +53,21 @@ class UserController extends \app\controllers\UserController {
 	}
 
 	public function actionDelivery() {
+		\Yii::$app->response->format = Response::FORMAT_JSON;
+		if (!\Yii::$app->request->isPost) {
+			return ['code' => 500, 'msg' => 'Error'];
+		}
 		$user = User::getCurrentUser();
 		if (!$user) {
 			return ['code' => 500, 'msg' => 'Пожалуйста авторизируйтесь'];
 		}
-		if (!($user->money - Delivery::COST < 0)) {
+		if ($user->money - Delivery::COST < 0) {
 			return ['code' => 500, 'msg' => 'Недостаточно средств на счете'];
 		}
 
 		$deliveryAddress = DeliveryAddress::findOne(['token_index' => $user->token_index]);
 		if (!$deliveryAddress) {
-			return ['code' => 500, 'msg' => 'Не указан способ доставки'];
+			return ['code' => 500, 'msg' => 'Не указан адресс доставки'];
 		}
 
 		$post = \Yii::$app->request->post();
@@ -75,11 +81,13 @@ class UserController extends \app\controllers\UserController {
 		 */
 		$basketItems = Basket::find()
 			->where(['token_index' => $user->token_index])
-			->andWhere(['item_id' => $items]);
-		$confirmItems = count($items) && count($basketItems);
+			->andWhere(['item_id' => $items])
+			->all();
+		$confirmItems = count($items) === count($basketItems);
 		if (!$confirmItems) {
 			return ['code' => 500, 'msg' => 'Внутренняя ошибка, попробуйте позже'];
 		}
+
 		foreach ($basketItems as $basketItem) {
 			$basketItem->delete();
 		}
@@ -96,6 +104,8 @@ class UserController extends \app\controllers\UserController {
 			$delivery->items = $item;
 			$delivery->save();
 		}
+
+		return ['code' => 200, 'msg' => 'OK'];
 	}
 
 	/**

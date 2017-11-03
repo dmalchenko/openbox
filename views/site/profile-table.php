@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this yii\web\View */
+/* @var \app\modules\opencase\models\Delivery[] $items */
 
 use yii\helpers\Url;
 
@@ -35,4 +36,31 @@ $user = \app\models\User::getCurrentUser();
 		<div class="page-profile-table__th">Трекинг-код</div>
 		<div class="page-profile-table__th">Дата оформления</div>
 	</div>
+    <?php
+	$template = <<< HTML
+<div class="page-profile-table__tr" style="color: #dddddd">
+    <div class="page-profile-table__td">%s</div>
+    <div class="page-profile-table__td">%s</div>
+    <div class="page-profile-table__td">%s</div>
+    <div class="page-profile-table__td">%s</div>
+    <div class="page-profile-table__td">%s</div>
+</div>
+HTML;
+
+	foreach ($items as $item) {
+	    if (!$item->delivery->city && $item->delivery->street) {
+			$address = $item->delivery->city . ', ' . $item->delivery->street;
+		} else {
+	        $address = 'Заполните страну, город, адрес доставки';
+        }
+
+        $status = \app\modules\opencase\models\Delivery::$statuses[$item->status];
+
+		$msg = sprintf($template, $item->item->title, $address, $status, $item->message, date("Y-m-d H:i:s", $item->created_at));
+	    echo $msg;
+	}
+
+    ?>
+
+
 </div>
