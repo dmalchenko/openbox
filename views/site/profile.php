@@ -54,6 +54,48 @@ use yii\widgets\ActiveForm;
     </div>
 </div>
 
+<div class="page-profile__dark-card-wrapper">
+	<?php
+	$partnerInput = <<< HTML
+        <div class="page-profile__dark-card">
+            <div class="page-profile__dark-card-header">У вас есть <span>партнерский код?</span></div>
+            <div class="page-profile__dark-card-text">Введите код и получите 50&#8381; на счёт прямо сейчас!</div>
+            <!--<form action="/" class="page-profile__form" name="partner-code">-->
+                <label class="field-text">
+                      <span class="field-text__input-wrap">
+                        <input class="field-text__input" type="text" id="code-val">
+                        <input class="field-text__btn" type="button" name="send" value="OK" id="btn-code">
+                      </span>
+                </label>
+            <!--</form>-->
+        </div>
+HTML;
+
+	$partnerNoInput = <<< HTML
+        <div class="page-profile__dark-card">
+            <div class="page-profile__dark-card-header">Вы уже ввели партнерский код</span></div>
+        </div>
+HTML;
+
+	echo ($partnerSet) ? $partnerNoInput : $partnerInput;
+	?>
+
+    <div class="page-profile__dark-card">
+        <div class="page-profile__dark-card-header">Приглашайте друзей и
+            <span>зарабатывайте 5% от всех пополнений</span></div>
+        <div class="page-profile__dark-card-text">Отправьте свой уникальный код друзьям, и получайте по 5% от каждого
+            пополнения баланса другом!
+        </div>
+        <form action="a.php" class="page-profile__form" name="partner-invite">
+            <label class="field-text">
+                  <span class="field-text__input-wrap">
+                    <input class="field-text__input  page-profile__field-invite" value="<?= $code?>">
+                  </span>
+            </label>
+        </form>
+    </div>
+</div>
+
 <div class="page-profile__dark-card  page-profile__dark-card-delivery">
     <div class="page-profile__dark-card-title">Анкета для доставки товаров</div>
 	<?php $form = ActiveForm::begin(['class' => 'page-profile__form-delivery']); ?>
@@ -119,47 +161,6 @@ use yii\widgets\ActiveForm;
 	<?php ActiveForm::end(); ?>
 </div>
 
-<div class="page-profile__dark-card-wrapper">
-	<?php
-	$partnerInput = <<< HTML
-        <div class="page-profile__dark-card">
-            <div class="page-profile__dark-card-header">У вас есть <span>партнерский код?</span></div>
-            <div class="page-profile__dark-card-text">Введите код и получите 50&#8381; на счёт прямо сейчас!</div>
-            <!--<form action="/" class="page-profile__form" name="partner-code">-->
-                <label class="field-text">
-                      <span class="field-text__input-wrap">
-                        <input class="field-text__input" type="text" id="code-val">
-                        <input class="field-text__btn" type="button" name="send" value="OK" id="btn-code">
-                      </span>
-                </label>
-            <!--</form>-->
-        </div>
-HTML;
-
-	$partnerNoInput = <<< HTML
-        <div class="page-profile__dark-card">
-            <div class="page-profile__dark-card-header">Вы уже ввели партнерский код</span></div>
-        </div>
-HTML;
-
-	echo ($partnerSet) ? $partnerNoInput : $partnerInput;
-	?>
-
-    <div class="page-profile__dark-card">
-        <div class="page-profile__dark-card-header">Приглашайте друзей и
-            <span>зарабатывайте 5% от всех пополнений</span></div>
-        <div class="page-profile__dark-card-text">Отправьте свой уникальный код друзьям, и получайте по 5% от каждого
-            пополнения баланса другом!
-        </div>
-        <form action="a.php" class="page-profile__form" name="partner-invite">
-            <label class="field-text">
-                  <span class="field-text__input-wrap">
-                    <input class="field-text__input  page-profile__field-invite" value="<?= $code?>">
-                  </span>
-            </label>
-        </form>
-    </div>
-</div>
 <script>
     var csrfToken = $('meta[name="csrf-token"]').attr("content");
     $('#btn-code').click(function() {
