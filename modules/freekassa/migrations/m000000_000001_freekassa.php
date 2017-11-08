@@ -14,7 +14,7 @@ class m000000_000001_freekassa extends Migration
 			'currency' => $this->integer(),
 			'amount' => $this->integer(),
 			'status' => $this->integer(),
-			'user_id' => $this->integer(),
+			'user_id' => $this->bigInteger(20),
 			'created_at' => $this->integer(),
 			'updated_at' => $this->integer(),
 		]);

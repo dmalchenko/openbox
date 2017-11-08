@@ -7,6 +7,7 @@ use app\models\User;
 use yii\helpers\Url;
 
 $user = User::getCurrentUser();
+$urlActionPayment = Url::toRoute(['/freekassa/payment/create']);
 ?>
 
 <!DOCTYPE html>
@@ -294,92 +295,95 @@ $user = User::getCurrentUser();
             </div>
 
             <div id="modal-demo-02" class="modal" tabindex="-1" role="dialog">
-                <div class="modal__dialog" role="document">
-                    <div class="modal__content">
-                        <div class="modal__header">
+                <form action="<?= $urlActionPayment ?>" class="modal__form">
+                <div class="modal__content">
+                    <div class="modal__header">
                             <span class="close  modal__close" data-dismiss="modal"
-                                  aria-label="Закрыть"><span></span></span>
-                            <div class="modal__title">Выберите любимый способ оплаты</div>
-                        </div>
+                        aria-label="Закрыть"><span></span></span>
+                        <div class="modal__title">Выберите любимый способ оплаты</div>
+                    </div>
                         <div class="modal__wrapper">
                             <label class="field-text  modal__field-number">
                                 <span class="field-text__name  modal__field-number-name">Введите сумму:</span>
                                 <span class="field-text__input-wrap">
-                                    <input class="field-text__input  field-text__input-number" type="number">
+                                    <input class="field-text__input  field-text__input-number" type="number" name="sum">
                                 </span>
                             </label>
                         </div>
                         <div class="modal__text">Выберите платежную систему:</div>
                         <div class="modal__wrapper-bottom">
-                            <form action="a.php" class="modal__form">
-                                <div class="modal__pay">
-                                    <img src="img/visa.png" alt="visa">
-                                    <input id="modal__pay1" class="field-radio__input" type="radio" name="modal__pay"
-                                           value="modal__pay1">
-                                    <label for="modal__pay1" class="field-radio__name"></label>
-                                </div>
-                                <div class="modal__pay">
-                                    <img src="img/yandex.png" alt="yandex">
-                                    <input id="modal__pay2" class="field-radio__input" type="radio" name="modal__pay"
-                                           value="modal__pay2">
-                                    <label for="modal__pay2" class="field-radio__name"></label>
-                                </div>
-                                <div class="modal__pay">
-                                    <img src="img/qiwi.png" alt="qiwi">
-                                    <input id="modal__pay3" class="field-radio__input" type="radio" name="modal__pay"
-                                           value="modal__pay3">
-                                    <label for="modal__pay3" class="field-radio__name"></label>
-                                </div>
-                                <div class="modal__pay">
-                                    <img src="img/mts.png" alt="mts">
-                                    <input id="modal__pay4" class="field-radio__input" type="radio" name="modal__pay"
-                                           value="modal__pay4">
-                                    <label for="modal__pay4" class="field-radio__name"></label>
-                                </div>
-                                <div class="modal__pay">
-                                    <img src="img/megafon.png" alt="megafon">
-                                    <input id="modal__pay5" class="field-radio__input" type="radio" name="modal__pay"
-                                           value="modal__pay5">
-                                    <label for="modal__pay5" class="field-radio__name"></label>
-                                </div>
-                                <div class="modal__pay">
-                                    <img src="img/tele2.png" alt="tele2">
-                                    <input id="modal__pay6" class="field-radio__input" type="radio" name="modal__pay"
-                                           value="modal__pay6">
-                                    <label for="modal__pay6" class="field-radio__name"></label>
-                                </div>
-                                <div class="modal__pay">
-                                    <img src="img/beeline.png" alt="beeline">
-                                    <input id="modal__pay7" class="field-radio__input" type="radio" name="modal__pay"
-                                           value="modal__pay7">
-                                    <label for="modal__pay7" class="field-radio__name"></label>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="modal-demo-03" class="modal" tabindex="-1" role="dialog">
-                <div class="modal__dialog" role="document">
-                    <div class="modal__content">
-                        <div class="modal__header">
-                            <span class="close  modal__close" data-dismiss="modal"
-                                  aria-label="Закрыть"><span></span></span>
-                            <div class="modal__title">Вы выйграли <span class="modal__title-prize"></span>!</div>
-                        </div>
-                        <div class="modal__wrapper">
-                            <div class="modal__img">
-                                <img id="modal-img-prize" src="">
+                            <div class="modal__pay">
+                                <img src="img/visa.png" alt="visa">
+                                <input id="modal__pay1" class="field-radio__input" type="radio" name="ctype"
+                                       value="158">
+                                <label for="modal__pay1" class="field-radio__name"></label>
+                            </div>
+                            <div class="modal__pay">
+                                <img src="img/yandex.png" alt="yandex">
+                                <input id="modal__pay2" class="field-radio__input" type="radio" name="ctype"
+                                       value="45">
+                                <label for="modal__pay2" class="field-radio__name"></label>
+                            </div>
+                            <div class="modal__pay">
+                                <img src="img/qiwi.png" alt="qiwi">
+                                <input id="modal__pay3" class="field-radio__input" type="radio" name="ctype"
+                                       value="156">
+                                <label for="modal__pay3" class="field-radio__name"></label>
+                            </div>
+                            <div class="modal__pay">
+                                <img src="img/mts.png" alt="mts">
+                                <input id="modal__pay4" class="field-radio__input" type="radio" name="ctype"
+                                       value="84">
+                                <label for="modal__pay4" class="field-radio__name"></label>
+                            </div>
+                            <div class="modal__pay">
+                                <img src="img/megafon.png" alt="megafon">
+                                <input id="modal__pay5" class="field-radio__input" type="radio" name="ctype"
+                                       value="82">
+                                <label for="modal__pay5" class="field-radio__name"></label>
+                            </div>
+                            <div class="modal__pay">
+                                <img src="img/tele2.png" alt="tele2">
+                                <input id="modal__pay6" class="field-radio__input" type="radio" name="ctype"
+                                       value="132">
+                                <label for="modal__pay6" class="field-radio__name"></label>
+                            </div>
+                            <div class="modal__pay">
+                                <img src="img/beeline.png" alt="beeline">
+                                <input id="modal__pay7" class="field-radio__input" type="radio" name="ctype"
+                                       value="83">
+                                <label for="modal__pay7" class="field-radio__name"></label>
+                            </div>
+                            <div class="modal__pay-btn-wrapper">
+                                <input type="submit" name="pay" value="Пополнить"
+                                       class='btn  btn--accent  modal__pay-btn'>
                             </div>
                         </div>
+                    </form>
+                </div>
+            </div>
+    </div>
+
+    <div id="modal-demo-03" class="modal" tabindex="-1" role="dialog">
+        <div class="modal__dialog" role="document">
+            <div class="modal__content">
+                <div class="modal__header">
+                            <span class="close  modal__close" data-dismiss="modal"
+                                  aria-label="Закрыть"><span></span></span>
+                    <div class="modal__title">Вы выйграли <span class="modal__title-prize"></span>!</div>
+                </div>
+                <div class="modal__wrapper">
+                    <div class="modal__img">
+                        <img id="modal-img-prize" src="">
                     </div>
                 </div>
             </div>
-        </footer>
-
+        </div>
     </div>
+    </footer>
 
+</div>
+<span id="btn-roulette"></span>
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

@@ -77,7 +77,7 @@ class Freekassa extends ActiveRecord {
 		];
 	}
 
-	public static function getCurrency() {
+	public static function getCurrencies() {
 		return \Yii::$app->controller->module->params['currency'];
 	}
 

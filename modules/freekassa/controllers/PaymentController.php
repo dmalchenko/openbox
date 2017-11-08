@@ -61,20 +61,26 @@ class PaymentController extends Controller {
 
 		$user = User::getCurrentUser();
 
+		$currency = intval(\Yii::$app->request->get('ctype'));
+		$amount = intval(\Yii::$app->request->get('sum'));
+		if (!$amount || $amount <= 0 || !in_array($currency, Freekassa::getCurrencies()) || !$user) {
+			return $this->goHome();
+		}
+
 		$model = new Freekassa();
+		$userId = $user->token_index;
 
-		if ($model->load(\Yii::$app->request->post())) {
-			$userId = $user->token_index;
+		$model->amount = $amount;
+		$model->currency = $currency;
+		$model->status = Freekassa::STATUS_CREATED;
+		$model->user_id = $userId;
 
-			$model->currency = Freekassa::getCurrency();
-			$model->status = Freekassa::STATUS_CREATED;
-			$model->user_id = $userId;
-			$model->save();
 
+		if ($model->save()) {
 			$module = \Yii::$app->controller->module;
 			$merchantId = $module->params['merchantId'];
 
-			$url = sprintf(self::URL_GET_CASH, $merchantId, $model->amount, $model->id, $model->getSign(), Freekassa::getCurrency(), $userId);
+			$url = sprintf(self::URL_GET_CASH, $merchantId, $model->amount, $model->id, $model->getSign(), $model->currency, $userId);
 			return $this->redirect($url);
 		} else {
 			throw new BadRequestHttpException('Bad data for request');
