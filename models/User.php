@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\modules\opencase\models\Promo;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
@@ -242,6 +243,14 @@ class User extends ActiveRecord implements IdentityInterface, Freekassable {
 		if ($user) {
 			$user->money += $money;
 			$user->save();
+
+			$promo = Promo::findOne(['token_index' => $user_id]);
+			if ($promo->parent_index && $money > 20) {
+				$promoUser = User::findOne(['token_index' => $promo->parent_index]);
+				$promoUser->money += intval(ceil($money * 0.05));
+				$promoUser->save();
+			}
+
 		}
 		return $user;
 	}
