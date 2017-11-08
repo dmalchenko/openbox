@@ -143,6 +143,28 @@
     <div class="page-delivery__wrapper-right">
         <div class="page-delivery__question">Остались вопросы?</div>
         <div class="page-delivery__text">Задайте их нашим консультантам</div>
-        <div class="page-delivery__chat"></div>
+        <div class="page-delivery__chat" id="page-delivery__chat" style="height: 400px"></div>
     </div>
 </div>
+
+<script>
+    window.ChatraSetup = {
+        mode: 'frame',
+        injectTo: 'page-delivery__chat' /* id блока, в который будет встроен чат */
+    };
+</script>
+<!-- Chatra {literal} -->
+<script>
+    (function(d, w, c) {
+        w.ChatraID = 'tywy5hLygXBFZeN6f';
+        var s = d.createElement('script');
+        w[c] = w[c] || function() {
+                (w[c].q = w[c].q || []).push(arguments);
+            };
+        s.async = true;
+        s.src = (d.location.protocol === 'https:' ? 'https:': 'http:')
+            + '//call.chatra.io/chatra.js';
+        if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+</script>
+<!-- /Chatra {/literal} -->

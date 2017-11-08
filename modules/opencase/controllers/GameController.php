@@ -66,6 +66,8 @@ class GameController extends Controller {
 				'balance' => $user->money,
 				'img' => $item->image,
 				'title' => $item->title,
+				'cost_sell' => $item->cost_sell,
+				'bid' => $basket->id,
 			];
 
 		} catch (\Exception $e) {

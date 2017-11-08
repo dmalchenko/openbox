@@ -378,4 +378,33 @@ class SiteController extends Controller {
 			'type' => $boxes[$id],
 		]);
 	}
+
+	/**
+	 * @param $id
+	 * @param $bid
+	 * @return array
+	 */
+	public function actionSell($id, $bid) {
+		\Yii::$app->response->format = Response::FORMAT_JSON;
+		$item = Items::findOne($id);
+		$user = User::getCurrentUser();
+		$basket = Basket::find()
+			->where(['token_index' => $user->token_index])
+			->andWhere(['id' => $bid])
+			->one();
+
+		if (!$user || !$item || !$basket) {
+			return ['code' => 500, 'msg' => 'Внутренняя ошибка'];
+		}
+
+		if ($basket->item_id != $id) {
+			return ['code' => 500, 'msg' => 'Ошибка в запросе'];
+		}
+
+		$user->money += $item->cost_sell;
+		$user->save();
+
+		$basket->delete();
+		return ['code' => 200, 'msg' => 'ok'];
+	}
 }
