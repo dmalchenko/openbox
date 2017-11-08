@@ -45,11 +45,11 @@ class Promo extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'token' => 'Token',
-            'token_index' => 'Token Index',
-            'parent_index' => 'Parent Index',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'token' => 'пользователь',
+            'token_index' => 'токен',
+            'parent_index' => 'токен промоутера',
+            'created_at' => 'создан',
+            'updated_at' => 'обновлен',
         ];
     }
 }

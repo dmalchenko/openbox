@@ -5,10 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\modules\opencase\models\Delivery */
 
-$this->title = 'Update Delivery: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Deliveries', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Обновить доставку: ' . $model->id;
 ?>
 <div class="delivery-update">
 

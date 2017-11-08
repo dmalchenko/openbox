@@ -5,10 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\modules\opencase\models\GameConfig */
 
-$this->title = 'Update Game Config: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Game Configs', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Обновить подкрутку #' . $model->id;
+
 ?>
 <div class="game-config-update">
 

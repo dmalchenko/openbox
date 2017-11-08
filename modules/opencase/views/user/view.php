@@ -10,16 +10,14 @@ use yii\widgets\DetailView;
 /* @var $gameLogDataProvider \yii\data\ActiveDataProvider */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-		<?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-		<?= Html::a('Delete', ['delete', 'id' => $model->id], [
+		<?= Html::a('Обновить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+		<?= Html::a('Удалить', ['delete', 'id' => $model->id], [
 			'class' => 'btn btn-danger',
 			'data' => [
 				'confirm' => 'Are you sure you want to delete this item?',
@@ -55,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		],
 	]) ?>
 
-    <h1><?= Html::encode('Personal game config') ?></h1>
+    <h1><?= Html::encode('Персональная подкрутка') ?></h1>
 
 	<?= GridView::widget([
 		'dataProvider' => $gameConfigDataProvider,
@@ -68,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			'item_id',
 			'chance',
 			'edit' => [
-				'attribute' => 'action',
+				'attribute' => 'экшен',
 				'format' => 'raw',
 				'value' => function (\app\modules\opencase\models\GameConfig $model) {
 					return Html::a('Edit', ['/opencase/gameconfig/update', 'id' => $model->id]);
@@ -77,7 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		],
 	]); ?>
 
-    <h1><?= Html::encode('Game logs') ?></h1>
+    <h1><?= Html::encode('Логи') ?></h1>
 
 	<?= GridView::widget([
 		'dataProvider' => $gameLogDataProvider,
@@ -91,7 +89,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		],
 	]); ?>
 
-    <h1><?= Html::encode('Basket') ?></h1>
+    <h1><?= Html::encode('Карзина') ?></h1>
 
 	<?= GridView::widget([
 		'dataProvider' => $basketDataProvider,
@@ -104,7 +102,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	                return Html::img($model->items->image);
                 },
 				'format' => 'raw',
-				'label' =>  'image'
+				'label' =>  'картинка'
             ],
 			'items.cost_real',
 			'created_dt' => [
@@ -112,7 +110,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					return $model->created_at;
 				},
 				'format' => 'datetime',
-                'label' =>  'date'
+                'label' =>  'создан'
 			]
 		],
 	]); ?>

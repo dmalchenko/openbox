@@ -52,12 +52,14 @@ class GameLog extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'token' => 'Token',
-            'token_index' => 'Token Index',
-            'case_type' => 'Case Type',
-            'item_id' => 'Item ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'token' => 'пользователь',
+            'token_index' => 'токен',
+            'case_type' => 'тип кейса',
+            'item_id' => 'ид предмета',
+            'created_at' => 'создан',
+            'updated_at' => 'обновлен',
+            'cost_real' => 'цена реальная',
+            'cost_sell' => 'цена продажи',
         ];
     }
 }

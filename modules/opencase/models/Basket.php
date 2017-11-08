@@ -45,11 +45,11 @@ class Basket extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'token' => 'Token',
-            'token_index' => 'Token Index',
-            'item_id' => 'Item ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'token' => 'пользователь',
+            'token_index' => 'токен',
+            'item_id' => 'ид предмета',
+            'created_at' => 'создан',
+            'updated_at' => 'обновлен',
         ];
     }
 

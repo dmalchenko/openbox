@@ -6,8 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Deliveries';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Доставки';
 ?>
 <div class="delivery-index">
 
@@ -43,6 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					return Html::img($model->item->image);
 				},
 				'attribute' => 'image',
+				'label' => 'картинка',
 				'format' => 'raw'
 			],
 			[

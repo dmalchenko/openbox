@@ -66,15 +66,15 @@ class GameConfig extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'user_id' => 'User ID',
-            'token' => 'Token',
-            'token_index' => 'Token Index',
-            'message' => 'Message',
-            'status' => 'Status',
-            'case_type' => 'Case Type',
-            'item_id' => 'Item ID',
-            'chance' => 'Chance',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'token' => 'пользователь',
+            'token_index' => 'токен',
+            'message' => 'сообщение',
+            'status' => 'статус',
+            'case_type' => 'тип кейса',
+            'item_id' => 'ид предмета',
+            'chance' => 'шанс',
+            'created_at' => 'создан',
+            'updated_at' => 'обновлен',
         ];
     }
 

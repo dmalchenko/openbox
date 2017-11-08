@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\modules\opencase\models\Items */
 
-$this->title = 'Create Items';
+$this->title = 'Добавить предмет';
 ?>
 <div class="items-create">
 

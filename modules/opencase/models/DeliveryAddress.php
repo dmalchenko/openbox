@@ -43,16 +43,16 @@ class DeliveryAddress extends \yii\db\ActiveRecord {
 	public function attributeLabels() {
 		return [
 			'id' => 'ID',
-			'token_index' => 'Token Index',
-			'name' => 'Name',
-			'country' => 'Country',
-			'city' => 'City',
-			'street' => 'Street',
-			'home' => 'Home',
-			'room' => 'Room',
-			'index' => 'Index',
-			'created_at' => 'Created At',
-			'updated_at' => 'Updated At',
+			'token_index' => 'токен',
+			'name' => 'имя',
+			'country' => 'страна',
+			'city' => 'город',
+			'street' => 'улица',
+			'home' => 'дом',
+			'room' => 'квартира',
+			'index' => 'индекс',
+			'created_at' => 'создан',
+			'updated_at' => 'обновлен',
 		];
 	}
 

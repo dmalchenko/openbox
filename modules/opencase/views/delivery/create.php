@@ -6,9 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\modules\opencase\models\Delivery */
 
-$this->title = 'Create Delivery';
-$this->params['breadcrumbs'][] = ['label' => 'Deliveries', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Создать доставку';
 ?>
 <div class="delivery-create">
 

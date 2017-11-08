@@ -6,9 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\modules\opencase\models\GameConfig */
 
-$this->title = 'Create Game Config';
-$this->params['breadcrumbs'][] = ['label' => 'Game Configs', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Добавить подкрутку';
 ?>
 <div class="game-config-create">
 

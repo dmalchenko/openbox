@@ -7,16 +7,15 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $type integer */
 
-$this->title = 'Items';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Предметы';
 ?>
 <div class="items-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <h3><?= Html::encode("Case $type RUB") ?></h3>
+    <h3><?= Html::encode("Кейс $type RUB") ?></h3>
     <p>
-    <?= Html::a('Create Items', ['create', 'caseType' => $type], ['class' => 'btn btn-success']) ?>
+    <?= Html::a('Добавить предмет', ['create', 'caseType' => $type], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
 		'dataProvider' => $dataProvider,
@@ -33,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function(\app\modules\opencase\models\Items $model) {
 					return Html::img($model->image);
                 },
-                'label' => 'image',
+                'label' => 'картинка',
                 'format' => 'raw'
             ],
 			[

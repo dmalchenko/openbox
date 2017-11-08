@@ -61,14 +61,14 @@ class Delivery extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'token' => 'Token',
-            'token_index' => 'Token Index',
-            'delivery_address_id' => 'Delivery Address ID',
-            'status' => 'Status',
-            'message' => 'Track codes',
-            'items' => 'Items',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'token' => 'пользователь',
+            'token_index' => 'токен',
+            'delivery_address_id' => 'ID адреса доставки',
+            'status' => 'статус',
+            'message' => 'почтовый трек',
+            'items' => 'ид предмета',
+            'created_at' => 'создан',
+            'updated_at' => 'обновлен',
         ];
     }
 

@@ -6,15 +6,14 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Game Configs';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Персональные подкрутки';
 ?>
 <div class="game-config-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-		<?= Html::a('Create Game Config', ['create'], ['class' => 'btn btn-success']) ?>
+		<?= Html::a('Добавить подкрутку', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 	<?= GridView::widget([
 		'dataProvider' => $dataProvider,
@@ -22,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			['class' => 'yii\grid\SerialColumn'],
 
 			'id',
-			'user_id',
+//			'user_id',
 			'token',
 			'token_index',
 			'status',
@@ -31,14 +30,14 @@ $this->params['breadcrumbs'][] = $this->title;
 				'value' => function (\app\modules\opencase\models\GameConfig $model) {
 					return Html::a($model->item->title, ['/opencase/item/view', 'id' => $model->item_id ]);
 				},
-                'label' => 'item',
+                'label' => 'предмет',
                 'format' => 'raw'
 			],
 			'item_img' => [
 				'value' => function (\app\modules\opencase\models\GameConfig $model) {
 					return Html::img($model->item->image);
 				},
-                'label' => 'image',
+                'label' => 'картинка',
                 'format' => 'raw'
 			],
 			'chance',

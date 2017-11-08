@@ -68,14 +68,14 @@ class User extends ActiveRecord implements IdentityInterface, Freekassable {
 		return [
 			'id' => 'ID',
 			'user_id' => 'User ID',
-			'name' => 'Name',
-			'service' => 'Service',
-			'avatar' => 'Avatar',
-			'token' => 'Token',
-			'token_index' => 'Token Index',
-			'money' => 'Money',
-			'created_at' => 'Created At',
-			'updated_at' => 'Updated At',
+			'name' => 'Имя',
+			'service' => 'авторизация',
+			'avatar' => 'аватар',
+			'token' => 'пользователь',
+			'token_index' => 'токен',
+			'money' => 'деньги',
+			'created_at' => 'создан',
+			'updated_at' => 'обновлен',
 		];
 	}
 

@@ -54,15 +54,15 @@ class Items extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'description' => 'Description',
-            'cost_real' => 'Cost Real',
-            'cost_sell' => 'Cost Sell',
-            'count' => 'Chance',
-            'case_type' => 'Case_type',
-            'image' => 'Image',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'title' => 'название',
+            'description' => 'описание',
+            'cost_real' => 'цена реальная',
+            'cost_sell' => 'цена продажи',
+            'count' => 'шанс',
+            'case_type' => 'тип кейса',
+            'image' => 'картинка',
+            'created_at' => 'создан',
+            'updated_at' => 'обновлен',
         ];
     }
 
