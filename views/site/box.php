@@ -23,88 +23,54 @@ use yii\helpers\Url;
         <div class="roulette-wrapper__shadow roulette-wrapper__shadow_left"></div>
         <div class="roulette-wrapper__shadow roulette-wrapper__shadow_right"></div>
         <div class="roulette">
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/10_medium.png" alt="Экшн Камера"
-                                   title="Экшн Камера"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/11_medium.png" alt="Смарт Часы (Android)"
-                                   title="Смарт Часы (Android)"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/5_medium.png" alt="Беспроводная мышь"
-                                   title="Беспроводная мышь"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/usb_smartbuy_4gb_medium.png"
-                                   alt="Флешка SmartBuy 4GB" title="Флешка SmartBuy 4GB"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/monokl-medium.png" alt="Подзорная труба"
-                                   title="Подзорная труба"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/kruzhka-meshalka-medium.png"
-                                   alt="Кружка мешалка" title="Кружка мешалка"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/cigarette_medium.png"
-                                   alt="Электронная сигарета" title="Электронная сигарета"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/spinner_medium.png" alt="Спиннер"
-                                   title="Спиннер"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/powerbank_medium.png"
-                                   alt="Брелок PowerBank 2600 mAh" title="Брелок PowerBank 2600 mAh"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/21_medium.png"
-                                   alt="Селфи палка (Монопод)" title="Селфи палка (Монопод)"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/7_medium.png" alt="Fish Eye"
-                                   title="Fish Eye"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/lazer-medium.png" alt="Лазерная указка"
-                                   title="Лазерная указка"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/6_medium.png" alt="Наушники молния"
-                                   title="Наушники молния"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/18_medium.png" alt="MP3 плеер"
-                                   title="MP3 плеер"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/android_cable_medium.png"
-                                   alt="USB-кабель Android" title="USB-кабель Android"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/jbl_headphone_medium.png" alt="Наушники"
-                                   title="Наушники"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/usb_led_medium.png"
-                                   alt="USB гибкая лампа" title="USB гибкая лампа"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/9_medium.png" alt="Нож кредитка"
-                                   title="Нож кредитка"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/iphone-kabel-medium.png"
-                                   alt="USB-кабель iPhone 5,6,7" title="USB-кабель iPhone 5,6,7"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/10_medium.png" alt="Экшн Камера"
-                                   title="Экшн Камера"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/11_medium.png" alt="Смарт Часы (Android)"
-                                   title="Смарт Часы (Android)"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/5_medium.png" alt="Беспроводная мышь"
-                                   title="Беспроводная мышь"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/usb_smartbuy_4gb_medium.png"
-                                   alt="Флешка SmartBuy 4GB" title="Флешка SmartBuy 4GB"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/monokl-medium.png" alt="Подзорная труба"
-                                   title="Подзорная труба"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/kruzhka-meshalka-medium.png"
-                                   alt="Кружка мешалка" title="Кружка мешалка"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/cigarette_medium.png"
-                                   alt="Электронная сигарета" title="Электронная сигарета"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/spinner_medium.png" alt="Спиннер"
-                                   title="Спиннер"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/powerbank_medium.png"
-                                   alt="Брелок PowerBank 2600 mAh" title="Брелок PowerBank 2600 mAh"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/21_medium.png"
-                                   alt="Селфи палка (Монопод)" title="Селфи палка (Монопод)"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/7_medium.png" alt="Fish Eye"
-                                   title="Fish Eye"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/lazer-medium.png" alt="Лазерная указка"
-                                   title="Лазерная указка"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/6_medium.png" alt="Наушники молния"
-                                   title="Наушники молния"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/18_medium.png" alt="MP3 плеер"
-                                   title="MP3 плеер"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/android_cable_medium.png"
-                                   alt="USB-кабель Android" title="USB-кабель Android"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/jbl_headphone_medium.png" alt="Наушники"
-                                   title="Наушники"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/usb_led_medium.png"
-                                   alt="USB гибкая лампа" title="USB гибкая лампа"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/9_medium.png" alt="Нож кредитка"
-                                   title="Нож кредитка"/></div>
-            <div class="item"><img src="http://214010.selcdn.ru/ranbox/items-i/iphone-kabel-medium.png"
-                                   alt="USB-кабель iPhone 5,6,7" title="USB-кабель iPhone 5,6,7"/></div>
+			<?php
+			$itemHtml = <<<HTML
+ <div class="item" data-id="%s"><img src="%s" title="%s"/></div>
+HTML;
+			/**
+			 * @var \app\modules\opencase\models\Items $item
+			 */
+			foreach ($box as $item) {
+				echo sprintf($itemHtml, $item->id, $item->image, $item->title);
+			}
+			/**
+			 * @var \app\modules\opencase\models\Items $item
+			 */
+			foreach ($box as $item) {
+				echo sprintf($itemHtml, $item->id, $item->image, $item->title);
+			}
+			/**
+			 * @var \app\modules\opencase\models\Items $item
+			 */
+			foreach ($box as $item) {
+				echo sprintf($itemHtml, $item->id, $item->image, $item->title);
+			}
+			/**
+			 * @var \app\modules\opencase\models\Items $item
+			 */
+			foreach ($box as $item) {
+				echo sprintf($itemHtml, $item->id, $item->image, $item->title);
+			}
+			/**
+			 * @var \app\modules\opencase\models\Items $item
+			 */
+			foreach ($box as $item) {
+				echo sprintf($itemHtml, $item->id, $item->image, $item->title);
+			}
+			/**
+			 * @var \app\modules\opencase\models\Items $item
+			 */
+			foreach ($box as $item) {
+				echo sprintf($itemHtml, $item->id, $item->image, $item->title);
+			}
+
+			?>
         </div>
     </div>
 </div>
 
 <div class="page-box__wrapper-btn">
-    <button id="#openb" class="btn  btn--accent" data-toggle="modal"
+    <button id="#openb" class="btn  btn--accent" data-k="2"
             data-target="#modal-demo-0<?= Yii::$app->user->isGuest ? '1' : '3' ?>">Открыть коробку
         за <?= $type ?>
         &#8381;
@@ -130,13 +96,32 @@ use yii\helpers\Url;
     var csrfToken = $('meta[name="csrf-token"]').attr("content");
     var open = document.getElementById('#openb');
     var rouletteItem = document.querySelectorAll('.item');
+    var roulette = $('.roulette');
     var caseType = <?=$type?>;
 
-    open.onclick = function () {
+
+
+    $('#cb').on('click', function () {
         for (var i = 0; i < rouletteItem.length; i++) {
-            rouletteItem[i].style.transform = 'translateX(-2100px)';
+            console.log(rouletteItem[i].style.transform);
+            rouletteItem[i].style.transform = 'translateX(0px)';
         }
-//        setTimeout(modalShow, 3500);
+    });
+
+    open.onclick = function () {
+        var k = this.getAttribute('data-k');
+        if (k == 2) {
+            k = 6;
+        } else {
+            k = 2;
+        }
+        this.setAttribute('data-k', k);
+
+        if (this.getAttribute('data-target') == "#modal-demo-01") {
+            $('#modal-demo-01').modal('show');
+            return;
+        }
+
 
         $.ajax({
             dataType: 'json',
@@ -144,10 +129,27 @@ use yii\helpers\Url;
             data: {_csrf: csrfToken},
             success: function (data) {
                 if (data.code == 200 & data.caseType == caseType & data.id > 0) {
+
+                    for (var i = (rouletteItem.length / k); i < rouletteItem.length; i++) {
+                        var r = rouletteItem[i].getAttribute('data-id');
+                        if (data.id == r) {
+                            break;
+                        }
+                    }
+                    var s = (i - 3) * -150;
+                    console.log(Math.floor(rouletteItem.length / k),i,k);
+                    for (var i = 0; i < rouletteItem.length; i++) {
+                        rouletteItem[i].style.transform = 'translateX(' + s + 'px)';
+                    }
+                    setTimeout(function () {
+                        $('#modal-demo-03').modal('show');
+                    }, 3500);
+
                     $('.main-nav__link-user-balance').html(data.balance + ' &#8381;');
                     $('#modal-img-prize').attr('src', data.img);
                     $('.modal__title-prize').html(data.title);
                 } else if (data.code == 402) {
+                    $('#modal-demo-03').modal('show');
                     $('.modal__title').html(data.msg);
                 } else if (data.code != 200) {
                     console.log(data.msg);

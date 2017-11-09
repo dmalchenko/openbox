@@ -364,12 +364,12 @@ $urlActionPayment = Url::toRoute(['/freekassa/payment/create']);
             </div>
     </div>
 
-    <div id="modal-demo-03" class="modal" tabindex="-1" role="dialog">
+    <div id="modal-demo-03" class="modal" tabindex="-1" role="dialog"  data-backdrop="static">
         <div class="modal__dialog" role="document">
             <div class="modal__content">
                 <div class="modal__header">
                             <span class="close  modal__close" data-dismiss="modal"
-                                  aria-label="Закрыть"><span></span></span>
+                                  aria-label="Закрыть" id="cb"><span></span></span>
                     <div class="modal__title">Вы выйграли <span class="modal__title-prize"></span>!</div>
                 </div>
                 <div class="modal__wrapper">
@@ -392,7 +392,6 @@ $urlActionPayment = Url::toRoute(['/freekassa/payment/create']);
     VK.Widgets.Group("vk_groups", {mode: 3}, 20003922);
 </script>
 <script src="js/script.min.js"></script>
-
 </body>
 </html>
 

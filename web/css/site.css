@@ -121,3 +121,7 @@ a.desc:after {
 .modal__link {
     margin-left: 20px;
 }
+
+.item {
+    /*margin-top: -15px !important;*/
+}
