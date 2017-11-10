@@ -100,7 +100,6 @@ HTML;
     var caseType = <?=$type?>;
 
 
-
     $('#cb').on('click', function () {
         for (var i = 0; i < rouletteItem.length; i++) {
             console.log(rouletteItem[i].style.transform);
@@ -136,20 +135,21 @@ HTML;
                             break;
                         }
                     }
-                    var s = (i - 3) * -150;
-                    console.log(Math.floor(rouletteItem.length / k),i,k);
+                    var s = (i - 3) * -150;s
+                    console.log(Math.floor(rouletteItem.length / k), i, k);
                     for (var i = 0; i < rouletteItem.length; i++) {
                         rouletteItem[i].style.transform = 'translateX(' + s + 'px)';
                     }
                     setTimeout(function () {
-                        $('#modal-demo-03').modal('show');
+                        $('#modal-demo-04').modal('show');
                     }, 3500);
 
                     $('.main-nav__link-user-balance').html(data.balance + ' &#8381;');
                     $('#modal-img-prize').attr('src', data.img);
                     $('.modal__title-prize').html(data.title);
+                    $('.modal__btn--mr').html('Продать за ' + data.cost_sell + ' &#8381;');
                 } else if (data.code == 402) {
-                    $('#modal-demo-03').modal('show');
+                    $('#modal-demo-04').modal('show');
                     $('.modal__title').html(data.msg);
                 } else if (data.code != 200) {
                     console.log(data.msg);

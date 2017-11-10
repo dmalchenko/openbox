@@ -374,13 +374,41 @@ $urlActionPayment = Url::toRoute(['/freekassa/payment/create']);
                 </div>
                 <div class="modal__wrapper">
                     <div class="modal__img">
-                        <img id="modal-img-prize" src="">
+                        <img id="modal-img-prize2" src="">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </footer>
+
+    <div id="modal-demo-04" class="modal  modal-prize" tabindex="-1" role="dialog">
+        <div class="modal__dialog" role="document">
+            <div class="modal__content modal__content-box">
+                <div class="modal__header  modal__header-win">
+                    <span class="close  modal__close" data-dismiss="modal" aria-label="Закрыть"><span></span></span>
+                    <div class="modal__title  modal__title--mt">Вы выйграли <span class="modal__title-prize">часы</span>!
+                    </div>
+                </div>
+                <div class="modal__box  modal__box--green">
+                    <img class="modal__img-win-hov" src="img/box__green-hov.png" alt="win">
+                    <div class="modal__title  modal__title-win modal__title-prize">Fish Eye</div>
+                    <img class="modal__img-win  modal__img-win--one" src="img/win-bg-1.png" alt="win">
+                    <img class="modal__img-win  modal__img-win--two" src="img/win-bg-2.png" alt="win">
+                    <div class="modal__img-prize">
+                        <img id="modal-img-prize" src="" alt="Смарт Часы (Android)">
+                    </div>
+                </div>
+                <div class="modal__wrapper-bottom">
+                    <button class="btn btn--accent modal__btn--mr" data-dismiss="modal">Продать за 90 &#8381;</button>
+                    <button class="btn btn--xs-mt btn--accent" data-dismiss="modal">Открыть еще</button>
+                    <!--                    <button class="btn  btn--xs-mt  btn--accent">Заказать доставку</button>-->
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</footer>
 
 </div>
 <span id="btn-roulette"></span>
