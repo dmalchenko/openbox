@@ -31,23 +31,23 @@ $user = \app\models\User::getCurrentUser();
 
 <div class="page-profile-products__box-wrapper js-product-delivery-wrapper">
 	<div class="page-profile-products__box js-product-delivery-box">
-		<button class="close  page-profile-products__box-close" aria-label="Закрыть"><span></span></button>
+		<button class="close  page-profile-products__box-close js-btn-product-del" aria-label="Закрыть"><span></span></button>
 		<img class="js-product-delivery-img" src="img/surprice.png" alt="product">
 	</div>
 	<div class="page-profile-products__box js-product-delivery-box">
-        <button class="close  page-profile-products__box-close" aria-label="Закрыть"><span></span></button>
+        <button class="close  page-profile-products__box-close js-btn-product-del" aria-label="Закрыть"><span></span></button>
 		<img class="js-product-delivery-img" src="img/surprice.png" alt="product">
 	</div>
 	<div class="page-profile-products__box js-product-delivery-box">
-        <button class="close  page-profile-products__box-close" aria-label="Закрыть"><span></span></button>
+        <button class="close  page-profile-products__box-close js-btn-product-del" aria-label="Закрыть"><span></span></button>
 		<img class="js-product-delivery-img" src="img/surprice.png" alt="product">
 	</div>
 	<div class="page-profile-products__box js-product-delivery-box">
-        <button class="close  page-profile-products__box-close" aria-label="Закрыть"><span></span></button>
+        <button class="close  page-profile-products__box-close js-btn-product-del" aria-label="Закрыть"><span></span></button>
 		<img class="js-product-delivery-img" src="img/surprice.png" alt="product">
 	</div>
 	<div class="page-profile-products__box js-product-delivery-box">
-        <button class="close  page-profile-products__box-close" aria-label="Закрыть"><span></span></button>
+        <button class="close  page-profile-products__box-close js-btn-product-del" aria-label="Закрыть"><span></span></button>
 		<img class="js-product-delivery-img" src="img/surprice.png" alt="product">
 	</div>
 </div>
@@ -122,5 +122,15 @@ HTML;
         } else {
             alert('Корзина полна');
         }
+    });
+    $('.js-product-delivery-wrapper').on('click', '.js-btn-product-del', function(e) {
+        var $currentProduct = $(e.target).parents('.js-product-delivery-box');
+        var $emptySlot = $($('.js-product-box').not(':visible')[0]);
+        var $emptySlotImg = $emptySlot.find('.js-product-img');
+        var $currentProductImg = $currentProduct.find('.js-product-delivery-img');
+        $emptySlotImg.prop('src', $currentProductImg.prop('src'));
+        $emptySlot.show();
+        $currentProduct.find('.js-product-delivery-img').prop('src', 'img/surprice.png');
+        $currentProduct.removeClass('page-profile-products__box--active');
     });
 </script>
