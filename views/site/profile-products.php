@@ -29,26 +29,26 @@ $user = \app\models\User::getCurrentUser();
 
 <h2 class="page-profile-products__title">Корзина доставки</h2>
 
-<div class="page-profile-products__box-wrapper">
-	<div class="page-profile-products__box">
+<div class="page-profile-products__box-wrapper js-product-delivery-wrapper">
+	<div class="page-profile-products__box js-product-delivery-box">
 		<button class="close  page-profile-products__box-close" aria-label="Закрыть"><span></span></button>
-		<img src="img/surprice.png" alt="product">
+		<img class="js-product-delivery-img" src="img/surprice.png" alt="product">
 	</div>
-	<div class="page-profile-products__box">
+	<div class="page-profile-products__box js-product-delivery-box">
         <button class="close  page-profile-products__box-close" aria-label="Закрыть"><span></span></button>
-		<img src="img/surprice.png" alt="product">
+		<img class="js-product-delivery-img" src="img/surprice.png" alt="product">
 	</div>
-	<div class="page-profile-products__box">
+	<div class="page-profile-products__box js-product-delivery-box">
         <button class="close  page-profile-products__box-close" aria-label="Закрыть"><span></span></button>
-		<img src="img/surprice.png" alt="product">
+		<img class="js-product-delivery-img" src="img/surprice.png" alt="product">
 	</div>
-	<div class="page-profile-products__box">
+	<div class="page-profile-products__box js-product-delivery-box">
         <button class="close  page-profile-products__box-close" aria-label="Закрыть"><span></span></button>
-		<img src="img/surprice.png" alt="product">
+		<img class="js-product-delivery-img" src="img/surprice.png" alt="product">
 	</div>
-	<div class="page-profile-products__box">
+	<div class="page-profile-products__box js-product-delivery-box">
         <button class="close  page-profile-products__box-close" aria-label="Закрыть"><span></span></button>
-		<img src="img/surprice.png" alt="product">
+		<img class="js-product-delivery-img" src="img/surprice.png" alt="product">
 	</div>
 </div>
 
@@ -67,7 +67,7 @@ $user = \app\models\User::getCurrentUser();
 			</svg>
 		</button>
 		<button class="page-profile-products__box-sell js-btn-product-sell">&#8381;</button>
-		<img src="%s" alt="product">
+		<img class="js-product-img" src="%s" alt="product">
 	</div>
 HTML;
 
@@ -108,4 +108,19 @@ HTML;
 			$(e.target).parents('.js-product-box').hide();
 		}
 	});
+    $('.js-product-wrapper').on('click', '.js-btn-product-buy', function (e) {
+        var $currentProduct = $(e.target).parents('.js-product-box');
+        var isEmptySlot = $('.js-product-delivery-box').not('.page-profile-products__box--active').length;
+        if (isEmptySlot) {
+            var $emptySlot = $($('.js-product-delivery-box').not('.page-profile-products__box--active')[0]);
+            var $emptySlotImg = $emptySlot.find('.js-product-delivery-img');
+            var $currentProductImg = $currentProduct.find('.js-product-img');
+            $emptySlotImg.prop('src', $currentProductImg.prop('src'));
+            $emptySlot.addClass('page-profile-products__box--active');
+            $currentProduct.find('.js-product-img').prop('src', '');
+            $currentProduct.hide();
+        } else {
+            alert('Корзина полна');
+        }
+    });
 </script>

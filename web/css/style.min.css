@@ -1831,6 +1831,12 @@ textarea.field-text__input {
     background-color: #000; }
 .page-profile-products__box-close span:after {
     background-color: #000; }
+.page-profile-products__box .page-profile-products__box-close {
+  display: none;
+}
+.page-profile-products__box--active .page-profile-products__box-close {
+  display: block;
+}
 .page-profile-products__wrapper-btn {
   display: -webkit-box;
   display: -ms-flexbox;
