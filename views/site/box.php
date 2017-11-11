@@ -63,6 +63,30 @@ HTML;
 			foreach ($box as $item) {
 				echo sprintf($itemHtml, $item->id, $item->image, $item->title);
 			}
+			/**
+			 * @var \app\modules\opencase\models\Items $item
+			 */
+			foreach ($box as $item) {
+				echo sprintf($itemHtml, $item->id, $item->image, $item->title);
+			}
+			/**
+			 * @var \app\modules\opencase\models\Items $item
+			 */
+			foreach ($box as $item) {
+				echo sprintf($itemHtml, $item->id, $item->image, $item->title);
+			}
+			/**
+			 * @var \app\modules\opencase\models\Items $item
+			 */
+			foreach ($box as $item) {
+				echo sprintf($itemHtml, $item->id, $item->image, $item->title);
+			}
+			/**
+			 * @var \app\modules\opencase\models\Items $item
+			 */
+			foreach ($box as $item) {
+				echo sprintf($itemHtml, $item->id, $item->image, $item->title);
+			}
 
 			?>
         </div>
@@ -70,7 +94,7 @@ HTML;
 </div>
 
 <div class="page-box__wrapper-btn">
-    <button id="#openb" class="btn  btn--accent" data-k="2"
+    <button id="#openb" class="btn  btn--accent" data-k="1"
             data-target="#modal-demo-0<?= Yii::$app->user->isGuest ? '1' : '3' ?>">Открыть коробку
         за <?= $type ?>
         &#8381;
@@ -102,17 +126,17 @@ HTML;
 
     $('#cb').on('click', function () {
         for (var i = 0; i < rouletteItem.length; i++) {
-            console.log(rouletteItem[i].style.transform);
+//            console.log(rouletteItem[i].style.transform);
             rouletteItem[i].style.transform = 'translateX(0px)';
         }
     });
 
     open.onclick = function () {
         var k = this.getAttribute('data-k');
-        if (k == 2) {
-            k = 6;
+        if (k == 1) {
+            k = 8;
         } else {
-            k = 2;
+            k = 1;
         }
         this.setAttribute('data-k', k);
 
@@ -121,7 +145,6 @@ HTML;
             return;
         }
 
-
         $.ajax({
             dataType: 'json',
             url: '<?= Url::toRoute(['/opencase/game/run', 'caseType' => $type]) ?>',
@@ -129,14 +152,14 @@ HTML;
             success: function (data) {
                 if (data.code == 200 & data.caseType == caseType & data.id > 0) {
 
-                    for (var i = (rouletteItem.length / k); i < rouletteItem.length; i++) {
+                    for (var i = (rouletteItem.length / 10) * k ; i < rouletteItem.length; i++) {
                         var r = rouletteItem[i].getAttribute('data-id');
                         if (data.id == r) {
                             break;
                         }
                     }
                     var s = (i - 3) * -150;s
-                    console.log(Math.floor(rouletteItem.length / k), i, k);
+//                    console.log(Math.floor(rouletteItem.length / k), i, k);
                     for (var i = 0; i < rouletteItem.length; i++) {
                         rouletteItem[i].style.transform = 'translateX(' + s + 'px)';
                     }
@@ -147,7 +170,11 @@ HTML;
                     $('.main-nav__link-user-balance').html(data.balance + ' &#8381;');
                     $('#modal-img-prize').attr('src', data.img);
                     $('.modal__title-prize').html(data.title);
-                    $('.modal__btn--mr').html('Продать за ' + data.cost_sell + ' &#8381;');
+                    var bsell = $('.modal__btn--mr');
+                    bsell.html('Продать за ' + data.cost_sell + ' &#8381;');
+                    bsell.attr('data-sell', data.cost_sell);
+                    bsell.attr('data-bid', data.bid);
+                    bsell.attr('data-id', data.id);
                 } else if (data.code == 402) {
                     $('#modal-demo-04').modal('show');
                     $('.modal__title').html(data.msg);

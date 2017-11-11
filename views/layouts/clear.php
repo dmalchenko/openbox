@@ -295,7 +295,7 @@ $urlActionPayment = Url::toRoute(['/freekassa/payment/create']);
             </div>
 
             <div id="modal-demo-02" class="modal" tabindex="-1" role="dialog">
-                <form action="<?= $urlActionPayment ?>" class="modal__form">
+                <form action="<?= $urlActionPayment ?>" class="modal__form  modal__dialog">
                 <div class="modal__content">
                     <div class="modal__header">
                             <span class="close  modal__close" data-dismiss="modal"
@@ -399,7 +399,7 @@ $urlActionPayment = Url::toRoute(['/freekassa/payment/create']);
                     </div>
                 </div>
                 <div class="modal__wrapper-bottom">
-                    <button class="btn btn--accent modal__btn--mr" data-dismiss="modal">Продать за 90 &#8381;</button>
+                    <button id="bsell" class="btn btn--accent modal__btn--mr" data-dismiss="modal" data-bid="0" data-sell="0" data-id="0">Продать за 90 &#8381;</button>
                     <button class="btn btn--xs-mt btn--accent" data-dismiss="modal">Открыть еще</button>
                     <!--                    <button class="btn  btn--xs-mt  btn--accent">Заказать доставку</button>-->
                 </div>
@@ -418,6 +418,26 @@ $urlActionPayment = Url::toRoute(['/freekassa/payment/create']);
 <script>window.jQuery || document.write('<script src="js/jquery.3.1.1.min.js"><\/script>')</script>
 <script type="text/javascript">
     VK.Widgets.Group("vk_groups", {mode: 3}, 20003922);
+</script>
+<script>
+    var bsell = $('#bsell');
+    var csrfToken = $('meta[name="csrf-token"]').attr("content");
+
+    bsell.on('click', function () {
+        console.log(123);
+        $.ajax({
+            dataType: 'json',
+            url: '<?= Url::toRoute(['/site/sell']) ?>',
+            data: {_csrf: csrfToken, bid: bsell.attr('data-bid'), id: bsell.attr('data-id')},
+            success: function (data) {
+                console.log(data);
+                $('.main-nav__link-user-balance').html(data.balance + ' &#8381;');
+            },
+            fail: function () {
+                console.log('err');
+            }
+        });
+    });
 </script>
 <script src="js/script.min.js"></script>
 </body>

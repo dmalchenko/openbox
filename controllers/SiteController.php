@@ -405,6 +405,6 @@ class SiteController extends Controller {
 		$user->save();
 
 		$basket->delete();
-		return ['code' => 200, 'msg' => 'ok'];
+		return ['code' => 200, 'msg' => 'ok', 'balance' => $user->money];
 	}
 }
