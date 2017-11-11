@@ -46,7 +46,7 @@ use yii\helpers\Url;
 
     <div class="box-wrapper">
         <div class="box-wrapper__left">
-            <div class="box">
+            <div class="box  boxColor100">
                 <div class="box__header">
                     <div class="box__name">
                         Коробка
@@ -69,7 +69,7 @@ use yii\helpers\Url;
             <div class="box-wrapper__items">
                 <?php
                 foreach ($case250 as $item) {
-                    $s = '<div class="box-wrapper__item"><img src="%s" alt="surpise"></div>';
+                    $s = '<div class="box-wrapper__item-green"><img src="%s" alt="surpise"></div>';
                     echo sprintf($s, $item->image);
                 }
                 ?>
@@ -79,7 +79,7 @@ use yii\helpers\Url;
 
     <div class="box-wrapper">
         <div class="box-wrapper__left">
-            <div class="box">
+            <div class="box  boxColor250">
                 <div class="box__header">
                     <div class="box__name">
                         Коробка
@@ -102,7 +102,7 @@ use yii\helpers\Url;
             <div class="box-wrapper__items">
                 <?php
                 foreach ($case500 as $item) {
-                    $s = '<div class="box-wrapper__item"><img src="%s" alt="surpise"></div>';
+                    $s = '<div class="box-wrapper__item box-wrapper__item-red"><img src="%s" alt="surpise"></div>';
                     echo sprintf($s, $item->image);
                 }
                 ?>
@@ -112,7 +112,7 @@ use yii\helpers\Url;
 
     <div class="box-wrapper">
         <div class="box-wrapper__left">
-            <div class="box">
+            <div class="box  boxColor500">
                 <div class="box__header">
                     <div class="box__name">
                         Коробка
@@ -135,7 +135,7 @@ use yii\helpers\Url;
             <div class="box-wrapper__items">
                 <?php
                 foreach ($case1000 as $item) {
-                    $s = '<div class="box-wrapper__item"><img src="%s" alt="surpise"></div>';
+                    $s = '<div class="box-wrapper__item box-wrapper__item-blue"><img src="%s" alt="surpise"></div>';
                     echo sprintf($s, $item->image);
                 }
                 ?>

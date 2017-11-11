@@ -399,12 +399,10 @@ $urlActionPayment = Url::toRoute(['/freekassa/payment/create']);
                     </div>
                 </div>
                 <div class="modal__wrapper-bottom">
-                    <button id="bsell" class="btn btn--accent modal__btn--mr" data-dismiss="modal" data-bid="0" data-sell="0" data-id="0">Продать за 90 &#8381;</button>
+                    <button id="bsell" class="btn btn--xs-mt btn--accent modal__btn--mr" data-dismiss="modal" data-bid="0" data-sell="0" data-id="0">Продать за 90 &#8381;</button>
                     <button class="btn btn--xs-mt btn--accent" data-dismiss="modal">Открыть еще</button>
                     <!--                    <button class="btn  btn--xs-mt  btn--accent">Заказать доставку</button>-->
                 </div>
-
-
             </div>
         </div>
     </div>
@@ -442,4 +440,3 @@ $urlActionPayment = Url::toRoute(['/freekassa/payment/create']);
 <script src="js/script.min.js"></script>
 </body>
 </html>
-
