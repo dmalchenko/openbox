@@ -83,7 +83,7 @@ class UserController extends \app\controllers\UserController {
 			->where(['token_index' => $user->token_index])
 			->andWhere(['item_id' => $items])
 			->all();
-		$confirmItems = count($items) === count($basketItems);
+		$confirmItems = count($basketItems) - count($items) > 0 && count($items);
 		if (!$confirmItems) {
 			return ['code' => 500, 'msg' => 'Внутренняя ошибка, попробуйте позже'];
 		}
