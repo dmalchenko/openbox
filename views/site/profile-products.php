@@ -59,7 +59,7 @@ $user = \app\models\User::getCurrentUser();
 </div>
 
 <div class="page-profile-products__wrapper-btn">
-    <a href="#" class="btn  btn--accent  page-profile-products__btn" onclick="delivery()">Заказать доставку за 300
+    <a href="javascript:void(0);" class="btn  btn--accent  page-profile-products__btn" onclick="delivery()">Заказать доставку за 300
         &#8381;</a>
 </div>
 
@@ -87,26 +87,31 @@ HTML;
 <script>
     var csrfToken = $('meta[name="csrf-token"]').attr("content");
     function delivery() {
-        // var items = $('#code-val').val();
-        var items = [1, 2, 3];
-        $.ajax({
-            dataType: 'json',
-            type: 'post',
-            url: "<?= Url::toRoute(['/opencase/user/delivery']) ?>",
-            data: {_csrf: csrfToken, items: items},
-            success: function (data) {
-                if (data.code == 200) {
-                    alert('Заявка на доставку создана');
-                    window.location.href = "<?= Url::toRoute(['/site/profile-table'])?>";
-                } else if (data.code != 200) {
-                    console.log(data.msg);
-                    alert(data.msg);
-                } else {
-                    alert('Произошла внутренняя ошибка, попробуйте позже');
-                }
-                console.log(data);
+        var $deliveryProducts = $('.page-profile-products__box--active');
+        if ($deliveryProducts.length) {
+            var items = [];
+            for (var i = 0; i < $deliveryProducts.length; i++) {
+                items.push($($deliveryProducts[i]).data('id'));
             }
-        });
+            $.ajax({
+                dataType: 'json',
+                type: 'post',
+                url: "<?= Url::toRoute(['/opencase/user/delivery']) ?>",
+                data: {_csrf: csrfToken, items: items},
+                success: function (data) {
+                    if (data.code == 200) {
+                        alert('Заявка на доставку создана');
+                        window.location.href = "<?= Url::toRoute(['/site/profile-table'])?>";
+                    } else if (data.code != 200) {
+                        console.log(data.msg);
+                        alert(data.msg);
+                    } else {
+                        alert('Произошла внутренняя ошибка, попробуйте позже');
+                    }
+                    console.log(data);
+                }
+            });
+        }
     }
     $('.js-product-wrapper').on('click', '.js-btn-product-sell', function (e) {
         var $product = $(e.target).parents('.js-product-box');
@@ -139,8 +144,14 @@ HTML;
             var $emptySlotImg = $emptySlot.find('.js-product-delivery-img');
             var $currentProductImg = $currentProduct.find('.js-product-img');
             $emptySlotImg.prop('src', $currentProductImg.prop('src'));
+            $emptySlot.data({
+                id: $currentProduct.data('id'),
+                sell: $currentProduct.data('sell'),
+                bid: $currentProduct.data('bid')
+            });
             $emptySlot.addClass('page-profile-products__box--active');
             $currentProduct.find('.js-product-img').prop('src', '');
+            $currentProduct.removeData();
             $currentProduct.hide();
         } else {
             alert('Корзина полна');
@@ -152,8 +163,14 @@ HTML;
         var $emptySlotImg = $emptySlot.find('.js-product-img');
         var $currentProductImg = $currentProduct.find('.js-product-delivery-img');
         $emptySlotImg.prop('src', $currentProductImg.prop('src'));
+        $emptySlot.data({
+            id: $currentProduct.data('id'),
+            sell: $currentProduct.data('sell'),
+            bid: $currentProduct.data('bid')
+        });
         $emptySlot.show();
         $currentProduct.find('.js-product-delivery-img').prop('src', 'img/surprice.png');
+        $currentProduct.removeData();
         $currentProduct.removeClass('page-profile-products__box--active');
     });
 </script>
