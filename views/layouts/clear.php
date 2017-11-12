@@ -422,7 +422,6 @@ $urlActionPayment = Url::toRoute(['/freekassa/payment/create']);
     var csrfToken = $('meta[name="csrf-token"]').attr("content");
 
     bsell.on('click', function () {
-        console.log(123);
         $.ajax({
             dataType: 'json',
             url: '<?= Url::toRoute(['/site/sell']) ?>',
