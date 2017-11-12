@@ -11,7 +11,7 @@ use yii\helpers\Url;
 
 ?>
 
-<div class="box-wrapper">
+<div class="box-wrapper" onclick="window.location.href ='<?= Url::toRoute(['/site/box', 'id' => 1])?>';">
     <div class="box-wrapper__left">
         <div class="box">
             <div class="box__header">
@@ -44,7 +44,7 @@ use yii\helpers\Url;
     </div>
 </div>
 
-<div class="box-wrapper">
+<div class="box-wrapper" onclick="window.location.href ='<?= Url::toRoute(['/site/box', 'id' => 2])?>';">
     <div class="box-wrapper__left">
         <div class="box  boxColor100">
             <div class="box__header">
@@ -77,7 +77,7 @@ use yii\helpers\Url;
     </div>
 </div>
 
-<div class="box-wrapper">
+<div class="box-wrapper" onclick="window.location.href ='<?= Url::toRoute(['/site/box', 'id' => 3])?>';">
     <div class="box-wrapper__left">
         <div class="box  boxColor250">
             <div class="box__header">
@@ -110,7 +110,7 @@ use yii\helpers\Url;
     </div>
 </div>
 
-<div class="box-wrapper">
+<div class="box-wrapper" onclick="window.location.href ='<?= Url::toRoute(['/site/box', 'id' => 4])?>';">
     <div class="box-wrapper__left">
         <div class="box  boxColor500">
             <div class="box__header">
