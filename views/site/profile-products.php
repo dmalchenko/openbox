@@ -67,7 +67,7 @@ $user = \app\models\User::getCurrentUser();
 <div class="page-profile-products__box-wrapper js-product-wrapper">
 	<?php
 	$boxTemplate = <<< HTML
-    <div class="page-profile-products__box js-product-box caseColor%s">
+    <div class="page-profile-products__box js-product-box boxColor%s">
         <button class="page-profile-products__box-buy js-btn-product-buy">
             <svg width="20" height="20">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-svg.svg#cart"></use>
