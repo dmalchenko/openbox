@@ -67,7 +67,7 @@ $user = \app\models\User::getCurrentUser();
 <div class="page-profile-products__box-wrapper js-product-wrapper">
 	<?php
 	$boxTemplate = <<< HTML
-    <div class="page-profile-products__box js-product-box boxColor%s">
+    <div class="page-profile-products__box js-product-box">
         <button class="page-profile-products__box-buy js-btn-product-buy">
             <svg width="20" height="20">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-svg.svg#cart"></use>
@@ -79,7 +79,7 @@ $user = \app\models\User::getCurrentUser();
 HTML;
 
 	foreach ($basketDataProvider as $box) {
-		echo sprintf($boxTemplate, $box->items->case_type, $box->id, $box->items->id, $box->items->cost_sell, $box->items->image);
+		echo sprintf($boxTemplate, $box->id, $box->items->id, $box->items->cost_sell, $box->items->image);
 	}
 	?>
 
