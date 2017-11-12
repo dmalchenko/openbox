@@ -67,13 +67,13 @@ $user = \app\models\User::getCurrentUser();
 <div class="page-profile-products__box-wrapper js-product-wrapper">
 	<?php
 	$boxTemplate = <<< HTML
-    <div class="page-profile-products__box js-product-box">
+    <div class="page-profile-products__box js-product-box" data-bid="%s" data-id="%s" data-sell="%s">
         <button class="page-profile-products__box-buy js-btn-product-buy">
             <svg width="20" height="20">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-svg.svg#cart"></use>
             </svg>
         </button>
-        <button class="page-profile-products__box-sell js-btn-product-sell" data-bid="%s" data-id="%s" data-sell="%s">&#8381;</button>
+        <button class="page-profile-products__box-sell js-btn-product-sell">&#8381;</button>
         <img class="js-product-img" src="%s" alt="product">
     </div>
 HTML;
@@ -109,12 +109,16 @@ HTML;
         });
     }
     $('.js-product-wrapper').on('click', '.js-btn-product-sell', function (e) {
-        var sellConfirmation = confirm('Вы уверены, что хотите продать товар за ' + $(this).data('sell') + 'руб?');
+        var $product = $(e.target).parents('.js-product-box');
+        var productCost = $product.data('sell');
+        var sellConfirmation = confirm('Вы уверены, что хотите продать товар за ' + productCost + 'руб?');
         if (sellConfirmation) {
+            var productBid = $product.data('bid');
+            var productId = $product.data('id');
             $.ajax({
                 dataType: 'json',
                 url: '<?= Url::toRoute(['/site/sell']) ?>',
-                data: {_csrf: csrfToken, bid: $(this).data('bid'), id: $(this).data('id')},
+                data: {_csrf: csrfToken, bid: productBid, id: productId},
                 success: function (data) {
                     console.log(data);
                     $('.page-profile__balance-number').html(data.balance + ' &#8381;');
