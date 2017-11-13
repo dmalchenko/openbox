@@ -2,9 +2,14 @@
 /* @var $this yii\web\View */
 use yii\helpers\Url;
 
-/* @var \app\modules\opencase\models\Items $box */
 /* @var integer $id */
 /* @var integer $type */
+/* @var array $case */
+
+$box = [];
+foreach ($case as $c) {
+    $box[] = $c->item;
+}
 
 ?>
 

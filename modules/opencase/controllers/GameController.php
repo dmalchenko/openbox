@@ -4,6 +4,7 @@ namespace app\modules\opencase\controllers;
 
 use app\models\User;
 use app\modules\opencase\models\Basket;
+use app\modules\opencase\models\CaseItem;
 use app\modules\opencase\models\GameConfig;
 use app\modules\opencase\models\GameLog;
 use app\modules\opencase\models\Items;
@@ -102,11 +103,11 @@ class GameController extends Controller {
 			$personalIds[] = $itemPersonal['item_id'];
 		}
 
-		$items = Items::find()->where(['case_type' => $caseType])->all();
+		$items = CaseItem::find()->where(['case_type' => $caseType])->all();
 
 		$chancesMap = [];
 		/**
-		 * @var Items $item
+		 * @var CaseItem $item
 		 */
 		foreach ($items as $item) {
 			if (in_array($item->id, $personalIds)) {

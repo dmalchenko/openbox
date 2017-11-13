@@ -2,18 +2,17 @@
 
 namespace app\modules\opencase\controllers;
 
-use app\models\User;
 use Yii;
-use app\modules\opencase\models\Delivery;
+use app\modules\opencase\models\CaseItem;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * DeliveryController implements the CRUD actions for Delivery model.
+ * CaseItemController implements the CRUD actions for CaseItem model.
  */
-class DeliveryController extends Controller
+class CaseItemController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,37 +29,31 @@ class DeliveryController extends Controller
         ];
     }
 
-	public function beforeAction($action) {
-
-		if (!parent::beforeAction($action)) {
-			return false;
-		}
-
-		if (User::getCurrentUser()->admin) {
-			return true;
-		} else {
-			$this->redirect(['/site/index']);
-		}
-		return true;
-	}
-
-    /**
-     * Lists all Delivery models.
-     * @return mixed
-     */
-    public function actionIndex()
+	/**
+	 * Lists all CaseItem models.
+	 * @param null $type
+	 * @return mixed
+	 */
+    public function actionIndex($type = null)
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Delivery::find(),
-        ]);
+    	if (is_null($type)) {
+    		return $this->redirect(['index', 'type' => 100]);
+		}
 
-        return $this->render('index', [
-            'dataProvider' => $dataProvider,
-        ]);
+		$query = CaseItem::find()->where(['case_type' => $type]);
+
+		$dataProvider = new ActiveDataProvider([
+			'query' => $query,
+		]);
+
+		return $this->render('index', [
+			'dataProvider' => $dataProvider,
+			'type' => $type,
+		]);
     }
 
     /**
-     * Displays a single Delivery model.
+     * Displays a single CaseItem model.
      * @param integer $id
      * @return mixed
      */
@@ -71,26 +64,28 @@ class DeliveryController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new Delivery model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
+	/**
+	 * Creates a new CaseItem model.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
+	 * @param null $caseType
+	 * @return mixed
+	 */
+    public function actionCreate($caseType = null)
     {
-        $model = new Delivery();
+        $model = new CaseItem();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
+		if ($model->load(Yii::$app->request->post()) && $model->save()) {
+			return $this->redirect(['view', 'id' => $model->id]);
+		} else {
+			$model->case_type = $caseType;
+			return $this->render('create', [
                 'model' => $model,
             ]);
         }
     }
 
     /**
-     * Updates an existing Delivery model.
+     * Updates an existing CaseItem model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -109,7 +104,7 @@ class DeliveryController extends Controller
     }
 
     /**
-     * Deletes an existing Delivery model.
+     * Deletes an existing CaseItem model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -122,15 +117,15 @@ class DeliveryController extends Controller
     }
 
     /**
-     * Finds the Delivery model based on its primary key value.
+     * Finds the CaseItem model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Delivery the loaded model
+     * @return CaseItem the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Delivery::findOne($id)) !== null) {
+        if (($model = CaseItem::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

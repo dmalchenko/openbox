@@ -22,6 +22,7 @@ use ErrorException;
  * @property string $token
  * @property integer $token_index
  * @property integer $money
+ * @property integer $admin
  * @property integer $created_at
  * @property integer $updated_at
  */
@@ -56,7 +57,7 @@ class User extends ActiveRecord implements IdentityInterface, Freekassable {
 	public function rules()
 	{
 		return [
-			[['user_id', 'token_index', 'money', 'created_at', 'updated_at'], 'integer'],
+			[['user_id', 'token_index', 'money', 'admin'], 'integer'],
 			[['name', 'token', 'service', 'avatar'], 'string', 'max' => 255],
 		];
 	}
@@ -77,6 +78,7 @@ class User extends ActiveRecord implements IdentityInterface, Freekassable {
 			'money' => 'деньги',
 			'created_at' => 'создан',
 			'updated_at' => 'обновлен',
+			'admin' => 'админ',
 		];
 	}
 

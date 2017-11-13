@@ -89,7 +89,7 @@ $this->title = $model->name;
 		],
 	]); ?>
 
-    <h1><?= Html::encode('Карзина') ?></h1>
+    <h1><?= Html::encode('Корзина') ?></h1>
 
 	<?= GridView::widget([
 		'dataProvider' => $basketDataProvider,

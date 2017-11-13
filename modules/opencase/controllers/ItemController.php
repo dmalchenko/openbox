@@ -2,6 +2,7 @@
 
 namespace app\modules\opencase\controllers;
 
+use app\models\User;
 use app\modules\opencase\models\CaseType;
 use Yii;
 use app\modules\opencase\models\Items;
@@ -30,6 +31,21 @@ class ItemController extends Controller
         ];
     }
 
+
+	public function beforeAction($action) {
+
+		if (!parent::beforeAction($action)) {
+			return false;
+		}
+
+		if (User::getCurrentUser()->admin) {
+			return true;
+		} else {
+			$this->redirect(['/site/index']);
+		}
+		return true;
+	}
+
 	/**
 	 * Lists all Items models.
 	 * @param null $type
@@ -50,6 +66,23 @@ class ItemController extends Controller
     }
 
     /**
+	 * Lists all Items models.
+	 * @return mixed
+	 */
+    public function actionList()
+    {
+    	$query = Items::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        return $this->render('list', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
      * Displays a single Items model.
      * @param integer $id
      * @return mixed
@@ -64,17 +97,15 @@ class ItemController extends Controller
 	/**
 	 * Creates a new Items model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 * @param null $caseType
 	 * @return mixed
 	 */
-    public function actionCreate($caseType = null)
+    public function actionCreate()
     {
         $model = new Items();
 
 		if ($model->load(Yii::$app->request->post()) && $model->save()) {
 			return $this->redirect(['view', 'id' => $model->id]);
 		} else {
-			$model->case_type = $caseType;
 			return $this->render('create', [
                 'model' => $model,
             ]);

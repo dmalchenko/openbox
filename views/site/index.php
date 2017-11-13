@@ -1,9 +1,6 @@
 <?php
 /* @var $this yii\web\View */
-/* @var $case100 \app\modules\opencase\models\Items */
-/* @var $case250 \app\modules\opencase\models\Items */
-/* @var $case500 \app\modules\opencase\models\Items */
-/* @var $case1000 \app\modules\opencase\models\Items */
+/* @var $items \app\modules\opencase\models\CaseItem[] */
 
 use app\models\User;
 use yii\helpers\Html;
@@ -11,137 +8,53 @@ use yii\helpers\Url;
 
 ?>
 
-<div class="box-wrapper" onclick="window.location.href ='<?= Url::toRoute(['/site/box', 'id' => 1])?>';">
-    <div class="box-wrapper__left">
-        <div class="box">
-            <div class="box__header">
-                <div class="box__name">
-                    Коробка
-                    <div class="box__number">№1</div>
+<?php
+$i = 0;
+/**
+ * @var $case \app\modules\opencase\models\CaseItem[]
+ */
+foreach ($items as $id => $case) :
+	$i++
+	?>
+    <div class="box-wrapper"
+         onclick="window.location.href ='<?= Url::toRoute(['/site/box', 'id' => $id]) ?>';">
+        <div class="box-wrapper__left">
+            <div class="box boxColor<?= $id?>">
+                <div class="box__header">
+                    <div class="box__name">
+                        Коробка
+                        <div class="box__number">№<?= $i ?></div>
+                    </div>
+                    <div class="box__price"><?= $id?>&#8381;</div>
                 </div>
-                <div class="box__price">100&#8381;</div>
+                <div class="box__surprice">
+                    <img src="img/surprice.png" alt="surprice">
+                </div>
             </div>
-            <div class="box__surprice">
-                <img src="img/surprice.png" alt="surprice">
+            <a href="<?= Url::toRoute(['/site/box', 'id' => $id]) ?>" class="btn  btn--accent  box__btn">Открыть
+                коробку</a>
+            <div class="box-wrapper__text">
+                Уже выдано
+                <span class="box-wrapper__number">184 569 товаров</span>
             </div>
         </div>
-        <a href="<?= Url::toRoute(['/site/box', 'id' => 1]) ?>" class="btn  btn--accent  box__btn">Открыть коробку</a>
-        <div class="box-wrapper__text">
-            Уже выдано
-            <span class="box-wrapper__number">184 569 товаров</span>
+        <div class="box-wrapper__right">
+            <div class="box-wrapper__right-text">Коробка содержит <?= count($case) ?> товаров</div>
+            <div class="box-wrapper__items">
+				<?php
+				foreach ($case as $item) {
+					$s = '<div class="box-wrapper__item"><img src="%s" alt="surpise"></div>';
+					echo sprintf($s, $item->item->image);
+				}
+				?>
+            </div>
         </div>
     </div>
-    <div class="box-wrapper__right">
-        <div class="box-wrapper__right-text">Коробка содержит <?= count($case100) ?> товаров</div>
-        <div class="box-wrapper__items">
-			<?php
-			foreach ($case100 as $item) {
-				$s = '<div class="box-wrapper__item"><img src="%s" alt="surpise"></div>';
-				echo sprintf($s, $item->image);
-			}
-			?>
-        </div>
-    </div>
-</div>
 
-<div class="box-wrapper" onclick="window.location.href ='<?= Url::toRoute(['/site/box', 'id' => 2])?>';">
-    <div class="box-wrapper__left">
-        <div class="box  boxColor100">
-            <div class="box__header">
-                <div class="box__name">
-                    Коробка
-                    <div class="box__number">№2</div>
-                </div>
-                <div class="box__price">250&#8381;</div>
-            </div>
-            <div class="box__surprice">
-                <img src="img/surprice.png" alt="surprice">
-            </div>
-        </div>
-        <a href="<?= Url::toRoute(['/site/box', 'id' => 2]) ?>" class="btn  btn--accent  box__btn">Открыть коробку</a>
-        <div class="box-wrapper__text">
-            Уже выдано
-            <span class="box-wrapper__number">184 569 товаров</span>
-        </div>
-    </div>
-    <div class="box-wrapper__right">
-        <div class="box-wrapper__right-text">Коробка содержит <?= count($case250) ?> товаров</div>
-        <div class="box-wrapper__items">
-			<?php
-			foreach ($case250 as $item) {
-				$s = '<div class="box-wrapper__item-green"><img src="%s" alt="surpise"></div>';
-				echo sprintf($s, $item->image);
-			}
-			?>
-        </div>
-    </div>
-</div>
+	<?php
+endforeach;
+?>
 
-<div class="box-wrapper" onclick="window.location.href ='<?= Url::toRoute(['/site/box', 'id' => 3])?>';">
-    <div class="box-wrapper__left">
-        <div class="box  boxColor250">
-            <div class="box__header">
-                <div class="box__name">
-                    Коробка
-                    <div class="box__number">№3</div>
-                </div>
-                <div class="box__price">500&#8381;</div>
-            </div>
-            <div class="box__surprice">
-                <img src="img/surprice.png" alt="surprice">
-            </div>
-        </div>
-        <a href="<?= Url::toRoute(['/site/box', 'id' => 3]) ?>" class="btn  btn--accent  box__btn">Открыть коробку</a>
-        <div class="box-wrapper__text">
-            Уже выдано
-            <span class="box-wrapper__number">184 569 товаров</span>
-        </div>
-    </div>
-    <div class="box-wrapper__right">
-        <div class="box-wrapper__right-text">Коробка содержит <?= count($case500) ?> товаров</div>
-        <div class="box-wrapper__items">
-			<?php
-			foreach ($case500 as $item) {
-				$s = '<div class="box-wrapper__item box-wrapper__item-red"><img src="%s" alt="surpise"></div>';
-				echo sprintf($s, $item->image);
-			}
-			?>
-        </div>
-    </div>
-</div>
-
-<div class="box-wrapper" onclick="window.location.href ='<?= Url::toRoute(['/site/box', 'id' => 4])?>';">
-    <div class="box-wrapper__left">
-        <div class="box  boxColor500">
-            <div class="box__header">
-                <div class="box__name">
-                    Коробка
-                    <div class="box__number">№4</div>
-                </div>
-                <div class="box__price">1000&#8381;</div>
-            </div>
-            <div class="box__surprice">
-                <img src="img/surprice.png" alt="surprice">
-            </div>
-        </div>
-        <a href="<?= Url::toRoute(['/site/box', 'id' => 4]) ?>" class="btn  btn--accent  box__btn">Открыть коробку</a>
-        <div class="box-wrapper__text">
-            Уже выдано
-            <span class="box-wrapper__number">184 569 товаров</span>
-        </div>
-    </div>
-    <div class="box-wrapper__right">
-        <div class="box-wrapper__right-text">Коробка содержит <?= count($case500) ?> товаров</div>
-        <div class="box-wrapper__items">
-			<?php
-			foreach ($case1000 as $item) {
-				$s = '<div class="box-wrapper__item box-wrapper__item-blue"><img src="%s" alt="surpise"></div>';
-				echo sprintf($s, $item->image);
-			}
-			?>
-        </div>
-    </div>
-</div>
 </div>
 
 <div class="guarantees">

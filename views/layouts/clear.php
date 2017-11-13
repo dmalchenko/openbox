@@ -256,7 +256,7 @@ $urlActionPayment = Url::toRoute(['/freekassa/payment/create']);
                                 </div>
                             </div>
                         </div>
-                        <div class="page-footer__copyright">Copyright 2017</div>
+                        <div class="page-footer__copyright">2017@VseBox</div>
                         <div class="page-footer__confidential">Авторизируясь на сайте вы принимаете
                             <a href="#" class="page-footer__link">пользовательское соглашение</a>
                         </div>

@@ -22,12 +22,7 @@ use yii\widgets\ActiveForm;
 
 	<?= $form->field($model, 'status')->dropDownList([0, 1]) ?>
 
-	<?= $form->field($model, 'case_type')->dropDownList([
-		100 => 100,
-		250 => 250,
-		500 => 500,
-		1000 => 1000,
-	]) ?>
+	<?= $form->field($model, 'case_type')->dropDownList(\app\modules\opencase\models\CaseType::getCasesArray()) ?>
 
 	<?= $form->field($model, 'item_id')->dropDownList($model->findItems()) ?>
 

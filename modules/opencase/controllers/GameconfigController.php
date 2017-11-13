@@ -2,6 +2,7 @@
 
 namespace app\modules\opencase\controllers;
 
+use app\models\User;
 use Yii;
 use app\modules\opencase\models\GameConfig;
 use yii\data\ActiveDataProvider;
@@ -28,6 +29,20 @@ class GameconfigController extends Controller
             ],
         ];
     }
+
+	public function beforeAction($action) {
+
+		if (!parent::beforeAction($action)) {
+			return false;
+		}
+
+		if (User::getCurrentUser()->admin) {
+			return true;
+		} else {
+			$this->redirect(['/site/index']);
+		}
+		return true;
+	}
 
     /**
      * Lists all GameConfig models.

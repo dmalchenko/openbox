@@ -21,6 +21,7 @@ class m171008_122230_create_user_table extends Migration
 			'token' => $this->string(),
 			'token_index' => $this->bigInteger(20),
 			'money' => $this->integer(),
+			'admin' => $this->integer(),
 			'created_at' => $this->integer(),
 			'updated_at' => $this->integer(),
         ]);

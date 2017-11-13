@@ -42,7 +42,7 @@ class Items extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cost_real', 'cost_sell', 'count', 'case_type', 'created_at', 'updated_at'], 'integer'],
+            [['cost_real', 'cost_sell', 'created_at', 'updated_at'], 'integer'],
             [['title', 'description', 'image'], 'string', 'max' => 255],
         ];
     }
@@ -66,7 +66,4 @@ class Items extends \yii\db\ActiveRecord
         ];
     }
 
-	public function getChance() {
-		return array_fill(0, $this->count, $this->id);
-    }
 }

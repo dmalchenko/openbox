@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\User;
 use app\modules\freekassa\models\Freekassa;
 use app\modules\opencase\models\Basket;
+use app\modules\opencase\models\CaseItem;
 use app\modules\opencase\models\CaseType;
 use app\modules\opencase\models\Delivery;
 use app\modules\opencase\models\DeliveryAddress;
@@ -14,6 +15,7 @@ use app\modules\opencase\models\Promo;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\Response;
@@ -76,22 +78,11 @@ class SiteController extends Controller {
 	public function actionIndex() {
 		$this->layout = 'clear';
 
-		/**
-		 * @var $items100 Items[]
-		 * @var $items250 Items[]
-		 * @var $items500 Items[]
-		 * @var $items1000 Items[]
-		 */
-		$items100 = Items::find()->where(['case_type' => CaseType::CASE_TYPE100])->all();
-		$items250 = Items::find()->where(['case_type' => CaseType::CASE_TYPE250])->all();
-		$items500 = Items::find()->where(['case_type' => CaseType::CASE_TYPE500])->all();
-		$items1000 = Items::find()->where(['case_type' => CaseType::CASE_TYPE1000])->all();
+		$items = CaseItem::find()->all();
+		$items = ArrayHelper::index($items, null, 'case_type');
 
 		return $this->render('index', [
-			'case100' => $items100,
-			'case250' => $items250,
-			'case500' => $items500,
-			'case1000' => $items1000,
+			'items' => $items
 		]);
 	}
 
@@ -363,19 +354,15 @@ class SiteController extends Controller {
 	 */
 	public function actionBox($id) {
 		$this->layout = 'clear';
-		$boxes = [
-			1 => CaseType::CASE_TYPE100,
-			2 => CaseType::CASE_TYPE250,
-			3 => CaseType::CASE_TYPE500,
-			4 => CaseType::CASE_TYPE1000,
-		];
 
-		$case = Items::find()->where(['case_type' => $boxes[$id]])->all();
+		$caseNumber = CaseType::find()->where(['type' => $id])->one()->id;
+
+		$case = CaseItem::find()->where(['case_type' => $id])->all();
 
 		return $this->render('box', [
-			'box' => $case,
-			'id' => $id,
-			'type' => $boxes[$id],
+			'case' => $case,
+			'id' => $caseNumber,
+			'type' => $id,
 		]);
 	}
 

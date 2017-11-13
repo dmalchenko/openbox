@@ -2,18 +2,17 @@
 
 namespace app\modules\opencase\controllers;
 
-use app\models\User;
 use Yii;
-use app\modules\opencase\models\Delivery;
+use app\modules\opencase\models\CaseType;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * DeliveryController implements the CRUD actions for Delivery model.
+ * CaseTypeController implements the CRUD actions for CaseType model.
  */
-class DeliveryController extends Controller
+class CaseTypeController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,28 +29,14 @@ class DeliveryController extends Controller
         ];
     }
 
-	public function beforeAction($action) {
-
-		if (!parent::beforeAction($action)) {
-			return false;
-		}
-
-		if (User::getCurrentUser()->admin) {
-			return true;
-		} else {
-			$this->redirect(['/site/index']);
-		}
-		return true;
-	}
-
     /**
-     * Lists all Delivery models.
+     * Lists all CaseType models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Delivery::find(),
+            'query' => CaseType::find(),
         ]);
 
         return $this->render('index', [
@@ -60,7 +45,7 @@ class DeliveryController extends Controller
     }
 
     /**
-     * Displays a single Delivery model.
+     * Displays a single CaseType model.
      * @param integer $id
      * @return mixed
      */
@@ -72,13 +57,13 @@ class DeliveryController extends Controller
     }
 
     /**
-     * Creates a new Delivery model.
+     * Creates a new CaseType model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Delivery();
+        $model = new CaseType();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -90,7 +75,7 @@ class DeliveryController extends Controller
     }
 
     /**
-     * Updates an existing Delivery model.
+     * Updates an existing CaseType model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -109,7 +94,7 @@ class DeliveryController extends Controller
     }
 
     /**
-     * Deletes an existing Delivery model.
+     * Deletes an existing CaseType model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -122,15 +107,15 @@ class DeliveryController extends Controller
     }
 
     /**
-     * Finds the Delivery model based on its primary key value.
+     * Finds the CaseType model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Delivery the loaded model
+     * @return CaseType the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Delivery::findOne($id)) !== null) {
+        if (($model = CaseType::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

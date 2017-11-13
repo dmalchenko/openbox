@@ -28,9 +28,15 @@ AppAsset::register($this);
 
 <div class="wrap">
 	<?php
+	$cases = \app\modules\opencase\models\CaseType::getCases();
+	$casesMenu[] = ['label' => 'Типы кейсов', 'url' => ['/opencase/case-type/index']];
+	foreach ($cases as $case) {
+		$casesMenu[] = ['label' => "Кейс {$case->type}", 'url' => ['/opencase/case-item/index', 'type' => $case->type]];
+	}
+
 	NavBar::begin([
 		'brandLabel' => 'Vse box',
-		'brandUrl' => Yii::$app->homeUrl,
+		'brandUrl' => Url::toRoute(['/opencase/item/index', 'type' => 100]),
 		'options' => [
 			'class' => 'navbar-inverse navbar-fixed-top',
 		],
@@ -38,27 +44,12 @@ AppAsset::register($this);
 	echo Nav::widget([
 		'options' => ['class' => 'navbar-nav navbar-right'],
 		'items' => [
-			['label' => 'Кейс 100', 'url' => ['/opencase/item/index', 'type' => 100]],
-			['label' => 'Кейс 250', 'url' => ['/opencase/item/index', 'type' => 250]],
-			['label' => 'Кейс 500', 'url' => ['/opencase/item/index', 'type' => 500]],
-			['label' => 'Кейс 1000', 'url' => ['/opencase/item/index', 'type' => 1000]],
+			['label' => 'Кейсы', 'options' => ['id' => 'down_history'], 'items' => $casesMenu],
+			['label' => 'Предметы', 'url' => ['/opencase/item/list']],
 			['label' => 'Персональные подкрутки', 'url' => ['/opencase/gameconfig/index']],
 			['label' => 'Пользователи', 'url' => ['/opencase/user/index']],
 			['label' => 'Доставка', 'url' => ['/opencase/delivery/index']],
-//			['label' => 'About', 'url' => ['/site/about']],
-//			['label' => 'Contact', 'url' => ['/site/contact']],
-//			Yii::$app->user->isGuest ? (
-//			['label' => 'Login', 'url' => ['/site/login']]
-//			) : (
-//				'<li>'
-//				. Html::beginForm(['/site/logout'], 'post')
-//				. Html::submitButton(
-//					'Logout (' . Yii::$app->user->identity->username . ')',
-//					['class' => 'btn btn-link logout']
-//				)
-//				. Html::endForm()
-//				. '</li>'
-//			)
+
 		],
 	]);
 	NavBar::end();
@@ -75,7 +66,7 @@ AppAsset::register($this);
 <a href="//www.free-kassa.com/"><img src="//www.free-kassa.ru/img/fk_btn/9.png"></a>
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">2017@VseBox</p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>

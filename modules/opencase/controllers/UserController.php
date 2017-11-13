@@ -23,6 +23,20 @@ class UserController extends \app\controllers\UserController {
 
 	public $enableCsrfValidation = false;
 
+	public function beforeAction($action) {
+
+		if (!parent::beforeAction($action)) {
+			return false;
+		}
+
+		if (User::getCurrentUser()->admin) {
+			return true;
+		} else {
+			$this->redirect(['/site/index']);
+		}
+		return true;
+	}
+
 	/**
 	 * Displays a single User model.
 	 * @param integer $id
