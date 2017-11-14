@@ -68,7 +68,7 @@ AppAsset::register($this);
     <div class="container">
         <p class="pull-left">2017@VseBox</p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right"></p>
     </div>
 </footer>
 
