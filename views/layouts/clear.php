@@ -74,14 +74,14 @@ $urlActionPayment = Url::toRoute(['/freekassa/payment/create']);
                     <div class="page-header__counter">
                         <div class="page-header__counter-block">
                             <div class="page-header__users">
-                                <div class="page-header__users-number">940 000</div>
+                                <div class="page-header__users-number"><?= Yii::$app->params['userCounts']?></div>
                                 <div class="page-header__users-text">Пользователей</div>
                             </div>
                         </div>
 
                         <div class="page-header__counter-block  page-header__counter-block_ml">
                             <div class="page-header__users">
-                                <div class="page-header__users-number">4564135</div>
+                                <div class="page-header__users-number"><?= Yii::$app->params['boxCounts']?></div>
                                 <div class="page-header__users-text">Открыто коробок</div>
                             </div>
                         </div>
