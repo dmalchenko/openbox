@@ -415,7 +415,7 @@ $urlActionPayment = Url::toRoute(['/freekassa/payment/create']);
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/jquery.3.1.1.min.js"><\/script>')</script>
 <script type="text/javascript">
-    VK.Widgets.Group("vk_groups", {mode: 3}, 20003922);
+    VK.Widgets.Group("vk_groups", {mode: 3}, <?= Yii::$app->params['vkGroupId']?>);
 </script>
 <script>
     var bsell = $('#bsell');
