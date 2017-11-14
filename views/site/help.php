@@ -129,7 +129,7 @@
 <!-- Chatra {literal} -->
 <script>
     (function(d, w, c) {
-        w.ChatraID = 'tywy5hLygXBFZeN6f';
+        w.ChatraID = '<?= Yii::$app->params['chatraId']?>';
         var s = d.createElement('script');
         w[c] = w[c] || function() {
                 (w[c].q = w[c].q || []).push(arguments);
