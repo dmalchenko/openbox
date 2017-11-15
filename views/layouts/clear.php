@@ -368,7 +368,7 @@ $urlActionPayment = Url::toRoute(['/freekassa/payment/create']);
         <div class="modal__dialog" role="document">
             <div class="modal__content">
                 <div class="modal__header">
-                            <span class="close  modal__close" data-dismiss="modal"
+                            <span class="close  modal__close" id="close-modal-3" data-dismiss="modal"
                                   aria-label="Закрыть" id="cb"><span></span></span>
                     <div class="modal__title">
                         Необходимо пополнить баланс

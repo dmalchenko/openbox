@@ -1,7 +1,9 @@
 <?php
 /* @var $this yii\web\View */
 use yii\helpers\Url;
+use app\models\User;
 
+$user = User::getCurrentUser();
 /* @var integer $id */
 /* @var integer $type */
 /* @var array $case */
@@ -10,6 +12,8 @@ $box = [];
 foreach ($case as $c) {
     $box[] = $c->item;
 }
+
+//$user = User::getCurrentUser();
 
 ?>
 
@@ -181,8 +185,10 @@ HTML;
                     bsell.attr('data-bid', data.bid);
                     bsell.attr('data-id', data.id);
                 } else if (data.code == 402) {
-                    $('#modal-demo-04').modal('show');
-                    $('.modal__title').html(data.msg);
+                    $('#modal-demo-03').modal('show');
+                    $('#close-modal-3').one('click', function () {
+                        $('#modal-demo-02').modal('show');
+                    })
                 } else if (data.code != 200) {
                     console.log(data.msg);
                 } else {
