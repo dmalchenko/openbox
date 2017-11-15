@@ -82,8 +82,10 @@ class SiteController extends Controller {
 		$items = ArrayHelper::index($items, null, 'case_type');
 
 		return $this->render('index', [
-			'items' => $items
+			'items' => $items,
 		]);
+
+
 	}
 
 	/**
@@ -393,5 +395,29 @@ class SiteController extends Controller {
 
 		$basket->delete();
 		return ['code' => 200, 'msg' => 'ok', 'balance' => $user->money];
+	}
+
+	public function actionUser($token) {
+		$this->layout = 'clear';
+		$user = User::findOne(['token_index' => $token]);
+		if (!$user){
+			return $this->redirect(['index']);
+		}
+
+		$r = GameLog::find()
+			->select(['SUM(cost_real) as sum', 'COUNT(id) as cnt'])
+			->where(['token_index' => $user->token_index])
+			->groupBy('token_index')
+			->asArray()
+			->all();
+
+		$cntBox = isset($r[0]['cnt']) ? $r[0]['cnt'] : 0;
+		$cntSum = isset($r[0]['sum']) ? $r[0]['sum'] : 0;
+
+		return $this->render('user', [
+			'user' => $user,
+			'cntBox' => $cntBox,
+			'cntSum' => $cntSum,
+		]);
 	}
 }

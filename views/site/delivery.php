@@ -153,7 +153,7 @@
         injectTo: 'page-delivery__chat' /* id блока, в который будет встроен чат */
     };
 </script>
-<!-- Chatra {literal} -->
+<!-- Chatra  -->
 <script>
     (function(d, w, c) {
         w.ChatraID = '<?= Yii::$app->params['chatraId']?>';
@@ -167,4 +167,4 @@
         if (d.head) d.head.appendChild(s);
     })(document, window, 'Chatra');
 </script>
-<!-- /Chatra {/literal} -->
+<!-- /Chatra  -->

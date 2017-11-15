@@ -2,6 +2,7 @@
 
 namespace app\modules\opencase\models;
 
+use app\models\User;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 
@@ -17,6 +18,11 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $cost_sell
  * @property integer $created_at
  * @property integer $updated_at
+ *
+ * @property User $user
+ * @property Items $item
+ * @property string $userAvatar
+ * @property string $itemAvatar
  */
 class GameLog extends \yii\db\ActiveRecord
 {
@@ -61,5 +67,21 @@ class GameLog extends \yii\db\ActiveRecord
             'cost_real' => 'цена реальная',
             'cost_sell' => 'цена продажи',
         ];
+    }
+
+	public function getUser() {
+		return $this->hasOne(User::className(), ['token_index' => 'token_index']);
+    }
+
+	public function getItem() {
+		return $this->hasOne(Items::className(), ['id' => 'item_id']);
+    }
+
+	public function getUserAvatar() {
+		return isset($this->user->avatar) ? $this->user->avatar : '';
+    }
+
+	public function getItemAvatar() {
+		return isset($this->item->image) ? $this->item->image : '';
     }
 }

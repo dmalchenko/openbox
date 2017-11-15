@@ -2,12 +2,18 @@
 
 /* @var $this \yii\web\View */
 /* @var $content string */
+/* @var $logs \app\modules\opencase\models\GameLog[] */
 
 use app\models\User;
+use app\modules\opencase\models\GameLog;
 use yii\helpers\Url;
 
 $user = User::getCurrentUser();
 $urlActionPayment = Url::toRoute(['/freekassa/payment/create']);
+$logs = GameLog::find()
+	->orderBy(['id' => SORT_DESC])
+	->limit(20)
+	->all();
 ?>
 
 <!DOCTYPE html>
@@ -160,12 +166,24 @@ $urlActionPayment = Url::toRoute(['/freekassa/payment/create']);
         <main role="main" class="page-delivery">
             <div class="container">
                 <div class="owl-carousel" id="owl-carousel-demo">
-                    <div>
-                        <img src="http://214010.selcdn.ru/ranbox/items-i/21_medium.png" alt="surpise"
-                             class="owl-carousel__prize">
-                        <img src="http://214010.selcdn.ru/ranbox/users/vk_350174184_medium.jpg" alt="person"
-                             class="owl-carousel__person">
+					<?php
+                        $tmp = <<< HTML
+                    <div onclick="window.location.href = '%s'">
+                        <img src="%s" alt="surpise"
+                             class="owl-carousel__prize" style="width: 70px">
+                        <img src="%s" alt="person"
+                             class="owl-carousel__person" style="width: 70px">
                     </div>
+HTML;
+					/**
+					 * @var \app\modules\opencase\models\GameLog[] $logs
+					 */
+                        foreach ($logs as $log) {
+                            echo sprintf($tmp, Url::to(['user', 'token' => $log->token_index]), $log->itemAvatar, $log->userAvatar);
+                        }
+
+					?>
+
                     <div>
                         <img src="http://214010.selcdn.ru/ranbox/items-i/usb_led_medium.png" alt="surpise"
                              class="owl-carousel__prize">
