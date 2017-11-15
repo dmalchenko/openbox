@@ -112,7 +112,7 @@ HTML;
 
 <div class="page-box__boxes-header">Коробка содержит:</div>
 
-<div class="page-box__wrapper-boxes">
+<div class="page-box__wrapper-boxes  box-4">
 	<?php
 	/**
 	 * @var \app\modules\opencase\models\Items $item

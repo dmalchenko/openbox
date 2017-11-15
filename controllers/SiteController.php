@@ -414,10 +414,16 @@ class SiteController extends Controller {
 		$cntBox = isset($r[0]['cnt']) ? $r[0]['cnt'] : 0;
 		$cntSum = isset($r[0]['sum']) ? $r[0]['sum'] : 0;
 
+		$items = GameLog::find()
+			->where(['token_index' => $user->token_index])
+			->orderBy(['id' => SORT_DESC])
+			->all();
+
 		return $this->render('user', [
 			'user' => $user,
 			'cntBox' => $cntBox,
 			'cntSum' => $cntSum,
+			'items' => $items
 		]);
 	}
 }

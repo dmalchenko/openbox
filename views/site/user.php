@@ -1,13 +1,12 @@
 <?php
 /* @var $this yii\web\View */
 /* @var User $user */
+/* @var array $items */
 /* @var integer $cntBox */
 /* @var integer $cntSum */
 
 use app\models\User;
-use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\widgets\ActiveForm;
 
 ?>
 
@@ -32,4 +31,20 @@ use yii\widgets\ActiveForm;
 			<div class="page-profile__box-text">На сумму <span><?= $cntSum ?> &#8381;</span></div>
 		</div>
 	</div>
+</div>
+
+<h2 class="page-profile-products__title">Открытые коробки</h2>
+<div class="page-profile-products__box-wrapper js-product-wrapper box-4">
+	<?php
+	$boxTemplate = <<< HTML
+    <div class="page-profile-products__box js-product-box">
+        <img class="js-product-img" src="%s" alt="product">
+    </div>
+HTML;
+
+	foreach ($items as $box) {
+		echo sprintf($boxTemplate, $box->item->image);
+	}
+	?>
+
 </div>

@@ -129,3 +129,8 @@ a.desc:after {
 .page-profile-table__td, .page-profile-table__th {
     width: 19%;
 }
+
+.box-4 {
+    width: 70%;
+    margin: auto;
+}

@@ -64,7 +64,7 @@ $user = \app\models\User::getCurrentUser();
 </div>
 
 <h2 class="page-profile-products__title">Мои товары</h2>
-<div class="page-profile-products__box-wrapper js-product-wrapper">
+<div class="page-profile-products__box-wrapper js-product-wrapper box-4">
 	<?php
 	$boxTemplate = <<< HTML
     <div class="page-profile-products__box js-product-box" data-bid="%s" data-id="%s" data-sell="%s">
