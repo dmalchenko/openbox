@@ -86,6 +86,7 @@ $this->title = $model->name;
 			'item_id',
 			'cost_real',
 			'cost_sell',
+			'created_at:datetime',
 		],
 	]); ?>
 
