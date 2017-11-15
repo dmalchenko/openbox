@@ -13,7 +13,7 @@ use yii\filters\VerbFilter;
 /**
  * GameconfigController implements the CRUD actions for GameConfig model.
  */
-class GameconfigController extends Controller
+class GameconfigController extends OpenboxController
 {
     /**
      * @inheritdoc
@@ -29,20 +29,6 @@ class GameconfigController extends Controller
             ],
         ];
     }
-
-	public function beforeAction($action) {
-
-		if (!parent::beforeAction($action)) {
-			return false;
-		}
-
-		if (User::getCurrentUser()->admin) {
-			return true;
-		} else {
-			$this->redirect(['/site/index']);
-		}
-		return true;
-	}
 
     /**
      * Lists all GameConfig models.

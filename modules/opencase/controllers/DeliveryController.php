@@ -6,14 +6,13 @@ use app\models\User;
 use Yii;
 use app\modules\opencase\models\Delivery;
 use yii\data\ActiveDataProvider;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * DeliveryController implements the CRUD actions for Delivery model.
  */
-class DeliveryController extends Controller
+class DeliveryController extends OpenboxController
 {
     /**
      * @inheritdoc
@@ -29,20 +28,6 @@ class DeliveryController extends Controller
             ],
         ];
     }
-
-	public function beforeAction($action) {
-
-		if (!parent::beforeAction($action)) {
-			return false;
-		}
-
-		if (User::getCurrentUser()->admin) {
-			return true;
-		} else {
-			$this->redirect(['/site/index']);
-		}
-		return true;
-	}
 
     /**
      * Lists all Delivery models.

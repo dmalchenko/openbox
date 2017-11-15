@@ -8,12 +8,9 @@ use app\modules\opencase\models\CaseItem;
 use app\modules\opencase\models\GameConfig;
 use app\modules\opencase\models\GameLog;
 use app\modules\opencase\models\Items;
-use yii\db\Exception;
-use yii\helpers\ArrayHelper;
-use yii\web\Controller;
 use yii\web\Response;
 
-class GameController extends Controller {
+class GameController extends OpenboxController {
 
 	public $enableCsrfValidation = false;
 

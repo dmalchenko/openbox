@@ -3,18 +3,16 @@
 namespace app\modules\opencase\controllers;
 
 use app\models\User;
-use app\modules\opencase\models\CaseType;
 use Yii;
 use app\modules\opencase\models\Items;
 use yii\data\ActiveDataProvider;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * ItemController implements the CRUD actions for Items model.
  */
-class ItemController extends Controller
+class ItemController extends OpenboxController
 {
     /**
      * @inheritdoc
@@ -30,21 +28,6 @@ class ItemController extends Controller
             ],
         ];
     }
-
-
-	public function beforeAction($action) {
-
-		if (!parent::beforeAction($action)) {
-			return false;
-		}
-
-		if (User::getCurrentUser()->admin) {
-			return true;
-		} else {
-			$this->redirect(['/site/index']);
-		}
-		return true;
-	}
 
 	/**
 	 * Lists all Items models.

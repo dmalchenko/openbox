@@ -43,6 +43,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+            	'admin' => '/opencase/case-item/index',
 				'/admin/<rule:.*>' => '/opencase/<rule>',
 				'<action>' => 'site/<action>',
             	'<action>/<id>' => 'site/<action>/<id>',

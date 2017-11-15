@@ -5,14 +5,13 @@ namespace app\modules\opencase\controllers;
 use Yii;
 use app\modules\opencase\models\CaseType;
 use yii\data\ActiveDataProvider;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * CaseTypeController implements the CRUD actions for CaseType model.
  */
-class CaseTypeController extends Controller
+class CaseTypeController extends OpenboxController
 {
     /**
      * @inheritdoc

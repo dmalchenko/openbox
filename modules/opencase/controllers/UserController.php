@@ -15,6 +15,7 @@ use app\modules\opencase\models\Delivery;
 use app\modules\opencase\models\DeliveryAddress;
 use app\modules\opencase\models\GameConfig;
 use app\modules\opencase\models\GameLog;
+use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
@@ -29,7 +30,7 @@ class UserController extends \app\controllers\UserController {
 			return false;
 		}
 
-		if (User::getCurrentUser()->admin) {
+		if (!Yii::$app->user->isGuest && User::getCurrentUser()->admin) {
 			return true;
 		} else {
 			$this->redirect(['/site/index']);

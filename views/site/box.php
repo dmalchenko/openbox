@@ -131,12 +131,14 @@ HTML;
 
     $('#cb').on('click', function () {
         for (var i = 0; i < rouletteItem.length; i++) {
-//            console.log(rouletteItem[i].style.transform);
             rouletteItem[i].style.transform = 'translateX(0px)';
         }
     });
 
     open.onclick = function () {
+        $('#modal-demo-02').modal('show');
+        return;
+
         var k = this.getAttribute('data-k');
         if (k == 1) {
             k = 8;
