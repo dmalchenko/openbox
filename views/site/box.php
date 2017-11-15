@@ -136,8 +136,6 @@ HTML;
     });
 
     open.onclick = function () {
-        $('#modal-demo-02').modal('show');
-        return;
 
         var k = this.getAttribute('data-k');
         if (k == 1) {

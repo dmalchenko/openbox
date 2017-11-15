@@ -370,9 +370,12 @@ $urlActionPayment = Url::toRoute(['/freekassa/payment/create']);
                 <div class="modal__header">
                             <span class="close  modal__close" data-dismiss="modal"
                                   aria-label="Закрыть" id="cb"><span></span></span>
-                    <div class="modal__title">Вы выйграли <span class="modal__title-prize"></span>!</div>
+                    <div class="modal__title">
+                        Необходимо пополнить баланс
+                    </div>
                 </div>
                 <div class="modal__wrapper">
+                    <p id="modal3-text" style="color: #dddddd">Недостаточно средств на балансе. Пополните баланс на 100р!</p>
                     <div class="modal__img">
                         <img id="modal-img-prize2" src="">
                     </div>
