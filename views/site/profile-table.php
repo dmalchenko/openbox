@@ -48,7 +48,7 @@ $user = \app\models\User::getCurrentUser();
 HTML;
 
 	foreach ($items as $item) {
-	    if (!$item->delivery->city && $item->delivery->street) {
+	    if (isset($item->delivery->city, $item->delivery->street)) {
 			$address = $item->delivery->city . ', ' . $item->delivery->street;
 		} else {
 	        $address = 'Заполните страну, город, адрес доставки';

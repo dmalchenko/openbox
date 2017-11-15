@@ -125,3 +125,7 @@ a.desc:after {
 .item {
     margin-top: 15px !important;
 }
+
+.page-profile-table__td, .page-profile-table__th {
+    width: 19%;
+}
