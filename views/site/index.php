@@ -10,6 +10,9 @@ use yii\helpers\Url;
 
 <?php
 $i = 0;
+
+ksort($items);
+
 /**
  * @var $case \app\modules\opencase\models\CaseItem[]
  */
