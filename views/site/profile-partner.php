@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 /* @var boolean $partnerSet */
 /* @var integer $code */
+/* @var \app\modules\opencase\models\PromoLog $promos */
 
 use yii\helpers\Url;
 
@@ -56,6 +57,38 @@ $user = \app\models\User::getCurrentUser();
         </form>
     </div>
 </div>
+<div class="page-profile-table" style="
+    width: 70%;
+    margin: auto;
+    background-color: #141a21;
+    padding: 22px;
+    border-radius: 10px;
+    margin-top: 40px;
+">
+    <div class="page-profile-table__tr" style="margin-top: 5px">
+        <div class="page-profile-table__th">За кого бонус</div>
+        <div class="page-profile-table__th">За промокод</div>
+        <div class="page-profile-table__th">Зачисленно</div>
+        <div class="page-profile-table__th">Дата</div>
+    </div>
+	<?php
+	$template = <<< HTML
+    <div class="page-profile-table__tr" style="color: #dddddd">
+        <div class="page-profile-table__td">%s</div>
+        <div class="page-profile-table__td">%s</div>
+        <div class="page-profile-table__td">%s</div>
+        <div class="page-profile-table__td">%s</div>
+    </div>
+HTML;
+
+	foreach ($promos as $promo) {
+		$msg = sprintf($template, $promo->partner, $promo->promocode, $promo->bonus, date("Y-m-d H:i:s", $promo->created_at));
+		echo $msg;
+	}
+
+	?>
+</div>
+
 <script>
     var csrfToken = $('meta[name="csrf-token"]').attr("content");
     $('#btn-code').click(function() {

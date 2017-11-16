@@ -310,13 +310,14 @@ class SiteController extends Controller {
 		if (!$user) {
 			$this->redirect(['index']);
 		}
-		$partnerSet = Promo::find()
-			->where(['token_index' => $user->token_index])
-			->exists();
+
+		$promos = PromoLog::find()
+			->where(['token' => $user->token_index])
+			->all();
 
 		return $this->render('profile-partner', [
 			'code' => $user->token_index,
-			'partnerSet' => $partnerSet,
+			'promos' => $promos,
 		]);
 	}
 
@@ -447,7 +448,7 @@ class SiteController extends Controller {
 	public function actionUser($token) {
 		$this->layout = 'clear';
 		$user = User::findOne(['token_index' => $token]);
-		if (!$user){
+		if (!$user) {
 			return $this->redirect(['index']);
 		}
 
