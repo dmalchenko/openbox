@@ -386,7 +386,7 @@ class SiteController extends Controller {
 		$promo->save();
 
 		$promoLog = new PromoLog();
-		$promoLog->promocode = $parentUser->token_index;
+		$promoLog->promocode = strval($parentUser->token_index);
 		$promoLog->bonus = Promo::BONUS_MONEY;
 		$promoLog->token = $user->token_index;
 		$promoLog->token_gived = $parentUser->token_index;

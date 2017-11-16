@@ -55,30 +55,18 @@ use yii\widgets\ActiveForm;
 </div>
 
 <div class="page-profile__dark-card-wrapper">
-	<?php
-	$partnerInput = <<< HTML
-        <div class="page-profile__dark-card">
-            <div class="page-profile__dark-card-header">У вас есть <span>партнерский код?</span></div>
-            <div class="page-profile__dark-card-text">Введите код и получите 50&#8381; на счёт прямо сейчас!</div>
-            <!--<form action="/" class="page-profile__form" name="partner-code">-->
-                <label class="field-text">
+    <div class="page-profile__dark-card">
+        <div class="page-profile__dark-card-header">У вас есть <span>партнерский код?</span></div>
+        <div class="page-profile__dark-card-text">Введите код и получите 50&#8381; на счёт прямо сейчас!</div>
+        <!--<form action="/" class="page-profile__form" name="partner-code">-->
+        <label class="field-text">
                       <span class="field-text__input-wrap">
                         <input class="field-text__input" type="text" id="code-val">
                         <input class="field-text__btn" type="button" name="send" value="OK" id="btn-code">
                       </span>
-                </label>
-            <!--</form>-->
-        </div>
-HTML;
-
-	$partnerNoInput = <<< HTML
-        <div class="page-profile__dark-card">
-            <div class="page-profile__dark-card-header">Вы уже ввели партнерский код</span></div>
-        </div>
-HTML;
-
-	echo ($partnerSet) ? $partnerNoInput : $partnerInput;
-	?>
+        </label>
+        <!--</form>-->
+    </div>
 
     <div class="page-profile__dark-card">
         <div class="page-profile__dark-card-header">Приглашайте друзей и
