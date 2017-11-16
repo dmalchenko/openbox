@@ -12,6 +12,8 @@ use app\modules\opencase\models\DeliveryAddress;
 use app\modules\opencase\models\GameLog;
 use app\modules\opencase\models\Items;
 use app\modules\opencase\models\Promo;
+use app\modules\opencase\models\PromoCodes;
+use app\modules\opencase\models\PromoLog;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
@@ -324,6 +326,45 @@ class SiteController extends Controller {
 		if (!$user) {
 			return ['code' => 500, 'msg' => 'Вы не авторизованы'];
 		}
+
+		$promo = PromoCodes::findOne(['promocode' => $code]);
+		if ($promo) {
+			return $this->_promoPartner($user, $promo);
+		} else {
+			return $this->_promoUser($user, $code);
+		}
+	}
+
+	/**
+	 * @param User $user
+	 * @param PromoCodes $promo
+	 * @return array
+	 */
+	private function _promoPartner(User $user, PromoCodes $promo) {
+		$promoLog = PromoLog::findOne(['token' => $user->token_index, 'promocode' => $promo->promocode]);
+		if ($promoLog) {
+			return ['code' => 500, 'msg' => 'Вы уже ввели промо-код, обновите страницу'];
+		}
+		$promoLog = new PromoLog();
+		$promoLog->promocode = $promo->promocode;
+		$promoLog->bonus = $promo->bonus;
+		$promoLog->token = $user->token_index;
+		$promoLog->save();
+
+		$promo->count++;
+		$promo->save();
+
+		$user->money += $promo->bonus;
+		$user->save();
+		return ['code' => 200, 'msg' => ''];
+	}
+
+	/**
+	 * @param User $user
+	 * @param string $code
+	 * @return array
+	 */
+	private function _promoUser(User $user, $code) {
 		$promo = Promo::findOne(['token_index' => $user->token_index]);
 		if ($promo) {
 			return ['code' => 500, 'msg' => 'Вы уже ввели промо-код, обновите страницу'];
@@ -344,10 +385,16 @@ class SiteController extends Controller {
 		$promo->parent_index = $parentUser->token_index;
 		$promo->save();
 
+		$promoLog = new PromoLog();
+		$promoLog->promocode = $parentUser->token_index;
+		$promoLog->bonus = Promo::BONUS_MONEY;
+		$promoLog->token = $user->token_index;
+		$promoLog->token_gived = $parentUser->token_index;
+		$promoLog->save();
+
 		$user->money += Promo::BONUS_MONEY;
 		$user->save();
 		return ['code' => 200, 'msg' => ''];
-
 	}
 
 	/**

@@ -10,7 +10,8 @@ class m171116_164927_create_table_promo_log extends Migration
 			'id' => $this->primaryKey(),
 			'promocode' => $this->string(),
 			'bonus' => $this->integer(),
-			'token' => $this->integer(),
+			'token' => $this->bigInteger(20),
+			'token_gived' => $this->bigInteger(20),
 			'created_at' => $this->integer(),
 			'updated_at' => $this->integer(),
 		]);
