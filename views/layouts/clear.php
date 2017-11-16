@@ -165,8 +165,12 @@ $logs = GameLog::find()
         </header>
         <main role="main" class="page-delivery">
             <div class="container">
-                <div class="owl-carousel" id="owl-carousel-demo">
-					<?php
+                <div class="products-carousel">
+                    <div class="products-carousel__header">
+                        <span class="products-carousel__header-text">Live Лента</span>
+                    </div>
+                    <div class="owl-carousel products-carousel__carousel" id="owl-carousel-demo">
+                        <?php
                         $tmp = <<< HTML
                     <div onclick="window.location.href = '%s'">
                         <img src="%s" alt="surpise"
@@ -175,15 +179,16 @@ $logs = GameLog::find()
                              class="owl-carousel__person" style="width: 70px">
                     </div>
 HTML;
-					/**
-					 * @var \app\modules\opencase\models\GameLog[] $logs
-					 */
+                        /**
+                         * @var \app\modules\opencase\models\GameLog[] $logs
+                         */
                         foreach ($logs as $log) {
                             echo sprintf($tmp, Url::to(['user', 'token' => $log->token_index]), $log->itemAvatar, $log->userAvatar);
                         }
 
-					?>
+                        ?>
 
+                    </div>
                 </div>
 				<?= $content ?>
             </div>
