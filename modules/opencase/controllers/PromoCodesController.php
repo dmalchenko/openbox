@@ -2,6 +2,8 @@
 
 namespace app\modules\opencase\controllers;
 
+use app\modules\opencase\models\Promo;
+use app\modules\opencase\models\PromoLog;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -39,8 +41,13 @@ class PromoCodesController extends Controller
             'query' => PromoCodes::find(),
         ]);
 
+        $dataProviderPromolog = new ActiveDataProvider([
+            'query' => PromoLog::find(),
+        ]);
+
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+            'dataProviderPromoLog' => $dataProviderPromolog,
         ]);
     }
 

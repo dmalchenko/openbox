@@ -2,6 +2,7 @@
 
 namespace app\modules\opencase\models;
 
+use app\models\User;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 
@@ -15,6 +16,8 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $token_gived
  * @property integer $created_at
  * @property integer $updated_at
+ *
+ * @property User $user
  */
 class PromoLog extends \yii\db\ActiveRecord {
 	public function behaviors() {
@@ -46,11 +49,22 @@ class PromoLog extends \yii\db\ActiveRecord {
 	public function attributeLabels() {
 		return [
 			'id' => 'ID',
-			'promocode' => 'Promocode',
-			'bonus' => 'Bonus',
-			'token' => 'Token',
-			'created_at' => 'Created At',
-			'updated_at' => 'Updated At',
+			'promocode' => 'Промокод',
+			'bonus' => 'Бонус',
+			'token' => 'Пользователь',
+			'token_gived' => 'Партнер',
+			'created_at' => 'Активирован',
+			'updated_at' => 'Обнавлен',
 		];
+	}
+
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getUser() {
+		if (isset($this->token)) {
+			return $this->hasOne(User::className(), ['token_index' => 'token']);
+		}
+		return null;
 	}
 }

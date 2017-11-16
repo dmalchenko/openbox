@@ -5,6 +5,7 @@ use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $dataProviderPromoLog yii\data\ActiveDataProvider */
 
 $this->title = 'Партнерка';
 ?>
@@ -28,6 +29,21 @@ $this->title = 'Партнерка';
             // 'updated_at',
 
             ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
+
+    <h1>Статистика</h1>
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProviderPromoLog,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            'user.name',
+            'token_gived',
+            'promocode',
+            'bonus',
+            'created_at:datetime',
         ],
     ]); ?>
 </div>
