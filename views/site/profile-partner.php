@@ -76,7 +76,7 @@ $user = \app\models\User::getCurrentUser();
     <div class="page-profile-table__tr" style="color: #dddddd">
         <div class="page-profile-table__td">%s</div>
         <div class="page-profile-table__td">%s</div>
-        <div class="page-profile-table__td">%s</div>
+        <div class="page-profile-table__td">%s руб.</div>
         <div class="page-profile-table__td">%s</div>
     </div>
 HTML;

@@ -25,7 +25,6 @@ $this->title = 'Предметы';
 			'description',
 			'cost_real',
 			'cost_sell',
-			'count',
             'image' => [
                 'value' => function(\app\modules\opencase\models\Items $model) {
 					return Html::img($model->image);
