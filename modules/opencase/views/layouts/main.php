@@ -49,6 +49,7 @@ AppAsset::register($this);
 			['label' => 'Персональные подкрутки', 'url' => ['/opencase/gameconfig/index']],
 			['label' => 'Пользователи', 'url' => ['/opencase/user/index']],
 			['label' => 'Доставка', 'url' => ['/opencase/delivery/index']],
+			['label' => 'Партнерка', 'url' => ['/opencase/promo-codes/index']],
 
 		],
 	]);
