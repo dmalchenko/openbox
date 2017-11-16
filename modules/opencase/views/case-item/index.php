@@ -30,7 +30,10 @@ $this->title = 'Предметы';
 			'chance',
 			'image' => [
 				'value' => function(\app\modules\opencase\models\CaseItem $model) {
-					return Html::img($model->item->image);
+					if (isset($model->item->image)) {
+						return Html::img($model->item->image);
+					}
+					return null;
 				},
 				'label' => 'картинка',
 				'format' => 'raw'

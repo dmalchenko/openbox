@@ -44,7 +44,10 @@ foreach ($items as $id => $case) :
 				<?php
 				foreach ($case as $item) {
 					$s = '<div class="box-wrapper__item"><img src="%s" alt="surpise"></div>';
-					echo sprintf($s, $item->item->image);
+					if (isset($s, $item->item->image)) {
+						echo sprintf($s, $item->item->image);
+					}
+
 				}
 				?>
             </div>
