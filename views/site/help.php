@@ -13,7 +13,7 @@
         <div class="page-delivery__faq-block">
             <div class="page-delivery__faq-block-header">Куда нужно ввести промокод?</div>
             <div class="page-delivery__faq-block-list">
-                Промокод вводится на <a href="profile.html">странице вашего профиля</a> в форму
+                Промокод вводится на <a href="profile">странице вашего профиля</a> в форму
                 партнерского кода.
             </div>
         </div>
@@ -92,7 +92,7 @@
             <div class="page-delivery__faq-block-header">Как заказать доставку товаров?</div>
             <div class="page-delivery__faq-block-list">
                 Подробную информацию об условиях и порядке получения товаров вы можете прочитать в на
-                странице <a href="delivery.html">Доставка и оплата</a>
+                странице <a href="delivery">Доставка и оплата</a>
             </div>
         </div>
 
