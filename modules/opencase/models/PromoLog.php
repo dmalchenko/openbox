@@ -53,6 +53,7 @@ class PromoLog extends \yii\db\ActiveRecord {
 			'bonus' => 'Бонус',
 			'token' => 'Пользователь',
 			'token_gived' => 'Партнер',
+			'partner' => 'Партнер',
 			'created_at' => 'Активирован',
 			'updated_at' => 'Обнавлен',
 		];
@@ -66,5 +67,15 @@ class PromoLog extends \yii\db\ActiveRecord {
 			return $this->hasOne(User::className(), ['token_index' => 'token']);
 		}
 		return null;
+	}
+
+	public function getPartner() {
+		if (isset($this->token_gived)) {
+			$user = User::findOne(['token_index' => $this->token_gived]);
+			if ($user) {
+				return $user->name;
+			}
+		}
+		return 'VseBox';
 	}
 }

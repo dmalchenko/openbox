@@ -30,7 +30,7 @@ class Freekassa extends ActiveRecord {
 
 	public function initFreekassa() {
 		$this->merchantId = \Yii::$app->controller->module->params['merchantId'];
-		$this->secretWord = \Yii::$app->controller->module->params['secretWord'];
+		$this->secretWord = \Yii::$app->controller->module->params['merchantSecret'];
 	}
 
 	/**
@@ -83,7 +83,7 @@ class Freekassa extends ActiveRecord {
 
 	public function getSign() {
 		$merchantId = \Yii::$app->controller->module->params['merchantId'];
-		$secretWord = \Yii::$app->controller->module->params['secretWord'];
+		$secretWord = \Yii::$app->controller->module->params['merchantSecret'];
 		$sign = md5($merchantId . ':' . $this->amount . ':' . $secretWord . ':' . $this->id);
 		return $sign;
 	}

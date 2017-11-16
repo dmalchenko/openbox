@@ -39,8 +39,8 @@ $this->title = 'Партнерка';
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'user.name',
-            'token_gived',
+            'user.name:raw:Пользователь',
+            'partner',
             'promocode',
             'bonus',
             'created_at:datetime',
