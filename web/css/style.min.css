@@ -1261,7 +1261,7 @@ textarea.field-text__input {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  margin-top: 90px; }
+  margin-top: 55px; }
 @-webkit-keyframes modal-backdrop-show {
   0% {
     opacity: 0; }
