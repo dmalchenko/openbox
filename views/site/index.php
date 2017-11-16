@@ -22,16 +22,16 @@ foreach ($items as $id => $case) :
     <div class="box-wrapper"
          onclick="window.location.href ='<?= Url::toRoute(['/site/box', 'id' => $id]) ?>';">
         <div class="box-wrapper__left">
-            <div class="box boxColor<?= $id?>">
+            <div class="box boxColor<?= $id ?>">
                 <div class="box__header">
                     <div class="box__name">
                         Коробка
                         <div class="box__number">№<?= $i ?></div>
                     </div>
-                    <div class="box__price"><?= $id?>&#8381;</div>
+                    <div class="box__price"><?= $id ?>&#8381;</div>
                 </div>
                 <div class="box__surprice">
-                    <img src="img/surprice.png" alt="surprice">
+                    <img src="img/cover<?= $i ?>.png" alt="surprice">
                 </div>
             </div>
             <a href="<?= Url::toRoute(['/site/box', 'id' => $id]) ?>" class="btn  btn--accent  box__btn">Открыть
