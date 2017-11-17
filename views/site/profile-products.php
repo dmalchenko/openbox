@@ -34,27 +34,27 @@ $user = \app\models\User::getCurrentUser();
     <div class="page-profile-products__box js-product-delivery-box">
         <button class="close  page-profile-products__box-close js-btn-product-del" aria-label="Закрыть"><span></span>
         </button>
-        <img class="js-product-delivery-img" src="img/surprice.png" alt="product">
+        <img class="js-product-delivery-img" src="img/1px.png" alt="product">
     </div>
     <div class="page-profile-products__box js-product-delivery-box">
         <button class="close  page-profile-products__box-close js-btn-product-del" aria-label="Закрыть"><span></span>
         </button>
-        <img class="js-product-delivery-img" src="img/surprice.png" alt="product">
+        <img class="js-product-delivery-img" src="img/1px.png" alt="product">
     </div>
     <div class="page-profile-products__box js-product-delivery-box">
         <button class="close  page-profile-products__box-close js-btn-product-del" aria-label="Закрыть"><span></span>
         </button>
-        <img class="js-product-delivery-img" src="img/surprice.png" alt="product">
+        <img class="js-product-delivery-img" src="img/1px.png" alt="product">
     </div>
     <div class="page-profile-products__box js-product-delivery-box">
         <button class="close  page-profile-products__box-close js-btn-product-del" aria-label="Закрыть"><span></span>
         </button>
-        <img class="js-product-delivery-img" src="img/surprice.png" alt="product">
+        <img class="js-product-delivery-img" src="img/1px.png" alt="product">
     </div>
     <div class="page-profile-products__box js-product-delivery-box">
         <button class="close  page-profile-products__box-close js-btn-product-del" aria-label="Закрыть"><span></span>
         </button>
-        <img class="js-product-delivery-img" src="img/surprice.png" alt="product">
+        <img class="js-product-delivery-img" src="img/1px.png" alt="product">
     </div>
 </div>
 
@@ -169,7 +169,7 @@ HTML;
             bid: $currentProduct.data('bid')
         });
         $emptySlot.show();
-        $currentProduct.find('.js-product-delivery-img').prop('src', 'img/surprice.png');
+        $currentProduct.find('.js-product-delivery-img').prop('src', 'img/1px.png');
         $currentProduct.removeData();
         $currentProduct.removeClass('page-profile-products__box--active');
     });

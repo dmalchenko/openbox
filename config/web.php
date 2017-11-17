@@ -85,16 +85,16 @@ $config = [
 				'vkontakte' => [
 					// register your app here: https://vk.com/editapp?act=create&site=1
 					'class' => 'app\models\VKontakteOAuth2Service',
-					'clientId' => '6212174',
-					'clientSecret' => 'BTwwa8XUUbB0GcK6hbVd',
+					'clientId' => '6263253',
+					'clientSecret' => 'QIl6EbWSG2GuEYoj7CD8',
 				],
 				'odnoklassniki' => [
 					// register your app here: http://dev.odnoklassniki.ru/wiki/pages/viewpage.action?pageId=13992188
 					// ... or here: http://www.odnoklassniki.ru/dk?st.cmd=appsInfoMyDevList&st._aid=Apps_Info_MyDev
 					'class' => 'app\models\OdnoklassnikiOAuth2Service',
-					'clientId' => '1256372992',
-					'clientSecret' => '604897FC9A639389E116520A',
-					'clientPublic' => 'CBAMLDOLEBABABABA',
+					'clientId' => '1258514176',
+					'clientSecret' => 'E8DFDE54C72D528F1E2EDFC5',
+					'clientPublic' => 'CBAIGEAMEBABABABA',
 					'title' => 'Odnoklas.',
 				],
 			],

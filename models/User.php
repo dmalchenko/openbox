@@ -248,7 +248,7 @@ class User extends ActiveRecord implements IdentityInterface, Freekassable {
 			$user->save();
 
 			$promo = Promo::findOne(['token_index' => $user_id]);
-			if ($promo->parent_index && $money > 20) {
+			if ($promo && $promo->parent_index && $money > 20) {
 				$promoUser = User::findOne(['token_index' => $promo->parent_index]);
 				$promoBonus = intval(ceil($money * 0.05));
 				$promoUser->money += $promoBonus;

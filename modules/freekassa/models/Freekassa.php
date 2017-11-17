@@ -81,9 +81,9 @@ class Freekassa extends ActiveRecord {
 		return \Yii::$app->controller->module->params['currency'];
 	}
 
-	public function getSign() {
+	public function getSign($sec = 'merchantSecret') {
 		$merchantId = \Yii::$app->controller->module->params['merchantId'];
-		$secretWord = \Yii::$app->controller->module->params['merchantSecret'];
+		$secretWord = \Yii::$app->controller->module->params[$sec];
 		$sign = md5($merchantId . ':' . $this->amount . ':' . $secretWord . ':' . $this->id);
 		return $sign;
 	}

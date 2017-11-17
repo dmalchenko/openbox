@@ -134,3 +134,38 @@ a.desc:after {
     width: 70%;
     margin: auto;
 }
+
+.login-btn {
+    height: 46px;
+    line-height: 46px;
+    display: block;
+    padding: 0 30px;
+    margin-top: 22px;
+    cursor: pointer;
+    background-color: #ff6f00;
+    background-image: -webkit-gradient(linear,0 0,0 100%,from(#ff6f00),to(#ff9000));
+    background-image: -webkit-linear-gradient(to top,#ff6f00 0,#ff9000 100%);
+    background-image: -moz-linear-gradient(to top,#ff6f00 0,#ff9000 100%);
+    background-image: -o-linear-gradient(to top,#ff6f00 0,#ff9000 100%);
+    background-image: linear-gradient(to top,#ff6f00 0,#ff9000 100%);
+    -webkit-border-radius: 23px;
+    -moz-border-radius: 23px;
+    border-radius: 23px;
+    outline: 0;
+    color: #fbfcff;
+}
+
+.login-btn:hover {
+    opacity:0.75;
+}
+
+.login-btn span {
+    font-size: 24px;
+    display: inline-block;
+    float: right;
+    margin-left: 8px;
+}
+
+.flaticon-soc-vk:before {
+    content: "\f120";
+}

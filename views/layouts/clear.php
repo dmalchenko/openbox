@@ -31,6 +31,7 @@ $logs = GameLog::find()
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link href="css/style.min.css" rel="stylesheet" media="screen">
     <link href="css/site.css" rel="stylesheet" media="screen">
+    <link href="css/font-awesome.min.css" rel="stylesheet" media="screen">
 
     <script>
         // Маркер работающего javascript
@@ -123,6 +124,11 @@ $logs = GameLog::find()
 							<?php
 							if (Yii::$app->user->isGuest) {
 								?>
+
+                                <li class="login-btn eas" data-uloginbutton="vkontakte">
+                                    <strong>Войти через</strong>
+                                    <span class="flaticon-soc-vk"></span>
+                                </li>
 
                                 <li class="main-nav__item  main-nav__item_ml">
                                     <button class="btn  main-nav__btn" data-toggle="modal" data-target="#modal-demo-01">
@@ -225,6 +231,9 @@ HTML;
                                 </div>
                             </div>
                         </div>
+                        <div class="freekassa-baner" style="float: right;margin-top: -70px;">
+                            <a href="//www.free-kassa.ru/"><img src="//www.free-kassa.ru/img/fk_btn/8.png"></a>
+                        </div>
                         <div class="page-footer__copyright">2017@VseBox</div>
                         <div class="page-footer__confidential">Авторизируясь на сайте вы принимаете
                             <a href="#" class="page-footer__link">пользовательское соглашение</a>
@@ -243,7 +252,7 @@ HTML;
                         <div class="modal__header">
                             <span class="close  modal__close" data-dismiss="modal"
                                   aria-label="Закрыть"><span></span></span>
-                            <div class="modal__title">Выберите любимую социальную сеть</div>
+                            <div class="modal__title">Выберите социальную сеть для авторизации</div>
                         </div>
                         <div class="modal__wrapper">
                             <a href="<?= Url::toRoute(['/site/login-social', 'service' => 'vkontakte']) ?>"
@@ -262,14 +271,13 @@ HTML;
                     </div>
                 </div>
             </div>
-
             <div id="modal-demo-02" class="modal" tabindex="-1" role="dialog">
                 <form action="<?= $urlActionPayment ?>" class="modal__form  modal__dialog">
                 <div class="modal__content">
                     <div class="modal__header">
                             <span class="close  modal__close" data-dismiss="modal"
                         aria-label="Закрыть"><span></span></span>
-                        <div class="modal__title">Выберите любимый способ оплаты</div>
+                        <div class="modal__title">Выберите способ оплаты</div>
                     </div>
                         <div class="modal__wrapper">
                             <label class="field-text  modal__field-number">
@@ -279,50 +287,7 @@ HTML;
                                 </span>
                             </label>
                         </div>
-                        <div class="modal__text">Выберите платежную систему:</div>
                         <div class="modal__wrapper-bottom">
-                            <div class="modal__pay">
-                                <img src="img/visa.png" alt="visa">
-                                <input id="modal__pay1" class="field-radio__input" type="radio" name="ctype"
-                                       value="158">
-                                <label for="modal__pay1" class="field-radio__name"></label>
-                            </div>
-                            <div class="modal__pay">
-                                <img src="img/yandex.png" alt="yandex">
-                                <input id="modal__pay2" class="field-radio__input" type="radio" name="ctype"
-                                       value="45">
-                                <label for="modal__pay2" class="field-radio__name"></label>
-                            </div>
-                            <div class="modal__pay">
-                                <img src="img/qiwi.png" alt="qiwi">
-                                <input id="modal__pay3" class="field-radio__input" type="radio" name="ctype"
-                                       value="156">
-                                <label for="modal__pay3" class="field-radio__name"></label>
-                            </div>
-                            <div class="modal__pay">
-                                <img src="img/mts.png" alt="mts">
-                                <input id="modal__pay4" class="field-radio__input" type="radio" name="ctype"
-                                       value="84">
-                                <label for="modal__pay4" class="field-radio__name"></label>
-                            </div>
-                            <div class="modal__pay">
-                                <img src="img/megafon.png" alt="megafon">
-                                <input id="modal__pay5" class="field-radio__input" type="radio" name="ctype"
-                                       value="82">
-                                <label for="modal__pay5" class="field-radio__name"></label>
-                            </div>
-                            <div class="modal__pay">
-                                <img src="img/tele2.png" alt="tele2">
-                                <input id="modal__pay6" class="field-radio__input" type="radio" name="ctype"
-                                       value="132">
-                                <label for="modal__pay6" class="field-radio__name"></label>
-                            </div>
-                            <div class="modal__pay">
-                                <img src="img/beeline.png" alt="beeline">
-                                <input id="modal__pay7" class="field-radio__input" type="radio" name="ctype"
-                                       value="83">
-                                <label for="modal__pay7" class="field-radio__name"></label>
-                            </div>
                             <div class="modal__pay-btn-wrapper">
                                 <input type="submit" name="pay" value="Пополнить"
                                        class='btn  btn--accent  modal__pay-btn'>

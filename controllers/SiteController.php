@@ -248,8 +248,8 @@ class SiteController extends Controller {
 		$cntBox = isset($r[0]['cnt']) ? $r[0]['cnt'] : 0;
 		$cntSum = isset($r[0]['sum']) ? $r[0]['sum'] : 0;
 
-		$partnerSet = Promo::find()
-			->where(['token_index' => $user->token_index])
+		$partnerSet = PromoLog::find()
+			->where(['token' => $user->token_index])
 			->exists();
 
 		return $this->render('profile', [
@@ -315,9 +315,14 @@ class SiteController extends Controller {
 			->where(['token' => $user->token_index])
 			->all();
 
+		$partnerSet = PromoLog::find()
+			->where(['token' => $user->token_index])
+			->exists();
+
 		return $this->render('profile-partner', [
 			'code' => $user->token_index,
 			'promos' => $promos,
+			'partnerSet' => $partnerSet
 		]);
 	}
 

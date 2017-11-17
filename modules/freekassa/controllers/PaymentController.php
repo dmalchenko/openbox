@@ -13,12 +13,12 @@ use yii\web\Controller;
 class PaymentController extends Controller {
 
 	const URL_GET_BALANCE = 'http://www.free-kassa.ru/api.php?merchant_id=%s&s=%s&action=get_balance';
-	const URL_GET_CASH = 'http://www.free-kassa.ru/merchant/cash.php?m=%s&oa=%s&o=%s&s=%s&lang=ru&i=%s&us_id=%s';
+	const URL_GET_CASH = 'http://www.free-kassa.ru/merchant/cash.php?m=%s&oa=%s&o=%s&s=%s&lang=ru&us_id=%s';
 
 	public function actionPay() {
 		$remoteIp = isset($_SERVER['HTTP_X_REAL_IP']) ? $_SERVER['HTTP_X_REAL_IP'] : $_SERVER['REMOTE_ADDR'];
 
-		if (!in_array($remoteIp, array('136.243.38.147', '136.243.38.149', '136.243.38.150', '136.243.38.151', '136.243.38.189', '88.198.88.98'))) {
+		if (in_array($remoteIp, array('136.243.38.147', '136.243.38.149', '136.243.38.150', '136.243.38.151', '136.243.38.189', '88.198.88.98'))) {
 			exit("hacking attempt!");
 		}
 		$orderAmount = $_REQUEST['AMOUNT'];
@@ -33,7 +33,7 @@ class PaymentController extends Controller {
 			exit($model->description);
 		}
 
-		$sign = $model->getSign();
+		$sign = $model->getSign('merchantSecret2');
 		if ($sign != $_REQUEST['SIGN']) {
 			$model->status = Freekassa::STATUS_FAIL;
 			$model->description = 'wrong sign';
@@ -63,7 +63,7 @@ class PaymentController extends Controller {
 
 		$currency = intval(\Yii::$app->request->get('ctype'));
 		$amount = intval(\Yii::$app->request->get('sum'));
-		if (!$amount || $amount <= 0 || !in_array($currency, Freekassa::getCurrencies()) || !$user) {
+		if (!$amount || $amount <= 0 || !$user) {
 			return $this->goHome();
 		}
 
@@ -80,7 +80,7 @@ class PaymentController extends Controller {
 			$module = \Yii::$app->controller->module;
 			$merchantId = $module->params['merchantId'];
 
-			$url = sprintf(self::URL_GET_CASH, $merchantId, $model->amount, $model->id, $model->getSign(), $model->currency, $userId);
+			$url = sprintf(self::URL_GET_CASH, $merchantId, $model->amount, $model->id, $model->getSign('merchantSecret'), $userId);
 			return $this->redirect($url);
 		} else {
 			throw new BadRequestHttpException('Bad data for request');
