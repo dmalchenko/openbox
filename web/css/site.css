@@ -158,15 +158,13 @@ a.desc:after {
     opacity:0.75;
 }
 
-.login-btn span {
-    font-size: 24px;
-    display: inline-block;
+.flaticon-soc-vk {
+    font-size: 0;
     float: right;
     margin-left: 8px;
-    url('../img/025.png');
 }
 
-.flaticon-soc-vk:before {
-    /*content: "\f120";*/
-    url('../img/025.png');
+.flaticon-soc-vk__icon {
+    display: inline-block;
+    vertical-align: middle;
 }
