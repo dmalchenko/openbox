@@ -163,8 +163,10 @@ a.desc:after {
     display: inline-block;
     float: right;
     margin-left: 8px;
+    url('../img/025.png');
 }
 
 .flaticon-soc-vk:before {
-    content: "\f120";
+    /*content: "\f120";*/
+    url('../img/025.png');
 }
