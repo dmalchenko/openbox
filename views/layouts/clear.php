@@ -125,21 +125,22 @@ $logs = GameLog::find()
 							if (Yii::$app->user->isGuest) {
 								?>
 
-                                <li class="login-btn eas" data-uloginbutton="vkontakte">
+                                <li class="login-btn eas" data-uloginbutton="vkontakte"
+                                    onclick="window.location.href ='<?= Url::toRoute(['/site/login-social', 'service' => 'vkontakte']) ?>';">
                                     <strong>Войти через</strong>
                                     <span class="flaticon-soc-vk"></span>
                                 </li>
 
-                                <li class="main-nav__item  main-nav__item_ml">
-                                    <button class="btn  main-nav__btn" data-toggle="modal" data-target="#modal-demo-01">
-                                        Вход
-                                    </button>
-                                </li>
-                                <li class="main-nav__item">
-                                    <button class="btn  main-nav__btn" data-toggle="modal" data-target="#modal-demo-01">
-                                        Регистрация
-                                    </button>
-                                </li>
+<!--                                <li class="main-nav__item  main-nav__item_ml">-->
+<!--                                    <button class="btn  main-nav__btn" data-toggle="modal" data-target="#modal-demo-01">-->
+<!--                                        Вход-->
+<!--                                    </button>-->
+<!--                                </li>-->
+<!--                                <li class="main-nav__item">-->
+<!--                                    <button class="btn  main-nav__btn" data-toggle="modal" data-target="#modal-demo-01">-->
+<!--                                        Регистрация-->
+<!--                                    </button>-->
+<!--                                </li>-->
 
 								<?php
 							} else {

@@ -140,7 +140,6 @@ a.desc:after {
     line-height: 46px;
     display: block;
     padding: 0 30px;
-    margin-top: 22px;
     cursor: pointer;
     background-color: #ff6f00;
     background-image: -webkit-gradient(linear,0 0,0 100%,from(#ff6f00),to(#ff9000));

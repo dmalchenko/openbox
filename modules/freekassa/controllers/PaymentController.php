@@ -18,7 +18,7 @@ class PaymentController extends Controller {
 	public function actionPay() {
 		$remoteIp = isset($_SERVER['HTTP_X_REAL_IP']) ? $_SERVER['HTTP_X_REAL_IP'] : $_SERVER['REMOTE_ADDR'];
 
-		if (in_array($remoteIp, array('136.243.38.147', '136.243.38.149', '136.243.38.150', '136.243.38.151', '136.243.38.189', '88.198.88.98'))) {
+		if (!in_array($remoteIp, array('136.243.38.147', '136.243.38.149', '136.243.38.150', '136.243.38.151', '136.243.38.189', '88.198.88.98'))) {
 			exit("hacking attempt!");
 		}
 		$orderAmount = $_REQUEST['AMOUNT'];
