@@ -113,31 +113,11 @@
             </ol>
         </div>
     </div>
-
-    <div class="page-delivery__wrapper-right">
-        <div class="page-delivery__question">Остались вопросы?</div>
-        <div class="page-delivery__text">Задайте их нашим консультантам</div>
-        <div class="page-delivery__chat" id="page-delivery__chat" style="height: 400px"></div>
-    </div>
 </div>
-<script>
-    window.ChatraSetup = {
-        mode: 'frame',
-        injectTo: 'page-delivery__chat' /* id блока, в который будет встроен чат */
-    };
+<script type="text/javascript" src="//vk.com/js/api/openapi.js?150"></script>
+
+<!-- VK Widget -->
+<div id="vk_community_messages"></div>
+<script type="text/javascript">
+    VK.Widgets.CommunityMessages("vk_community_messages", 40771317, {expandTimeout: "10000",tooltipButtonText: "Есть вопрос?"});
 </script>
-<!-- Chatra -->
-<script>
-    (function(d, w, c) {
-        w.ChatraID = '<?= Yii::$app->params['chatraId']?>';
-        var s = d.createElement('script');
-        w[c] = w[c] || function() {
-                (w[c].q = w[c].q || []).push(arguments);
-            };
-        s.async = true;
-        s.src = (d.location.protocol === 'https:' ? 'https:': 'http:')
-            + '//call.chatra.io/chatra.js';
-        if (d.head) d.head.appendChild(s);
-    })(document, window, 'Chatra');
-</script>
-<!-- /Chatra -->
