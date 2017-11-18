@@ -83,13 +83,13 @@ HTML;
     <div class="page-profile__dark-card">
         <div class="page-profile__dark-card-header">Приглашайте друзей и
             <span>зарабатывайте 5% от всех пополнений</span></div>
-        <div class="page-profile__dark-card-text">Отправьте свой уникальный код друзьям, и получайте по 5% от каждого
+        <div class="page-profile__dark-card-text">Отправьте свою уникальную ссылку друзьям, которые должны авторизироваться по ней и получайте по 5% от каждого
             пополнения баланса другом!
         </div>
         <form action="a.php" class="page-profile__form" name="partner-invite">
             <label class="field-text">
                   <span class="field-text__input-wrap">
-                    <input class="field-text__input  page-profile__field-invite" value="<?= $code?>">
+                    <input class="field-text__input  page-profile__field-invite" value="http://vsebox.ru/partner?code=<?= $code?>">
                   </span>
             </label>
         </form>

@@ -3,6 +3,7 @@
 namespace app\modules\opencase\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "promo".
@@ -18,6 +19,12 @@ class Promo extends \yii\db\ActiveRecord
 {
 	const BONUS_MONEY = 50;
 	const BONUS_PERCENT = 50;
+
+	public function behaviors() {
+		return [
+			TimestampBehavior::className(),
+		];
+	}
 
 	/**
      * @inheritdoc

@@ -129,6 +129,10 @@ class SiteController extends Controller {
 					$identity = User::findByEAuth($eauth);
 					Yii::$app->getUser()->login($identity);
 
+					if ($code = Yii::$app->session->get('promocode')) {
+						$this->_promoLink($code);
+					}
+
 					// special redirect with closing popup window
 					$eauth->redirect();
 				} else {
@@ -166,7 +170,7 @@ class SiteController extends Controller {
 
 		$r = Yii::$app->user->identity;
 //		$t = User::addMoney($r->getId(), 100);
-		VarDumper::dump($r);
+		VarDumper::dump($_SESSION);
 		exit;
 
 	}
@@ -219,8 +223,9 @@ class SiteController extends Controller {
 		$this->layout = 'clear';
 
 		$user = User::getCurrentUser();
+
 		if (!$user) {
-			$this->redirect(['index']);
+			return $this->redirect(['index']);
 		}
 
 		$address = DeliveryAddress::findOne(['token_index' => $user->token_index]);
@@ -269,7 +274,7 @@ class SiteController extends Controller {
 		$this->layout = 'clear';
 		$user = User::getCurrentUser();
 		if (!$user) {
-			$this->redirect(['index']);
+			return $this->redirect(['index']);
 		}
 
 		$basketDataProvider = Basket::find()
@@ -288,7 +293,7 @@ class SiteController extends Controller {
 		$this->layout = 'clear';
 		$user = User::getCurrentUser();
 		if (!$user) {
-			$this->redirect(['index']);
+			return $this->redirect(['index']);
 		}
 
 		$items = Delivery::find()
@@ -308,7 +313,7 @@ class SiteController extends Controller {
 		$this->layout = 'clear';
 		$user = User::getCurrentUser();
 		if (!$user) {
-			$this->redirect(['index']);
+			return $this->redirect(['index']);
 		}
 
 		$promos = PromoLog::find()
@@ -404,11 +409,77 @@ class SiteController extends Controller {
 	}
 
 	/**
+	 * @param $code
+	 * @return array|bool
+	 */
+	private function _promoLink($code) {
+		$user = User::getCurrentUser();
+
+		$promo = PromoLog::findOne(['token' => $user->token_index]);
+		if ($promo) {
+			return false;
+		}
+
+		$parentUser = User::findOne(['token_index' => $code]);
+		if (!$parentUser) {
+			return false;
+		}
+
+		if ($parentUser->token_index == $user->token_index) {
+			return false;
+		}
+
+		$promo = new Promo();
+		$promo->token_index = $user->token_index;
+		$promo->token = $user->token;
+		$promo->parent_index = $parentUser->token_index;
+		$promo->save();
+
+		$promoLog = new PromoLog();
+		$promoLog->promocode = strval($parentUser->token_index);
+		$promoLog->bonus = Promo::BONUS_MONEY;
+		$promoLog->token = $user->token_index;
+		$promoLog->token_gived = $parentUser->token_index;
+		$promoLog->save();
+
+		$user->money += Promo::BONUS_MONEY;
+		$user->save();
+
+		Yii::$app->session->set('promocode', '');
+		Yii::$app->session->set('promocode_ok', 'ok');
+		return true;
+	}
+
+	/**
+	 * @param $code
+	 */
+	public function actionPartner($code) {
+		$user = User::getCurrentUser();
+		if ($user) {
+			$this->redirect('index');
+		}
+
+		$parentUser = User::findOne(['token_index' => $code]);
+		if (!$parentUser) {
+			$this->redirect('index');
+		}
+
+		Yii::$app->session->set('promocode', $code);
+
+		$this->redirect('index');
+	}
+
+	/**
 	 * @param $id
 	 * @return string
 	 */
 	public function actionBox($id) {
 		$this->layout = 'clear';
+		$user = User::getCurrentUser();
+		if ($user) {
+			$this->redirect('index');
+		}
+
 
 		$caseNumber = CaseType::find()->where(['type' => $id])->one()->id;
 
