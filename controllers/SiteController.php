@@ -476,10 +476,9 @@ class SiteController extends Controller {
 	public function actionBox($id) {
 		$this->layout = 'clear';
 		$user = User::getCurrentUser();
-		if ($user) {
+		if (!$user) {
 			$this->redirect('index');
 		}
-
 
 		$caseNumber = CaseType::find()->where(['type' => $id])->one()->id;
 
