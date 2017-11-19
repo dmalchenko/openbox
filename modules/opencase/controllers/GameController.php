@@ -94,6 +94,7 @@ class GameController extends OpenboxController {
 			->andWhere(['status' => 1])
 			->asArray()
 			->all();
+		//file_put_contents('rrr.txt', json_encode($itemPersonalRaw));
 
 		$personalIds = [];
 		foreach ($itemPersonalRaw as $itemPersonal) {

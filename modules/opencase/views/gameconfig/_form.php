@@ -12,13 +12,9 @@ use yii\widgets\ActiveForm;
 
 	<?php $form = ActiveForm::begin(); ?>
 
-	<?= $form->field($model, 'user_id')->textInput() ?>
-
-	<?= $form->field($model, 'token')->textInput(['maxlength' => true]) ?>
-
-	<?= $form->field($model, 'token_index')->textInput() ?>
-
-	<?= $form->field($model, 'message')->textInput(['maxlength' => true]) ?>
+	<?= $form->field($model, 'token_index')
+		->dropDownList($model->findUsers())
+		->label('Игрок') ?>
 
 	<?= $form->field($model, 'status')->dropDownList([0, 1]) ?>
 

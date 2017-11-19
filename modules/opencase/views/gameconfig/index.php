@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -22,7 +23,13 @@ $this->title = 'Персональные подкрутки';
 
 			'id',
 //			'user_id',
-			'token',
+			[
+				'attribute' => 'user.name',
+				'value' => function (\app\modules\opencase\models\GameConfig $model) {
+					return Html::a($model->user->name, Url::toRoute(['user/view', 'id' => $model->user->id]));
+				},
+				'format' => 'raw'
+			],
 			'token_index',
 			'status',
 			'case_type',

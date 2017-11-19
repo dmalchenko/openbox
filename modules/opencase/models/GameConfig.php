@@ -2,6 +2,7 @@
 
 namespace app\modules\opencase\models;
 
+use app\models\User;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\ArrayHelper;
@@ -22,6 +23,7 @@ use yii\helpers\ArrayHelper;
  * @property integer $updated_at
  *
  * @property Items $item
+ * @property User $user
  */
 class GameConfig extends \yii\db\ActiveRecord
 {
@@ -87,4 +89,17 @@ class GameConfig extends \yii\db\ActiveRecord
 		$result = ArrayHelper::map($array, 'id', 'title');
     	return $result;
 	}
+
+	public function findUsers() {
+		$users = User::find()->asArray()->all();
+		$users = ArrayHelper::map($users, 'token_index', function($v) {
+			return sprintf('%s (%s)', $v['name'], $v['token']);
+		});
+		return $users;
+	}
+
+	public function getUser() {
+		return $this->hasOne(User::className(), ['token_index' => 'token_index']);
+	}
+
 }
