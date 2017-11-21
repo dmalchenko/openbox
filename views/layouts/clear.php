@@ -26,7 +26,9 @@ $cntBoxs = intval(Yii::$app->params['boxCounts']) + GameLog::find()->count();
     <meta charset="utf-8">
     <title>Box</title>
     <meta name="description" content="">
-
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta name="format-detection" content="telephone=no">

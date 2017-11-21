@@ -1217,7 +1217,7 @@ textarea.field-text__input {
   background-size: cover;
 }
 .modal__box--green {
-  background-image: url(../img/green-box.png);
+  background-image: url(../img/green-box2.png);
   background-repeat: no-repeat; }
 .modal__img-win {
   position: absolute;
@@ -2461,6 +2461,7 @@ textarea.field-text__input {
 .products-carousel {
   position: relative;
   overflow: hidden;
+  margin-top: 15px;
 }
 .products-carousel__carousel {
   padding-left: 30px;

@@ -55,7 +55,10 @@ class GameConfig extends \yii\db\ActiveRecord
 	public function beforeSave($insert) {
 
     	if ($insert) {
-			$this->token_index = crc32($this->token);
+			$user = User::findOne(['token_index' => $this->token_index]);
+			if ($user) {
+				$this->token = $user->token;
+			}
 		}
     	return parent::beforeSave($insert);
     }

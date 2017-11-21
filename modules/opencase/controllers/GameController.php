@@ -14,13 +14,28 @@ class GameController extends OpenboxController {
 
 	public $enableCsrfValidation = false;
 
+	public function behaviors()
+	{
+		return [
+			[
+				'class' => 'yii\filters\HttpCache',
+				'only' => ['index'],
+				'lastModified' => function ($action, $params) {
+					return time();
+				},
+			],
+		];
+	}
+
 	/**
 	 * @param integer $caseType
 	 * @return mixed|string
 	 */
 	public function actionRun($caseType) {
 
-		\Yii::$app->response->format = Response::FORMAT_JSON;
+		http_response_code(200);
+
+		header('Expires: ' . gmdate('D, d M Y H:i:s', time()) . ' GMT');
 
 		$user = User::getCurrentUser();
 		if (!$user) {
@@ -76,8 +91,9 @@ class GameController extends OpenboxController {
 		}
 
 		$user->save();
-
-		return $r;
+		http_response_code(200);
+		echo json_encode($r);
+		exit;
 	}
 
 	/**

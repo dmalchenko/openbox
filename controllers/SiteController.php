@@ -332,17 +332,19 @@ class SiteController extends Controller {
 	}
 
 	public function actionPromo($code) {
-		\Yii::$app->response->format = Response::FORMAT_JSON;
 		$user = User::getCurrentUser();
 		if (!$user) {
-			return ['code' => 500, 'msg' => 'Вы не авторизованы'];
+			echo json_encode(['code' => 500, 'msg' => 'Вы не авторизованы']);
+			exit;
 		}
 
 		$promo = PromoCodes::findOne(['promocode' => $code]);
 		if ($promo) {
-			return $this->_promoPartner($user, $promo);
+			echo json_encode( $this->_promoPartner($user, $promo));
+			exit;
 		} else {
-			return $this->_promoUser($user, $code);
+			echo json_encode( $this->_promoUser($user, $code));
+			exit;
 		}
 	}
 
@@ -497,7 +499,6 @@ class SiteController extends Controller {
 	 * @return array
 	 */
 	public function actionSell($id, $bid) {
-		\Yii::$app->response->format = Response::FORMAT_JSON;
 		$item = Items::findOne($id);
 		$user = User::getCurrentUser();
 		$basket = Basket::find()
@@ -506,18 +507,21 @@ class SiteController extends Controller {
 			->one();
 
 		if (!$user || !$item || !$basket) {
-			return ['code' => 500, 'msg' => 'Внутренняя ошибка'];
+			echo json_encode(['code' => 500, 'msg' => 'Внутренняя ошибка']);
+			exit;
 		}
 
 		if ($basket->item_id != $id) {
-			return ['code' => 500, 'msg' => 'Ошибка в запросе'];
+			echo json_encode(['code' => 500, 'msg' => 'Ошибка в запросе']);
+			exit;
 		}
 
 		$user->money += $item->cost_sell;
 		$user->save();
 
 		$basket->delete();
-		return ['code' => 200, 'msg' => 'ok', 'balance' => $user->money];
+		echo json_encode(['code' => 200, 'msg' => 'ok', 'balance' => $user->money]);
+		exit;
 	}
 
 	public function actionUser($token) {

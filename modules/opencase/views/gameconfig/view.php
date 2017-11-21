@@ -31,7 +31,11 @@ $this->title = $model->id;
 			[
 				'attribute' => 'user.name',
 				'value' => function (\app\modules\opencase\models\GameConfig $model) {
-					return Html::a($model->user->name, Url::toRoute(['user/view', 'id' => $model->user->id]));
+					if (isset($model->user)) {
+						return Html::a($model->user->name, Url::toRoute(['user/view', 'id' => $model->user->id]));
+					} else {
+						return null;
+					}
 				},
                 'format' => 'raw'
 			],

@@ -72,27 +72,31 @@ class UserController extends \app\controllers\UserController {
 	}
 
 	public function actionDelivery() {
-		\Yii::$app->response->format = Response::FORMAT_JSON;
 		if (!\Yii::$app->request->isPost) {
-			return ['code' => 500, 'msg' => 'Error'];
+			echo json_encode(['code' => 500, 'msg' => 'Error']);
+			exit;
 		}
 		$user = User::getCurrentUser();
 		if (!$user) {
-			return ['code' => 500, 'msg' => 'Пожалуйста авторизируйтесь'];
+			echo json_encode(['code' => 500, 'msg' => 'Пожалуйста авторизируйтесь']);
+			exit;
 		}
 		if ($user->money - Delivery::COST < 0) {
-			return ['code' => 500, 'msg' => 'Недостаточно средств на счете'];
+			echo json_encode(['code' => 500, 'msg' => 'Недостаточно средств на счете']);
+			exit;
 		}
 
 		$deliveryAddress = DeliveryAddress::findOne(['token_index' => $user->token_index]);
 		if (!$deliveryAddress) {
-			return ['code' => 500, 'msg' => 'Не указан адресс доставки'];
+			echo json_encode(['code' => 500, 'msg' => 'Не указан адресс доставки']);
+			exit;
 		}
 
 		$post = \Yii::$app->request->post();
 		$items = $post['items'];
 		if (!$items || !is_array($items) || count($items) > 5) {
-			return ['code' => 500, 'msg' => 'Внутренняя ошибка, попробуйте позже'];
+			echo json_encode(['code' => 500, 'msg' => 'Внутренняя ошибка, попробуйте позже']);
+			exit;
 		}
 
 		/**
@@ -105,7 +109,8 @@ class UserController extends \app\controllers\UserController {
 		$confirmItems = count($basketItems) >= count($items) && count($items);
 
 		if (!$confirmItems) {
-			return ['code' => 500, 'msg' => 'Внутренняя ошибка, попробуйте позже'];
+			echo json_encode(['code' => 500, 'msg' => 'Внутренняя ошибка, попробуйте позже']);
+			exit;
 		}
 
 		foreach ($basketItems as $basketItem) {
@@ -125,7 +130,8 @@ class UserController extends \app\controllers\UserController {
 			$delivery->save();
 		}
 
-		return ['code' => 200, 'msg' => 'OK'];
+		echo json_encode(['code' => 200, 'msg' => 'OK']);
+		exit;
 	}
 
 	/**

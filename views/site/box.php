@@ -156,7 +156,10 @@ HTML;
 
         $.ajax({
             dataType: 'json',
-            url: '<?= Url::toRoute(['/opencase/game/run', 'caseType' => $type]) ?>',
+            type: 'post',
+            cache: false,
+//            url: '<?//= Url::toRoute(['/opencase/game/run', 'caseType' => $type, 'a' => 1]) ?>//',
+            url: "/opencase/game/run?caseType=<?= $type?>",
             data: {_csrf: csrfToken},
             success: function (data) {
                 if (data.code == 200 & data.caseType == caseType & data.id > 0) {
