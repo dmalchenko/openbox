@@ -232,7 +232,7 @@ HTML;
                                 </div>
                             </div>
                         </div>
-                        <div class="freekassa-baner" style="float: right;margin-top: -70px;">
+                        <div class="freekassa-baner hidden-xs" style="float: right;margin-top: -70px;">
                             <a href="//www.free-kassa.ru/"><img src="//www.free-kassa.ru/img/fk_btn/8.png"></a>
                         </div>
                         <div class="page-footer__copyright">2017@VseBox</div>

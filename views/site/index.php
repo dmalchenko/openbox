@@ -34,8 +34,8 @@ foreach ($items as $id => $case) :
                     <img src="img/cover<?= $i ?>.png" alt="surprice">
                 </div>
             </div>
-            <a href="<?= Url::toRoute(['/site/box', 'id' => $id]) ?>" class="btn  btn--accent  box__btn">Открыть
-                коробку</a>
+            <button href="<?= Url::toRoute(['/site/box', 'id' => $id]) ?>" class="btn  btn--accent  box__btn">Открыть
+                коробку</button>
             <div class="box-wrapper__text">
                 Уже выдано
                 <span class="box-wrapper__number">184 569 товаров</span>
