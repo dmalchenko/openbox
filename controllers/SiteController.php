@@ -86,8 +86,25 @@ class SiteController extends Controller {
 		return $this->render('index', [
 			'items' => $items,
 		]);
+	}
 
+	public function actionIndex2() {
+		$this->layout = 'clear';
 
+		$items = CaseItem::find()->all();
+		$items = ArrayHelper::index($items, null, 'case_type');
+
+		$games = GameLog::find()
+			->select('COUNT(id) as cnt, case_type')
+			->groupBy('case_type')
+			->asArray()
+			->all();
+
+		$games = ArrayHelper::index($games, null, 'case_type');
+		return $this->render('index', [
+			'items' => $items,
+			'cnt' => $games
+		]);
 	}
 
 	/**
@@ -340,10 +357,10 @@ class SiteController extends Controller {
 
 		$promo = PromoCodes::findOne(['promocode' => $code]);
 		if ($promo) {
-			echo json_encode( $this->_promoPartner($user, $promo));
+			echo json_encode($this->_promoPartner($user, $promo));
 			exit;
 		} else {
-			echo json_encode( $this->_promoUser($user, $code));
+			echo json_encode($this->_promoUser($user, $code));
 			exit;
 		}
 	}

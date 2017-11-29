@@ -255,7 +255,7 @@ HTML;
                                   aria-label="Закрыть"><span></span></span>
                             <div class="modal__title">Пожалуйста авторизируйтесь</div>
                         </div>
-                        <li class="login-btn eas" data-uloginbutton="vkontakte" style="width: 50%; margin: auto"
+                        <li class="login-btn eas" data-uloginbutton="vkontakte" style="width: 60%; margin: auto"
                             onclick="window.location.href ='<?= Url::toRoute(['/site/login-social', 'service' => 'vkontakte']) ?>';">
                             <strong>Войти через</strong>
                             <span class="flaticon-soc-vk">

@@ -1,5 +1,6 @@
 <?php
 /* @var $this yii\web\View */
+/* @var $cnt array */
 /* @var $items \app\modules\opencase\models\CaseItem[] */
 
 use app\models\User;
@@ -17,7 +18,8 @@ ksort($items);
  * @var $case \app\modules\opencase\models\CaseItem[]
  */
 foreach ($items as $id => $case) :
-	$i++
+	$i++;
+	$openBoxes = round(425 * $id/$i) + (isset($cnt[$id][0]['cnt']) ? $cnt[$id][0]['cnt'] : 1);
 	?>
     <div class="box-wrapper"
          onclick="window.location.href ='<?= Url::toRoute(['/site/box', 'id' => $id]) ?>';">
@@ -38,7 +40,7 @@ foreach ($items as $id => $case) :
                 коробку</button>
             <div class="box-wrapper__text">
                 Уже выдано
-                <span class="box-wrapper__number">184 569 товаров</span>
+                <span class="box-wrapper__number"><?= $openBoxes?> товаров</span>
             </div>
         </div>
         <div class="box-wrapper__right">
