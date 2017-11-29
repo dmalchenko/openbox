@@ -77,7 +77,7 @@ class SiteController extends Controller {
 	 *
 	 * @return string
 	 */
-	public function actionIndex() {
+	public function actionIndex2() {
 		$this->layout = 'clear';
 
 		$items = CaseItem::find()->all();
@@ -88,7 +88,7 @@ class SiteController extends Controller {
 		]);
 	}
 
-	public function actionIndex2() {
+	public function actionIndex() {
 		$this->layout = 'clear';
 
 		$items = CaseItem::find()->all();
