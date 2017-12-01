@@ -235,9 +235,13 @@ HTML;
                         <div class="freekassa-baner hidden-xs" style="float: right;margin-top: -70px;">
                             <a href="//www.free-kassa.ru/"><img src="//www.free-kassa.ru/img/fk_btn/8.png"></a>
                         </div>
-                        <div class="page-footer__copyright">2017@VseBox</div>
+                        <div class="page-footer__copyright">
+                            Общество с ограниченной ответственностью "Всебокс"<br>
+                            196105 г. Санкт-Петербург, пр-кт Люботинский, д. 2/4, оф 55 <br>
+                            ИНН 7810841326 КПП 781001001 ОГРН 1117847402805 ОКПО 30607969</div>
+                        <br>
                         <div class="page-footer__confidential">Авторизируясь на сайте вы принимаете
-                            <a href="#" class="page-footer__link">пользовательское соглашение</a>
+                            <a href="/agreement" class="page-footer__link">пользовательское соглашение</a>
                         </div>
                         <a href="#" class="page-footer__link">Политика конфиденциальности</a>
                     </div>

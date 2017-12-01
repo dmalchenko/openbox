@@ -36,7 +36,7 @@ foreach ($items as $id => $case) :
                     <img src="img/cover<?= $i ?>.png" alt="surprice">
                 </div>
             </div>
-            <button href="<?= Url::toRoute(['/site/box', 'id' => $id]) ?>" class="btn  btn--accent  box__btn">Открыть
+            <button href="<?= Url::toRoute(['/site/box', 'id' => $id]) ?>" class="btn btn--accent box__btn">Открыть
                 коробку</button>
             <div class="box-wrapper__text">
                 Уже выдано

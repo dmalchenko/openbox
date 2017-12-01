@@ -111,6 +111,11 @@ class SiteController extends Controller {
 //		]);
 //	}
 
+	public function actionAgreement() {
+		$this->layout = 'clear';
+		return $this->render('agreement');
+	}
+
 	public function actionIndex() {
 		$this->layout = 'clear';
 
@@ -518,9 +523,6 @@ class SiteController extends Controller {
 	public function actionBox($id) {
 		$this->layout = 'clear';
 		$user = User::getCurrentUser();
-		if (!$user) {
-			$this->redirect('index');
-		}
 
 		$caseNumber = CaseType::find()->where(['type' => $id])->one()->id;
 
