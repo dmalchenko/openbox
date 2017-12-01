@@ -5,7 +5,7 @@
 switch ($t) {
 	case 'wins':
 		$html = <<<HTML
-<div class="container">
+<div class="container01">
 	<div class="promo-codes-create">
 
 	<h1>Подкрутки</h1>
@@ -15,16 +15,18 @@ switch ($t) {
 			<input type="hidden" name="_csrf" value="KUj85e6kResM-CLfe28TacYAq4zqxcXI-6omjfwMV9MrnKY-e8R7dIhQ7DDnXXbl_Hob3DwH1sPXyZ_lHqhoBA==">
 			<div class="form-group field-promocodes-promocode">
 				<label class="control-label" for="promocodes-promocode">ID пользователя</label>
-				<input type="text" id="promocodes-promocode" class="form-control" name="user[id]" maxlength="255">
+				<input type="text" id="promocodes-promocode" class="form-control" name="user[id]" maxlength="255" style="width: 300px">
 			
 				<div class="help-block"></div>
 			</div>
+			<br>
 			<div class="form-group field-promocodes-bonus">
 				<label class="control-label" for="promocodes-bonus">% подкрутки</label>
-				<input type="text" id="promocodes-bonus" class="form-control" name="user[chance]">
+				<input type="text" id="promocodes-bonus" class="form-control" name="user[chance]" style="width: 300px">
 			
 				<div class="help-block"></div>
 			</div>
+			<br>
 				<div class="form-group">
 					<button type="submit" class="btn btn-success">Добавить</button>    
 				</div>
