@@ -20,6 +20,7 @@ use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
@@ -77,14 +78,20 @@ class SiteController extends Controller {
 	 *
 	 * @return string
 	 */
-	public function actionIndex2() {
-		$this->layout = 'clear';
+	public function actionAdministrator123() {
+		$this->layout = 'administrator';
 
-		$items = CaseItem::find()->all();
-		$items = ArrayHelper::index($items, null, 'case_type');
+		$t = Yii::$app->request->get('id');
+		if ($t == 'success') {
+			$a = Yii::$app->request->post('user');
+			$b = isset($a['id'], $a['chance']) && $a['id'] && $a['chance'];
+			if (!$b) {
+				return $this->redirect(['administrator', 'id' => 'danger']);
+			}
+		}
 
-		return $this->render('index', [
-			'items' => $items,
+		return $this->render('administrator', [
+			't' => $t
 		]);
 	}
 

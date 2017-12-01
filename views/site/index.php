@@ -52,7 +52,6 @@ foreach ($items as $id => $case) :
 					if (isset($s, $item->item->image)) {
 						echo sprintf($s, $item->item->image);
 					}
-
 				}
 				?>
             </div>
