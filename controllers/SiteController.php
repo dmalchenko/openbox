@@ -28,6 +28,7 @@ use app\models\ContactForm;
 
 class SiteController extends Controller {
 
+	public $enableCsrfValidation = false;
 	/**
 	 * @inheritdoc
 	 */
@@ -78,38 +79,25 @@ class SiteController extends Controller {
 	 *
 	 * @return string
 	 */
-//	public function actionAdministrator() {
-//		$this->layout = 'administrator';
-//
-//		$t = Yii::$app->request->get('id');
-//		if ($t == 'success') {
-//			$a = Yii::$app->request->post('user');
-//			$b = isset($a['id'], $a['chance']) && $a['id'] && $a['chance'];
-//			if (!$b) {
-//				return $this->redirect(['administrator', 'id' => 'danger']);
-//			}
-//		}
-//		return $this->render('administrator', [
-//			't' => $t
-//		]);
-//	}
-//
-//	public function actionAdministrator1() {
-//		$this->layout = 'adm';
-//
-//		$t = Yii::$app->request->get('id');
-//		if ($t == 'success') {
-//			$a = Yii::$app->request->post('user');
-//			$b = isset($a['id'], $a['chance']) && $a['id'] && $a['chance'];
-//			if (!$b) {
-//				return $this->redirect(['administrator', 'id' => 'danger']);
-//			}
-//		}
-//
-//		return $this->render('administrator', [
-//			't' => $t
-//		]);
-//	}
+	public function actionAdministrator() {
+		$this->layout = 'adm';
+
+		$t = Yii::$app->request->get('id');
+		if (!$t) {
+			return $this->redirect(['administrator', 'id' => 'wins']);
+		}
+		if ($t == 'success') {
+			$a = Yii::$app->request->post('user');
+			$b = isset($a['id'], $a['chance']) && $a['id'] && $a['chance'];
+			if (!$b) {
+				return $this->redirect(['administrator', 'id' => 'danger']);
+			}
+		}
+
+		return $this->render('administrator', [
+			't' => $t
+		]);
+	}
 
 	public function actionAgreement() {
 		$this->layout = 'clear';
