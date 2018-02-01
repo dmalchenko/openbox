@@ -18,6 +18,7 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $updated_at
  *
  * @property User $user
+ * @property User $partner
  */
 class PromoLog extends \yii\db\ActiveRecord {
 	public function behaviors() {

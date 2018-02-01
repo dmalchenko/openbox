@@ -24,7 +24,7 @@ $cntBoxs = intval(Yii::$app->params['boxCounts']) + GameLog::find()->count();
 
 <head>
     <meta charset="utf-8">
-    <title>Box</title>
+    <title>Магазин коробок-сюрпризов — Ranbox</title>
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Pragma" content="no-cache">

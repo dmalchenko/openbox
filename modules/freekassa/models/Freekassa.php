@@ -3,6 +3,8 @@
 namespace app\modules\freekassa\models;
 
 
+use app\models\User;
+use app\modules\opencase\models\PromoLog;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 
@@ -19,6 +21,9 @@ use yii\db\ActiveRecord;
  * @property string $user_id
  * @property integer $created_at
  * @property integer $updated_at
+ * 
+ * @property PromoLog $promo
+ * @property User $user
  */
 class Freekassa extends ActiveRecord {
 
@@ -96,6 +101,14 @@ class Freekassa extends ActiveRecord {
 		$userClass = \Yii::$app->controller->module->params['userClass'];
 		$userClass::addMoney($this->user_id, $this->amount);
 		return true;
+	}
+
+    public function getPromo() {
+        return $this->hasOne(PromoLog::className(), ['token' => 'user_id']);
+	}
+
+    public function getUser() {
+        return $this->hasOne(User::className(), ['token_index' => 'user_id']);
 	}
 
 }

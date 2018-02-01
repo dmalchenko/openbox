@@ -39,14 +39,15 @@ $this->title = 'Персональные подкрутки';
 			'case_type',
 			'item_id' => [
 				'value' => function (\app\modules\opencase\models\GameConfig $model) {
-					return Html::a($model->item->title, ['/opencase/item/view', 'id' => $model->item_id]);
+					return Html::a($model->caseItem->item->title,
+                        ['/opencase/item/view', 'id' => $model->caseItem->item->id]);
 				},
 				'label' => 'предмет',
 				'format' => 'raw'
 			],
 			'item_img' => [
 				'value' => function (\app\modules\opencase\models\GameConfig $model) {
-					return Html::img($model->item->image);
+					return Html::img($model->caseItem->item->image);
 				},
 				'label' => 'картинка',
 				'format' => 'raw'

@@ -22,7 +22,7 @@ use yii\helpers\ArrayHelper;
  * @property integer $created_at
  * @property integer $updated_at
  *
- * @property Items $item
+ * @property CaseItems $caseItem
  * @property User $user
  */
 class GameConfig extends \yii\db\ActiveRecord
@@ -83,12 +83,17 @@ class GameConfig extends \yii\db\ActiveRecord
         ];
     }
 
-	public function getItem() {
-		return $this->hasOne(Items::className(), ['id' => 'item_id']);
+	public function getCaseItem() {
+		return $this->hasOne(CaseItem::className(), ['id' => 'item_id']);
     }
 
 	public function findItems() {
-		$array = Items::find()->select(["id, concat(title, '(', case_type, ')') as title"])->asArray()->all();
+		$array = CaseItem::find()
+            ->select(["case_item.id, concat(i.title, '(', case_item.case_type, ')') as title"])
+            ->join('INNER JOIN', 'items as i', 'i.id = case_item.item_id')
+            ->orderBy('case_item.case_type')
+            ->asArray()
+            ->all();
 		$result = ArrayHelper::map($array, 'id', 'title');
     	return $result;
 	}

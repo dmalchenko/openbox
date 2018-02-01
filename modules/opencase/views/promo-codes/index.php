@@ -34,15 +34,37 @@ $this->title = 'Партнерка';
 
     <h1>Статистика</h1>
 
+
     <?= GridView::widget([
         'dataProvider' => $dataProviderPromoLog,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'user.name:raw:Пользователь',
-            'partner',
-            'promocode',
-            'bonus',
+            [
+                'attribute' => 'user',
+                'format' => 'raw',
+                'value' => function (\app\modules\freekassa\models\Freekassa $model) {
+                    if (isset($model->user) && $partner = $model->user) {
+                        return Html::a($partner->name, ['/admin/user/view', 'id' => $partner->id]);
+                    } else {
+                        return 'vsebox';
+                    }
+                },
+            ],
+//            'partner',
+            [
+                'attribute' => 'promo.token_gived',
+                'format' => 'raw',
+                'value' => function (\app\modules\freekassa\models\Freekassa $model) {
+                    if (isset($model->promo->token_gived) && $partner = $model->promo->token_gived) {
+//                        return Html::a($partner->username, ['/admin/user/view', 'id' => $partner->id]);
+                        return $partner;
+                    } else {
+                        return 'vsebox';
+                    }
+                },
+            ],
+            'amount:raw:Пополнение',
             'created_at:datetime',
         ],
     ]); ?>

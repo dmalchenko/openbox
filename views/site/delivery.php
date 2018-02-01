@@ -53,7 +53,7 @@
         <div class="page-delivery__faq-block">
             <div class="page-delivery__faq-block-header">Куда вы сможете доставить товары?</div>
             <div class="page-delivery__faq-block-list">
-                Доставка производится только на территории России. Стоимость доставки не зависит от региона или города и
+                Доставка производится по России и СНГ. Стоимость доставки не зависит от региона или города и
                 составляет 300 рублей.
             </div>
         </div>
@@ -147,5 +147,5 @@
 <!-- VK Widget -->
 <div id="vk_community_messages"></div>
 <script type="text/javascript">
-    VK.Widgets.CommunityMessages("vk_community_messages", 40771317, {expandTimeout: "10000",tooltipButtonText: "Есть вопрос?"});
+    VK.Widgets.CommunityMessages("vk_community_messages", 40771573, {expandTimeout: "50000",tooltipButtonText: "Здравствуйте! У вас есть к нам вопрос?"});
 </script>

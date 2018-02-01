@@ -2,6 +2,7 @@
 
 namespace app\modules\opencase\controllers;
 
+use app\modules\freekassa\models\Freekassa;
 use app\modules\opencase\models\Promo;
 use app\modules\opencase\models\PromoLog;
 use Yii;
@@ -42,7 +43,8 @@ class PromoCodesController extends Controller
         ]);
 
         $dataProviderPromolog = new ActiveDataProvider([
-            'query' => PromoLog::find(),
+            'query' => Freekassa::find()
+            ->where('status = 2'),
         ]);
 
         return $this->render('index', [

@@ -17,6 +17,7 @@ $this->title = 'Доставки';
 		'columns' => [
 			['class' => 'yii\grid\SerialColumn'],
 			'token_index',
+			'delivery.username:raw:ФИО',
 			[
                 'attribute' => 'delivery_address_id',
                 'value' => function(\app\modules\opencase\models\Delivery $model) {

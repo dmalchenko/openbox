@@ -119,5 +119,5 @@
 <!-- VK Widget -->
 <div id="vk_community_messages"></div>
 <script type="text/javascript">
-    VK.Widgets.CommunityMessages("vk_community_messages", 40771317, {expandTimeout: "10000",tooltipButtonText: "Есть вопрос?"});
+    VK.Widgets.CommunityMessages("vk_community_messages", 40771573, {expandTimeout: "50000",tooltipButtonText: "Здравствуйте! У вас есть к нам вопрос?"});
 </script>

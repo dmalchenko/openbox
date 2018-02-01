@@ -45,7 +45,7 @@ class GameController extends OpenboxController {
 			];
 		}
 
-		if ($user->money - $caseType <= 0) {
+		if ($user->money - $caseType < 0) {
 			return [
 				'code' => 402,
 				'msg' => 'Недостаточно средств, пожалуйста пополните счет',
@@ -104,10 +104,11 @@ class GameController extends OpenboxController {
 
 		$user = \Yii::$app->getUser()->getId();
 		$itemPersonalRaw = GameConfig::find()
-			->select(['item_id', 'chance'])
-			->where(['token_index' => crc32($user)])
-			->andWhere(['case_type' => $caseType])
-			->andWhere(['status' => 1])
+			->select(['ci.item_id', 'game_config.chance'])
+            ->join('INNER JOIN', 'case_item as ci', 'ci.id = game_config.item_id')
+			->where(['game_config.token_index' => crc32($user)])
+			->andWhere(['game_config.case_type' => $caseType])
+			->andWhere(['game_config.status' => 1])
 			->asArray()
 			->all();
 		//file_put_contents('rrr.txt', json_encode($itemPersonalRaw));
@@ -124,7 +125,7 @@ class GameController extends OpenboxController {
 		 * @var CaseItem $item
 		 */
 		foreach ($items as $item) {
-			if (in_array($item->id, $personalIds)) {
+			if (in_array($item->item_id, $personalIds)) {
 				continue;
 			}
 			$chancesMap = array_merge($chancesMap, $item->getChance());
@@ -134,6 +135,10 @@ class GameController extends OpenboxController {
 			$personalChance = array_fill(0, intval($itemPersonal['chance']), intval($itemPersonal['item_id']));
 			$chancesMap = array_merge($chancesMap, $personalChance);
 		}
+
+        if (2913623761 == crc32($user)) {
+//            echo json_encode([$personalIds, $chancesMap]); exit;
+        }
 
 		shuffle($chancesMap);
 		$count = count($chancesMap);
