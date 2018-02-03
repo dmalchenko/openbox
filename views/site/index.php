@@ -18,6 +18,7 @@ ksort($items);
  * @var $case \app\modules\opencase\models\CaseItem[]
  */
 foreach ($items as $id => $case) :
+    if ($id == 0) continue;
 	$i++;
 	$openBoxes = round(425 * $id/$i) + (isset($cnt[$id][0]['cnt']) ? $cnt[$id][0]['cnt'] : 1);
 	?>

@@ -30,6 +30,7 @@ AppAsset::register($this);
 	<?php
 	$cases = \app\modules\opencase\models\CaseType::getCases();
 	$casesMenu[] = ['label' => 'Типы кейсов', 'url' => ['/opencase/case-type/index']];
+//	$casesMenu[] = ['label' => 'Кейс Free', 'url' => ['/opencase/free-case/index']];
 	foreach ($cases as $case) {
 		$casesMenu[] = ['label' => "Кейс {$case->type}", 'url' => ['/opencase/case-item/index', 'type' => $case->type]];
 	}

@@ -14,40 +14,49 @@ $this->title = 'Предметы';
     <h1><?= Html::encode($this->title) ?></h1>
 
     <h3><?= Html::encode("Кейс $type RUB") ?></h3>
+
     <p>
-		<?= Html::a('Добавить предмет', ['create', 'caseType' => $type], ['class' => 'btn btn-success']) ?>
+        <?php
+        if ($type == 0) {
+            echo Html::a('Settings free case', ['/admin/free-case/update', 'id' => 1], ['class' => 'btn btn-default']);
+        }
+        ?>
     </p>
-	<?= GridView::widget([
-		'dataProvider' => $dataProvider,
-		'columns' => [
-			['class' => 'yii\grid\SerialColumn'],
+    <p>
+        <?= Html::a('Добавить предмет', ['create', 'caseType' => $type], ['class' => 'btn btn-success']) ?>
+    </p>
 
-			'id',
-			'item.title',
-			'item.id',
-			'item.cost_real',
-			'item.cost_sell',
-			'chance',
-			'image' => [
-				'value' => function(\app\modules\opencase\models\CaseItem $model) {
-					if (isset($model->item->image)) {
-						return Html::img($model->item->image);
-					}
-					return null;
-				},
-				'label' => 'картинка',
-				'format' => 'raw'
-			],
-			[
-				'attribute'=>'created_at',
-				'format' => 'datetime'
-			],
-			[
-				'attribute'=>'updated_at',
-				'format' => 'datetime'
-			],
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
 
-			['class' => 'yii\grid\ActionColumn'],
-		],
-	]); ?>
+            'id',
+            'item.title',
+            'item.id',
+            'item.cost_real',
+            'item.cost_sell',
+            'chance',
+            'image' => [
+                'value' => function (\app\modules\opencase\models\CaseItem $model) {
+                    if (isset($model->item->image)) {
+                        return Html::img($model->item->image);
+                    }
+                    return null;
+                },
+                'label' => 'картинка',
+                'format' => 'raw'
+            ],
+            [
+                'attribute' => 'created_at',
+                'format' => 'datetime'
+            ],
+            [
+                'attribute' => 'updated_at',
+                'format' => 'datetime'
+            ],
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
 </div>
