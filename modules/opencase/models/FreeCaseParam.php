@@ -6,22 +6,24 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 
 /**
- * This is the model class for table "free_case".
+ * This is the model class for table "free_case_param".
  *
  * @property integer $id
- * @property integer $token
- * @property integer $last_open
+ * @property integer $status
+ * @property string $groupId
+ * @property string $link
+ * @property integer $postId
  * @property integer $created_at
  * @property integer $updated_at
  */
-class FreeCase extends \yii\db\ActiveRecord
+class FreeCaseParam extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'free_case';
+        return 'free_case_param';
     }
 
     /**
@@ -30,7 +32,8 @@ class FreeCase extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['token', 'last_open', 'created_at', 'updated_at'], 'integer'],
+            [['status', 'postId'], 'integer'],
+            [['groupId', 'link'], 'string', 'max' => 255],
         ];
     }
 
@@ -41,8 +44,10 @@ class FreeCase extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'token' => 'Token',
-            'last_open' => 'Last Open',
+            'status' => 'Status',
+            'groupId' => 'Group ID',
+            'postId' => 'Post ID',
+            'link' => 'Url post',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
@@ -53,4 +58,6 @@ class FreeCase extends \yii\db\ActiveRecord
             TimestampBehavior::className(),
         ];
     }
+
+
 }

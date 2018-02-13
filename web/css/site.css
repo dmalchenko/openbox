@@ -172,3 +172,9 @@ a.desc:after {
     display: inline-block;
     vertical-align: middle;
 }
+
+.imgX1 {
+    position: absolute;
+    margin-left: -73px;
+    top: 135px;
+}

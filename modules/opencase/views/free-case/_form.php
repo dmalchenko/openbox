@@ -16,6 +16,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'groupId')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'link')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'postId')->textInput() ?>
 
     <div class="form-group">

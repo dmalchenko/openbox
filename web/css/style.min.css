@@ -1143,8 +1143,7 @@ textarea.field-text__input {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
-  justify-content: space-around;
-  margin-top: 40px; }
+  justify-content: space-around;}
 .modal__wrapper-bottom {
   margin-bottom: 20px; }
 .modal__close {
@@ -1369,6 +1368,8 @@ textarea.field-text__input {
 .close > span:after {
   -webkit-transform: rotate3d(0, 0, 1, -45deg);
   transform: rotate3d(0, 0, 1, -45deg); }
+.boxColor0 {
+  background-image: url(../img/box_0.png) !important; }
 .boxColor100 {
   background-image: url(../img/green-box.png) !important; }
 .boxColor250 {
@@ -1377,6 +1378,8 @@ textarea.field-text__input {
   background-image: url(../img/blue-box.png) !important; }
 .boxColor1000 {
   background-image: url(../img/orange-box.png) !important; }
+.boxColor999 {
+  background-image: url(../img/pinkBox.png) !important; }
 .box {
   margin-top: 30px;
   width: 261px;

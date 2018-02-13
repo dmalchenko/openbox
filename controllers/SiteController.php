@@ -9,6 +9,8 @@ use app\modules\opencase\models\CaseItem;
 use app\modules\opencase\models\CaseType;
 use app\modules\opencase\models\Delivery;
 use app\modules\opencase\models\DeliveryAddress;
+use app\modules\opencase\models\FreeCase;
+use app\modules\opencase\models\FreeCaseParam;
 use app\modules\opencase\models\GameLog;
 use app\modules\opencase\models\Items;
 use app\modules\opencase\models\Promo;
@@ -16,6 +18,7 @@ use app\modules\opencase\models\PromoCodes;
 use app\modules\opencase\models\PromoLog;
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\db\Expression;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use yii\helpers\VarDumper;
@@ -108,7 +111,7 @@ class SiteController extends Controller {
     public function actionIndex() {
         $this->layout = 'clear';
 
-        $items = CaseItem::find()->all();
+        $items = CaseItem::find()->with('item')->all();
         $items = ArrayHelper::index($items, null, 'case_type');
 
         $games = GameLog::find()
@@ -118,9 +121,13 @@ class SiteController extends Controller {
             ->all();
 
         $games = ArrayHelper::index($games, null, 'case_type');
+
+        $user = User::getCurrentUser();
+
         return $this->render('index', [
             'items' => $items,
-            'cnt' => $games
+            'cnt' => $games,
+            'user' => $user,
         ]);
     }
 
@@ -201,15 +208,17 @@ class SiteController extends Controller {
      * @return Response|string
      */
     public function actionContact() {
-        $keys = [
-            'clientId' => '6263253',
-            'clientSecret' => 'QIl6EbWSG2GuEYoj7CD8',
-        ];
-        $eauth = Yii::$app->eauth->getIdentity('vkontakte');
-//		$t = User::addMoney($r->getId(), 100);
-        VarDumper::dump($eauth->test());
-        exit;
 
+        $id  = Yii::$app->getUser()->getIdentity()->getId();
+        $user = User::findOne(['token_index' => crc32($id)]);
+
+
+
+        echo '<pre>';
+        var_dump($user->attributes);
+        echo '</pre>';
+        exit;
+        return '';
     }
 
     /**
@@ -520,10 +529,34 @@ class SiteController extends Controller {
 
         $case = CaseItem::find()->where(['case_type' => $id])->all();
 
+        $url = '';
+        $checkPay = -1;
+        $lastOpen = false;
+        if ($id == 0) {
+            $url = FreeCaseParam::findOne(1)->link;
+            if ($user && isset($user->token_index)) {
+                $lastOpen = FreeCase::findOne(['token' => $user->token_index]);
+                if ($lastOpen) {
+                    $lastOpen = $lastOpen->last_open;
+                }
+
+                $checkPay = Freekassa::find()
+                    ->where(['user_id' => $user->token_index])
+                    ->andWhere(['status' => 2])
+                    ->andWhere(['>=', 'amount', 99])
+                    ->andWhere(new Expression('updated_at >= (UNIX_TIMESTAMP() - 600)'))
+                    ->orderBy(['id' => SORT_DESC])
+                    ->exists();
+            }
+        }
+
         return $this->render('box', [
             'case' => $case,
             'id' => $caseNumber,
             'type' => $id,
+            'url' => $url,
+            'lastOpen' => $lastOpen,
+            'checkPay' => intval($checkPay),
         ]);
     }
 

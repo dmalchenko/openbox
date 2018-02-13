@@ -5,9 +5,11 @@ namespace app\modules\opencase\controllers;
 use app\models\User;
 use app\modules\opencase\models\Basket;
 use app\modules\opencase\models\CaseItem;
+use app\modules\opencase\models\FreeCase;
 use app\modules\opencase\models\GameConfig;
 use app\modules\opencase\models\GameLog;
 use app\modules\opencase\models\Items;
+use Yii;
 use yii\web\Response;
 
 class GameController extends OpenboxController {
@@ -37,25 +39,47 @@ class GameController extends OpenboxController {
 
 		header('Expires: ' . gmdate('D, d M Y H:i:s', time()) . ' GMT');
 
-		$user = User::getCurrentUser();
-		if (!$user) {
-			return [
-				'code' => 400,
-				'msg' => 'Пожалуйста авторизируйтесь или зарегистрируйтесь',
-			];
-		}
+        $id  = Yii::$app->getUser()->getIdentity()->getId();
+        $user = User::findOne(['token_index' => crc32($id)]);
+
+        if (!$user) {
+            $r = [
+                'code' => 400,
+                'msg' => 'Пожалуйста авторизируйтесь или зарегистрируйтесь',
+            ];
+            echo json_encode($r);
+            exit;
+        }
 
 		if ($user->money - $caseType < 0) {
-			return [
-				'code' => 402,
-				'msg' => 'Недостаточно средств, пожалуйста пополните счет',
-			];
-		}
 
-		try {
-			$user->money -= $caseType;
-			$idWinItem = $this->getRandItem($caseType);
-			$item = Items::findOne($idWinItem);
+            $r = [
+                'code' => 402,
+                'msg' => 'Недостаточно средств, пожалуйста пополните счет',
+            ];
+            echo json_encode($r);
+            exit;
+        }
+
+        try {
+
+            if ($caseType == 0) {
+                if ($user->canOpenFreeCase()) {
+                    $freeCase = new FreeCase();
+                    $freeCase->token = $user->token_index;
+                    $freeCase->last_open = time();
+                    $freeCase->save();
+                } else {
+                    $r = ['code' => 403, 'msg' => 'Открыть сейчас этот кейс не возможно. Вы не выполнили все условия',];
+                    echo json_encode($r);
+                    exit;
+                }
+            }
+
+
+            $user->money -= $caseType;
+            $idWinItem = $this->getRandItem($caseType);
+            $item = Items::findOne($idWinItem);
 
 			$basket = new Basket();
 			$basket->token = $user->token;

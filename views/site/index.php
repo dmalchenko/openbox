@@ -3,63 +3,77 @@
 /* @var $cnt array */
 /* @var $items \app\modules\opencase\models\CaseItem[] */
 
-use app\models\User;
-use yii\helpers\Html;
+/* @var $user app\Models\User */
+
 use yii\helpers\Url;
 
 ?>
 
 <?php
 $i = 0;
-
-ksort($items);
-
+$cases = [
+    '0' => $items[0],
+    '1000' => $items[1000],
+    '999' => $items[999],
+    '500' => $items[500],
+    '250' => $items[250],
+    '100' => $items[100],
+];
 /**
  * @var $case \app\modules\opencase\models\CaseItem[]
  */
-foreach ($items as $id => $case) :
-    if ($id == 0) continue;
-	$i++;
-	$openBoxes = round(425 * $id/$i) + (isset($cnt[$id][0]['cnt']) ? $cnt[$id][0]['cnt'] : 1);
-	?>
+foreach ($cases as $id => $case) :
+    $i++;
+    $openBoxes = round(425 * $id / $i) + (isset($cnt[$id][0]['cnt']) ? $cnt[$id][0]['cnt'] + 3592 : 1);
+    $chancePng = $id > 999 ? 'x3.png' : 'x2.png';
+
+    ?>
     <div class="box-wrapper"
          onclick="window.location.href ='<?= Url::toRoute(['/site/box', 'id' => $id]) ?>';">
         <div class="box-wrapper__left">
             <div class="box boxColor<?= $id ?>">
                 <div class="box__header">
                     <div class="box__name">
-                        Коробка
-                        <div class="box__number">№<?= $i ?></div>
+                        <?php
+                        if ($id == 0) {
+                            echo "Бесплатная <br> коробка";
+                        } else {
+                            $t = $i - 1;
+                            echo "Коробка<div class='box__number'>№{$t}</div>";
+                        }
+                        ?>
                     </div>
                     <div class="box__price"><?= $id ?>&#8381;</div>
                 </div>
                 <div class="box__surprice">
-                    <img src="img/cover<?= $i ?>.png" alt="surprice">
+                    <img src="img/cover<?= $id ?>.png">
+
                 </div>
             </div>
             <button href="<?= Url::toRoute(['/site/box', 'id' => $id]) ?>" class="btn btn--accent box__btn">Открыть
-                коробку</button>
+                коробку
+            </button>
             <div class="box-wrapper__text">
                 Уже выдано
-                <span class="box-wrapper__number"><?= $openBoxes?> товаров</span>
+                <span class="box-wrapper__number"><?= $openBoxes ?> товаров</span>
             </div>
         </div>
         <div class="box-wrapper__right">
             <div class="box-wrapper__right-text">Коробка содержит <?= count($case) ?> товаров</div>
             <div class="box-wrapper__items">
-				<?php
-				foreach ($case as $item) {
-					$s = '<div class="box-wrapper__item"><img src="%s" alt="surpise"></div>';
-					if (isset($s, $item->item->image)) {
-						echo sprintf($s, $item->item->image);
-					}
-				}
-				?>
+                <?php
+                foreach ($case as $item) {
+                    $s = '<div class="box-wrapper__item"><img src="%s" alt="surpise"></div>';
+                    if (isset($s, $item->item->image)) {
+                        echo sprintf($s, $item->item->image);
+                    }
+                }
+                ?>
             </div>
         </div>
     </div>
 
-	<?php
+<?php
 endforeach;
 ?>
 

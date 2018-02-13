@@ -9,6 +9,8 @@
 namespace app\models;
 
 
+use yii\helpers\ArrayHelper;
+
 class VKontakteOAuth2Service extends \nodge\eauth\services\extended\VKontakteOAuth2Service {
     protected function fetchAttributes() {
         $tokenData = $this->getAccessTokenData();
@@ -45,36 +47,52 @@ class VKontakteOAuth2Service extends \nodge\eauth\services\extended\VKontakteOAu
 
     /**
      * @param string $groupId
+     * @param $user_id
      * @return mixed
      * @throws \nodge\eauth\ErrorException
      */
-    public function isGroupMember($groupId = '40771573') {
+    public function isGroupMember($groupId, $user_id) {
 
         $response = $this->makeSignedRequest('groups.isMember', [
             'query' => [
                 'group_id' => $groupId,
-                'user_id' => '26812864',
+                'user_id' => $user_id,
             ],
         ]);
 
-        return $response;
+        if (isset($response['response']) && $response['response'] == 1) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
+     * @param $groupId
+     * @param $postId
+     * @param $userId
      * @return mixed
      * @throws \nodge\eauth\ErrorException
      */
-    public function test() {
-        $groupId = '-79318863';
+    public function haveRepost($groupId, $postId, $userId) {
 
         $response = $this->makeSignedRequest('wall.getReposts', [
             'query' => [
-                'owner_id' => $groupId,
-                'post_id' => '3',
-//                'user_id' => '26812864',
+                'owner_id' => '-' . $groupId,
+                'post_id' => $postId,
             ],
         ]);
 
-        return $response;
+        $data = ArrayHelper::getValue($response, 'response.profiles');
+        if (!is_array($data)) {
+            return false;
+        }
+
+        $data = ArrayHelper::getColumn($data, 'uid');
+        if (!is_array($data)) {
+            return false;
+        }
+
+        return in_array($userId, $data);
     }
 }

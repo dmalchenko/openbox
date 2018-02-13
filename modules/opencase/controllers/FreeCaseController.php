@@ -3,7 +3,7 @@
 namespace app\modules\opencase\controllers;
 
 use Yii;
-use app\modules\opencase\models\FreeCase;
+use app\modules\opencase\models\FreeCaseParam;
 use yii\data\ActiveDataProvider;
 use yii\db\StaleObjectException;
 use yii\web\Controller;
@@ -34,7 +34,7 @@ class FreeCaseController extends Controller {
      */
     public function actionIndex() {
         $dataProvider = new ActiveDataProvider([
-            'query' => FreeCase::find(),
+            'query' => FreeCaseParam::find(),
         ]);
 
         return $this->render('index', [
@@ -60,7 +60,7 @@ class FreeCaseController extends Controller {
      * @return mixed
      */
     public function actionCreate() {
-        $model = new FreeCase();
+        $model = new FreeCaseParam();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -110,11 +110,11 @@ class FreeCaseController extends Controller {
      * Finds the FreeCase model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return FreeCase the loaded model
+     * @return FreeCaseParam the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id) {
-        if (($model = FreeCase::findOne($id)) !== null) {
+        if (($model = FreeCaseParam::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
